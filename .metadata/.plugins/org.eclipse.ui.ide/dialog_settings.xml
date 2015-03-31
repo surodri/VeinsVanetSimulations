@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="155" key="DIALOG_Y_ORIGIN"/>
+		<item value="291" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="false" key="ShowDerived"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/veins/src/veins/modules/phy/PhyLayer80211p.h&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/module/IdealRadio_1.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/statistical/ieee80211_adhoc_twohost_speed.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/module/DHCP_1.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/module/tcp_send_1.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Vanets/test/DummyTest.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Vanets/test/work/Decider80211p/test.cc&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/unit/IPv6Address_7.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/unit/IPv6Address_3.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/inet/tests/unit/IPv6FragBuf_1.test&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/veins/src/veins/modules/phy/Decider80211p.h&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/veins/src/veins/modules/phy/PhyLayer80211p.cc&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/veins/src/veins/modules/phy/Decider80211p.cc&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="38" key="DIALOG_Y_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="-113" key="DIALOG_X_ORIGIN"/>
+			<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/srodriguez/Documents/Research/veins-veins-4a2"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

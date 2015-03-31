@@ -1,0 +1,7 @@
+16:03:19 **** Build of configuration gcc-debug for project veins ****
+make MODE=debug CONFIGNAME=gcc-debug all 
+make[1]: Entering directory `/home/srodriguez/Documents/Research/VanetSimulations/veins/src'
+make[1]: Leaving directory `/home/srodriguez/Documents/Research/VanetSimulations/veins/src'
+
+16:03:19 Build Finished (took 354ms)
+

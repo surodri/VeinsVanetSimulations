@@ -1,0 +1,5 @@
+18:52:20 **** Incremental Build of configuration gcc-debug for project routing ****
+make MODE=debug CONFIGNAME=gcc-debug all 
+
+18:52:21 Build Finished (took 158ms)
+

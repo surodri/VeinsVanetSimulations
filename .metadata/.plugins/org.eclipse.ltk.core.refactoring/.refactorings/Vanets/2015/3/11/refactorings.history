@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Vanets/test/PhysicalLayer.test&apos; to &apos;Decider80211p.test&apos;" description="Rename resource &apos;PhysicalLayer.test&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="test/PhysicalLayer.test" name="Decider80211p.test" stamp="1425844021902" updateReferences="true"/>
+</session>

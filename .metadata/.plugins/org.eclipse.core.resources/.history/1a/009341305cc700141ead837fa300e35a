@@ -1,0 +1,9 @@
+#! /bin/sh
+
+if [ ! -d work]; then mkdir work; fi
+EXTRA_INCLUDES='-I ../../veins/src/veins/modules/phy/Decider80211p.h'
+
+opp_test gen -v *.test || exit 1
+(cd work; opp_makemake -f --deep --no-deep-includes $EXTRA_INCLUDES; make) || exit 1
+opp_test run -v *.test
+

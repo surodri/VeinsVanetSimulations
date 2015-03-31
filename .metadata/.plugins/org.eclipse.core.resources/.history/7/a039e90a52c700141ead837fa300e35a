@@ -1,0 +1,6 @@
+#! /bin/sh
+
+opp_test gen -v *.test || exit 1
+(cd work; opp_makemake -f --deep --no-deep-includes; make) || exit 1
+opp_test run -v *.test
+

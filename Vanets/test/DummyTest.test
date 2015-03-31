@@ -1,0 +1,10 @@
+%description:
+Testing the name and lengthe properties of cMessage set propertly
+
+%activity:
+cMessage msg;
+msg.setSchedulingPriority(456);
+ev << "SchedulingPriority: " << msg.getSchedulingPriority() << endl; 
+
+%contains: stdout
+SchedulingPriority: 456
