@@ -14,7 +14,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I. -Isrc -Itest
+INCLUDE_PATH = -I. -Isrc
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -110,14 +110,13 @@ clean:
 	$(Q)-rm -f Vanets Vanets.exe libVanets.so libVanets.a libVanets.dll libVanets.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
 	$(Q)-rm -f src/*_m.cc src/*_m.h
-	$(Q)-rm -f test/*_m.cc test/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc test/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 
