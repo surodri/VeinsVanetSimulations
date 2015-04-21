@@ -6,7 +6,7 @@
 
 
 
-namespace FooCrap {
+namespace MetricsTests {
 
 
 

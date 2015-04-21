@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for work
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -P . --no-deep-includes -I./FooCrap -I./../../../vanets/src -I./lib -I./../../../inet/src/base -I./../../src/ -I./../../../vanets/src/Metrics.*
+#  opp_makemake -f --deep -P . --no-deep-includes -I./MetricsTests -I./../../../vanets/src -I./lib -I./../../../inet/src/base -I./../../src/ -I./../../../vanets/src/Metrics.*
 #
 
 # Name of target to be created (-o option)
@@ -15,7 +15,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 
 # C++ include paths (with -I)
 INCLUDE_PATH = \
-    -I./FooCrap \
+    -I./MetricsTests \
     -I./../../../vanets/src \
     -I./lib \
     -I./../../../inet/src/base \
@@ -34,7 +34,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/FooCrap/test.o
+OBJS = $O/MetricsTests/test.o
 
 # Message files
 MSGFILES =
@@ -111,16 +111,16 @@ clean:
 	$(Q)-rm -rf $O
 	$(Q)-rm -f work work.exe libwork.so libwork.a libwork.dll libwork.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
-	$(Q)-rm -f FooCrap/*_m.cc FooCrap/*_m.h
+	$(Q)-rm -f MetricsTests/*_m.cc MetricsTests/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc FooCrap/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc MetricsTests/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/FooCrap/test.o: FooCrap/test.cc \
+$O/MetricsTests/test.o: MetricsTests/test.cc \
   ./../../../inet/src/base/INETDefs.h \
   ./../../../inet/src/base/Compat.h
