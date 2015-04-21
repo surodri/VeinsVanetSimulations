@@ -1,0 +1,23 @@
+#! /bin/sh
+
+TESTFILES=$*
+if [ "x$TESTFILES" = "x" ]; then TESTFILES='*.test'; fi
+if [ -d work ]; then rm -rf work; fi
+if [ ! -d work ]; then mkdir work; fi
+
+EXTRA_INCLUDES=`find ./../../src -type d | sed s!^!-I../!`
+EXTRA_INCLUDES="$EXTRA_INCLUDES -I./FooCrap -I./../../../vanets/src -I./lib -I./../../../inet/src/base -I./../../src/ -I./../../../vanets/src/Metrics.*"
+
+opp_test gen $OPT -v $TESTFILES || exit 1
+echo
+(cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES; make) || exit 1 
+echoecho
+opp_test run $OPT -v $TESTFILES || exit 1
+echo
+echo Results can be found in ./work
+
+
+
+
+
+

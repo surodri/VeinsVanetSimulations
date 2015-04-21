@@ -1,3 +1,0 @@
-package vanets;
-
-@license(LGPL);

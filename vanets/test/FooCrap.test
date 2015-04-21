@@ -1,0 +1,43 @@
+%description:
+numberOfBits should be incremented 
+when new message arrives with the bit length of message
+
+%includes:
+#include<TestMetrics.h>
+#include <INETDefs.h>
+
+%file: TestMetrics.h
+#ifndef __TESTMETRICS_H
+#define __TESTMETRICS_H
+
+#include <../../../src/Metrics.h>
+
+class TestMetrics : public Metrics
+{       
+	public:
+		long testUpdateNumBits(long numberOfBits, cPacket* packet){
+			return Metrics::updateNumberOfBits(numberOfBits, packet);
+		};
+};
+#endif
+  
+
+%activity:
+
+long currentNumBits = 9; 
+cPacket *pkt = new cPacket();
+cMessage *message = pkt; // Valid   cPacket is a descendant of cMessage
+cPacket *packet = dynamic_cast<cPacket*>(message);
+packet->setBitLength(1);
+
+TestMetrics* metrics = new TestMetrics(); 
+long numberOfBits = metrics->testUpdateNumBits(currentNumBits, packet); 
+
+ev << numberOfBits ; 
+std::cout<<"numberOfBits: "<<numberOfBits<<std::endl;
+
+delete pkt;
+delete metrics;
+
+%contains: stdout
+numberOfBits: 10

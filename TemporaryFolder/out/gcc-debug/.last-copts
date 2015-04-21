@@ -1,0 +1,1 @@
+-g -Wall -fPIC  -fno-stack-protector -DHAVE_SWAPCONTEXT  -DHAVE_PCAP -DXMLPARSER=libxml -DWITH_PARSIM -DWITH_NETBUILDER  -I. -Itest -Itest/work -Itest/work/DummyTest -Itest/work/FooCrap -Itest/work/out -Itest/work/out/gcc-debug -Itest/work/out/gcc-debug/DummyTest -Itest/work/out/gcc-debug/FooCrap -I/home/srodriguez/Documents/Research/omnetpp-4.6/include

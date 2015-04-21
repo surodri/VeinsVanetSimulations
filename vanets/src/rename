@@ -1,0 +1,39 @@
+#include "Metrics.h"
+
+Define_Module(Metrics);
+simsignal_t Metrics::rcvdPkSignal = registerSignal("rcvdPk");
+
+/*virtual Metrics::Metrics()
+{
+
+}
+virtual Metrics::~Metrics()
+{
+
+}
+*/
+virtual void Metrics::initialize(){
+    numBits = 0;
+
+    WATCH(numBits);
+
+}
+
+virtual void Metrics::handleMessage(cMessage *msg)
+{
+
+    cPacket *packet = PK(msg);
+    numBits = updateNumBits(numBits, packet);
+}
+
+virtual long Metrics::updateNumBits(long numBits, cPacket* packet){
+    return numBits += packet->getBitLength();
+}
+
+virtual void Metrics::finish(){
+    recordScalar("numBits", numBits);
+}
+//void Metrics::CallTest()
+//{
+ // std::cout<<"Hi from test calling method"<<std::endl;
+//}
