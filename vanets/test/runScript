@@ -5,13 +5,21 @@ if [ "x$TESTFILES" = "x" ]; then TESTFILES='*.test'; fi
 if [ -d work ]; then rm -rf work; fi
 if [ ! -d work ]; then mkdir work; fi
 
-EXTRA_INCLUDES=`find ./../../src -type d | sed s!^!-I../!`
-EXTRA_INCLUDES="$EXTRA_INCLUDES -I./MetricsTests -I./../../../vanets/src -I./lib -I./../../../inet/src/base -I./../../src/ -I./../../../vanets/src/Metrics.*"
+EXTRA_INCLUDES=`find ./../src -type d | sed s!^!-I../!`
+EXTRA_INCLUDES="$EXTRA_INCLUDES 
+-I./MetricsTests 
+-I./../../../vanets/src   
+-I./lib -I./../../../inet/src/base  
+"
 
 opp_test gen $OPT -v $TESTFILES || exit 1
+echo 
+#(cd ../src; opp_makemake -f --deep --make-so -o vanets -O out; make) || exit 1
 echo
-(cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES; make) || exit 1 
-echoecho
+
+echo
+(cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES -L../../src/ -lvanets; make) || exit 1 
+echo
 opp_test run $OPT -v $TESTFILES || exit 1
 echo
 echo Results can be found in ./work

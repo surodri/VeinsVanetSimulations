@@ -1,2 +1,6 @@
-.metadata/*
+.metadata/.
+a/.metadata/
+b/.metadata/
 .metadata/.plugins
+.metadata/.bak*
+vanets/.cProject

@@ -1,5 +1,0 @@
-
-simple Test
-{
-    @isNetwork(true);
-}

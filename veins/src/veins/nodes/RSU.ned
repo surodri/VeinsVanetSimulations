@@ -22,7 +22,7 @@ package org.car2x.veins.nodes;
 
 import org.car2x.veins.base.modules.*;
 import org.car2x.veins.modules.nic.Nic80211p;
-import org.vanets.Metrics;
+
 module RSU
 {
     parameters:

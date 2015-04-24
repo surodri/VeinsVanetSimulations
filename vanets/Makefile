@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for vanets
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -O out -I../inet/src/linklayer/ieee80211/radio -I../inet/src/networklayer/routing/aodv -I../veins/src/veins/base/connectionManager -I../inet/src/networklayer/common -I../veins/src -I../veins/src/veins/base/utils -I../inet/src -I../inet/src/networklayer/icmpv6 -I../inet/src/world/obstacles -I../inet/src/networklayer/contract -I../inet/src/networklayer/xmipv6 -I../inet/src/networklayer/autorouting/ipv4 -I../inet/src/util -I../inet/src/linklayer/common -I../inet/src/transport/contract -I../inet/src/status -I../inet/src/linklayer/radio/propagation -I../inet/src/linklayer/ieee80211/radio/errormodel -I../inet/src/linklayer/radio -I../inet/src/util/headerserializers/tcp -I../inet/src/networklayer/ipv4 -I../inet/src/mobility/contract -I../inet/src/util/headerserializers/ipv4 -I../inet/src/base -I../inet/src/util/headerserializers -I../inet/src/world/radio -I../inet/src/linklayer/ieee80211/mac -I../inet/src/transport/sctp -I../inet/src/networklayer/ipv6 -I../inet/src/util/headerserializers/udp -I../inet/src/networklayer/ipv6tunneling -I../inet/src/util/headerserializers/ipv6 -I../inet/src/battery/models -I../inet/src/applications/pingapp -I../inet/src/linklayer/contract -I../inet/src/util/headerserializers/sctp -I../veins/src/veins/modules -I../inet/src/transport/tcp_common -I../inet/src/networklayer/arp -I../veins/src/veins/modules/obstacle -I../inet/src/transport/udp -I../veins/src/veins/base/messages -L../inet/out/$$\(CONFIGNAME\)/src -L../veins/out/$$\(CONFIGNAME\)/src -linet -lveins -DINET_IMPORT -KINET_PROJ=../inet -KVEINS_PROJ=../veins -KVANETS_PROJ=.
+#  opp_makemake -f --deep -O out -I../inet/src/linklayer/ieee80211/radio -I../inet/src/networklayer/routing/aodv -I../veins/src/veins/base/connectionManager -I../inet/src/networklayer/common -I../veins/src -I../veins/src/veins/base/utils -I../inet/src -I../inet/src/networklayer/icmpv6 -I../inet/src/world/obstacles -I../inet/src/networklayer/xmipv6 -I../inet/src/networklayer/contract -I../inet/src/networklayer/autorouting/ipv4 -I../inet/src/util -I../inet/src/linklayer/common -I../inet/src/transport/contract -I../inet/src/status -I../inet/src/linklayer/radio/propagation -I../inet/src/linklayer/ieee80211/radio/errormodel -I../inet/src/linklayer/radio -I../inet/src/util/headerserializers/tcp -I../inet/src/networklayer/ipv4 -I../inet/src/mobility/contract -I../inet/src/util/headerserializers/ipv4 -I../inet/src/base -I../inet/src/util/headerserializers -I../inet/src/world/radio -I../inet/src/linklayer/ieee80211/mac -I../inet/src/transport/sctp -I../inet/src/networklayer/ipv6 -I../inet/src/util/headerserializers/udp -I../inet/src/networklayer/ipv6tunneling -I../inet/src/util/headerserializers/ipv6 -I../inet/src/battery/models -I../inet/src/applications/pingapp -I../inet/src/linklayer/contract -I../inet/src/util/headerserializers/sctp -I../veins/src/veins/modules -I../inet/src/transport/tcp_common -I../inet/src/networklayer/arp -I../veins/src/veins/modules/obstacle -I../inet/src/transport/udp -I../veins/src/veins/base/messages -L../inet/out/$$\(CONFIGNAME\)/src -L../veins/out/$$\(CONFIGNAME\)/src -linet -lveins -DINET_IMPORT -KINET_PROJ=../inet -KVEINS_PROJ=../veins
 #
 
 # Name of target to be created (-o option)
@@ -24,8 +24,8 @@ INCLUDE_PATH = \
     -I../inet/src \
     -I../inet/src/networklayer/icmpv6 \
     -I../inet/src/world/obstacles \
-    -I../inet/src/networklayer/contract \
     -I../inet/src/networklayer/xmipv6 \
+    -I../inet/src/networklayer/contract \
     -I../inet/src/networklayer/autorouting/ipv4 \
     -I../inet/src/util \
     -I../inet/src/linklayer/common \
@@ -62,10 +62,10 @@ INCLUDE_PATH = \
     -Isrc/results \
     -Itest \
     -Itest/work \
-    -Itest/work/FooCrap \
+    -Itest/work/MetricsTests \
     -Itest/work/out \
     -Itest/work/out/gcc-debug \
-    -Itest/work/out/gcc-debug/FooCrap
+    -Itest/work/out/gcc-debug/MetricsTests
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -80,7 +80,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS =
+OBJS = $O/src/MetricsCopy2.o $O/src/Metrics.o $O/test/work/MetricsTests/test.o
 
 # Message files
 MSGFILES =
@@ -88,7 +88,6 @@ MSGFILES =
 # Other makefile variables (-K)
 INET_PROJ=../inet
 VEINS_PROJ=../veins
-VANETS_PROJ=.
 
 #------------------------------------------------------------------------------
 
@@ -166,22 +165,28 @@ clean:
 	$(Q)-rm -f src/results/*_m.cc src/results/*_m.h
 	$(Q)-rm -f test/*_m.cc test/*_m.h
 	$(Q)-rm -f test/work/*_m.cc test/work/*_m.h
-	$(Q)-rm -f test/work/FooCrap/*_m.cc test/work/FooCrap/*_m.h
+	$(Q)-rm -f test/work/MetricsTests/*_m.cc test/work/MetricsTests/*_m.h
 	$(Q)-rm -f test/work/out/*_m.cc test/work/out/*_m.h
 	$(Q)-rm -f test/work/out/gcc-debug/*_m.cc test/work/out/gcc-debug/*_m.h
-	$(Q)-rm -f test/work/out/gcc-debug/FooCrap/*_m.cc test/work/out/gcc-debug/FooCrap/*_m.h
+	$(Q)-rm -f test/work/out/gcc-debug/MetricsTests/*_m.cc test/work/out/gcc-debug/MetricsTests/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc src/results/*.cc test/*.cc test/work/*.cc test/work/FooCrap/*.cc test/work/out/*.cc test/work/out/gcc-debug/*.cc test/work/out/gcc-debug/FooCrap/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc src/results/*.cc test/*.cc test/work/*.cc test/work/MetricsTests/*.cc test/work/out/*.cc test/work/out/gcc-debug/*.cc test/work/out/gcc-debug/MetricsTests/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/test/work/FooCrap/test.o: test/work/FooCrap/test.cc \
+$O/src/Metrics.o: src/Metrics.cc \
+	$(INET_PROJ)/src/base/Compat.h \
+	$(INET_PROJ)/src/base/INETDefs.h \
+	src/Metrics.h
+$O/src/MetricsCopy2.o: src/MetricsCopy2.cc \
+	src/MetricsCopy2.h
+$O/test/work/MetricsTests/test.o: test/work/MetricsTests/test.cc \
 	$(INET_PROJ)/src/base/Compat.h \
 	$(INET_PROJ)/src/base/INETDefs.h \
 	src/Metrics.h \
-	test/work/FooCrap/TestMetrics.h
+	test/work/MetricsTests/TestMetrics.h
 
