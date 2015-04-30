@@ -1,7 +1,0 @@
-%description:
-Test the setting name of Decider80211p
-
-%activity:
-Decider80211p decider = new Decider80211p();
- 
-%contains: stdout

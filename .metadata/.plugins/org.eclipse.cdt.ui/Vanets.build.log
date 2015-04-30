@@ -1,6 +1,0 @@
-16:03:20 **** Build of configuration gcc-debug for project Vanets ****
-make MODE=debug CONFIGNAME=gcc-debug all 
-Creating executable: out/gcc-debug//Vanets
-
-16:03:21 Build Finished (took 833ms)
-
