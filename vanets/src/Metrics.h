@@ -16,6 +16,7 @@ public:
 
   protected:
     long numberOfBits;
+    static simsignal_t throughputSignal;
 
   protected:
     virtual void initialize();

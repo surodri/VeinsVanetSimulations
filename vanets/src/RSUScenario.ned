@@ -14,6 +14,7 @@
 
 package vanets.src;
 
+import vanets.src.RSUWithMetrics;
 import org.car2x.veins.nodes.RSU;
 import org.car2x.veins.nodes.Scenario;
 
@@ -24,5 +25,11 @@ network RSUScenario extends Scenario
  		rsu[1]: RSU {
  		    @display("p=150,140;b=10,10,oval"); 
  		}   
+ 		
+ 		metricsApplication: RSUWithMetrics {
+ 		 parameters:
+                @display("p=200,200;r=,,#707070");
+        }   
+ 		
     
 }

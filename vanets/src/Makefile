@@ -23,7 +23,7 @@ PROJECTRELATIVE_PATH = /src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/Metrics.o $O/MetricsCopy2.o
+OBJS = $O/Metrics.o
 
 # Message files
 MSGFILES =
@@ -113,5 +113,3 @@ depend:
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/Metrics.o: Metrics.cc \
   ./Metrics.h
-$O/MetricsCopy2.o: MetricsCopy2.cc \
-  ./MetricsCopy2.h

@@ -16,3 +16,17 @@ Tcl error: moduleinspector.cc#499: bad window path name ""
 "ModuleInspector:drawSubmodule .network.c ptr0x3c33ce0 150 140 {rsu[0]} {p=150, 140;b=10, 10, oval} {} 0"
 
 
+----------------------------------------------------------------------
+
+
+Tcl error: moduleinspector.cc#631: ptr0x2ef98f0 not found
+    while executing
+"error "$tag not found""
+    (procedure "ModuleInspector:getSubmodCoords" line 4)
+    invoked from within
+"ModuleInspector:getSubmodCoords $c $modptr"
+    (procedure "ModuleInspector:drawNextEventMarker" line 2)
+    invoked from within
+"ModuleInspector:drawNextEventMarker .inspector2.c ptr0x2ef98f0 2"
+
+

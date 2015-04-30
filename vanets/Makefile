@@ -61,7 +61,11 @@ INCLUDE_PATH = \
     -Isrc \
     -Isrc/results \
     -Itest \
+    -Itest/Temporary \
     -Itest/work \
+    -Itest/work/MetricsNed \
+    -Itest/work/MetricsNedScalar \
+    -Itest/work/MetricsNedScalar/results \
     -Itest/work/MetricsTests \
     -Itest/work/out \
     -Itest/work/out/gcc-debug \
@@ -80,7 +84,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/src/MetricsCopy2.o $O/src/Metrics.o $O/test/work/MetricsTests/test.o
+OBJS = $O/src/Metrics.o $O/test/work/MetricsTests/test.o
 
 # Message files
 MSGFILES =
@@ -164,7 +168,11 @@ clean:
 	$(Q)-rm -f src/*_m.cc src/*_m.h
 	$(Q)-rm -f src/results/*_m.cc src/results/*_m.h
 	$(Q)-rm -f test/*_m.cc test/*_m.h
+	$(Q)-rm -f test/Temporary/*_m.cc test/Temporary/*_m.h
 	$(Q)-rm -f test/work/*_m.cc test/work/*_m.h
+	$(Q)-rm -f test/work/MetricsNed/*_m.cc test/work/MetricsNed/*_m.h
+	$(Q)-rm -f test/work/MetricsNedScalar/*_m.cc test/work/MetricsNedScalar/*_m.h
+	$(Q)-rm -f test/work/MetricsNedScalar/results/*_m.cc test/work/MetricsNedScalar/results/*_m.h
 	$(Q)-rm -f test/work/MetricsTests/*_m.cc test/work/MetricsTests/*_m.h
 	$(Q)-rm -f test/work/out/*_m.cc test/work/out/*_m.h
 	$(Q)-rm -f test/work/out/gcc-debug/*_m.cc test/work/out/gcc-debug/*_m.h
@@ -175,15 +183,13 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc src/results/*.cc test/*.cc test/work/*.cc test/work/MetricsTests/*.cc test/work/out/*.cc test/work/out/gcc-debug/*.cc test/work/out/gcc-debug/MetricsTests/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc src/*.cc src/results/*.cc test/*.cc test/Temporary/*.cc test/work/*.cc test/work/MetricsNed/*.cc test/work/MetricsNedScalar/*.cc test/work/MetricsNedScalar/results/*.cc test/work/MetricsTests/*.cc test/work/out/*.cc test/work/out/gcc-debug/*.cc test/work/out/gcc-debug/MetricsTests/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/src/Metrics.o: src/Metrics.cc \
 	$(INET_PROJ)/src/base/Compat.h \
 	$(INET_PROJ)/src/base/INETDefs.h \
 	src/Metrics.h
-$O/src/MetricsCopy2.o: src/MetricsCopy2.cc \
-	src/MetricsCopy2.h
 $O/test/work/MetricsTests/test.o: test/work/MetricsTests/test.cc \
 	$(INET_PROJ)/src/base/Compat.h \
 	$(INET_PROJ)/src/base/INETDefs.h \

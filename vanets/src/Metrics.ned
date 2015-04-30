@@ -19,7 +19,8 @@ simple Metrics
 {
     parameters:
         @display("i=block/sink");
-    
+    	@signal[throughput](type=long);
+    	@statistic[throughput](title="throughput"; source=throughput; record=max, timeavg, vector?);
     gates:
         input in[];
 }

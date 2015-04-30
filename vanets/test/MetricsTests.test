@@ -6,6 +6,7 @@ when new message arrives with the bit length of message
 #include<TestMetrics.h>
 #include <INETDefs.h>
 
+
 %file: TestMetrics.h
 #ifndef __TESTMETRICS_H
 #define __TESTMETRICS_H
@@ -21,6 +22,17 @@ class TestMetrics : public Metrics
 };
 #endif
   
+%file: package.ned
+package vanets.test.work.MetricsTests;
+@namespace(MetricsTests);
+
+%file: test.ned
+package vanets.test.work.MetricsTests;
+
+simple Test
+{
+    @isNetwork(true);
+}
 
 %activity:
 
@@ -44,6 +56,7 @@ std::cout<<"Actual: "<<std::endl;
 
 delete pkt;
 delete metrics;
+
 
 %contains: stdout
 numberOfBits: 10

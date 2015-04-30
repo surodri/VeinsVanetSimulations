@@ -2,26 +2,47 @@
 
 TESTFILES=$*
 if [ "x$TESTFILES" = "x" ]; then TESTFILES='*.test'; fi
+echo
+
 if [ -d work ]; then rm -rf work; fi
 if [ ! -d work ]; then mkdir work; fi
 
 EXTRA_INCLUDES=`find ./../src -type d | sed s!^!-I../!`
 EXTRA_INCLUDES="$EXTRA_INCLUDES 
--I./MetricsTests 
--I./../../../vanets/src   
--I./lib -I./../../../inet/src/base  
+-I./MetricsTests
+-I./../../../vanets/src
+-I./lib -I./../../../inet/src/base
+-I./../../../veins/src/
 "
-
 opp_test gen $OPT -v $TESTFILES || exit 1
-echo 
-#(cd ../src; opp_makemake -f --deep --make-so -o vanets -O out; make) || exit 1
-echo
+
+
+#echo 
+(cd ../src; opp_makemake -f --deep --make-so -o vanets -O out; make) || exit 1
+#echo
+(cd ../../veins/src; opp_makemake -f --deep --make-so -o veins -O out; make) || exit 1
 
 echo
-(cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES -L../../src/ -lvanets; make) || exit 1 
-echo
+(cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES -L../../src/ -lvanets -L../../../veins/src -lveins  ; make) || exit 1 
+
 opp_test run $OPT -v $TESTFILES || exit 1
 echo
+
+#--------------------EXPORTING NEDPATH------------------
+CURRENT_FULLPATH=$(pwd)
+NEDPATHS=$*
+
+for filename in $TESTFILES; do 
+	 BASENAME_TESTFILE=${filename%.test}
+	 NEDPATH_TESTFILE=`find . '-name' "${BASENAME_TESTFILE}" -type d | sed "s|^\.||"`
+	 NEDPATHS="$NEDPATHS:$CURRENT_FULLPATH$NEDPATH_TESTFILE"
+done
+NEDPATHS="$NEDPATHS:../../../inet/examples/adhoc/"
+
+#----To run export uncomment line below
+#export NEDPATH="$NEDPATHS"
+#echo 'NEDPATH = ' $NEDPATH
+
 echo Results can be found in ./work
 
 
