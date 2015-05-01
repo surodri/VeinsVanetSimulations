@@ -1,13 +1,12 @@
 .metadata
 .metadata/*
-a/.metadata/
-b/.metadata/
 .metadata/.plugins/*
 .metadata/.bak*
-vanets/.cProject
 .metadata/.metadata
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
-vanets/out/*
-vanets/test/work/
+
+vanets/.cProject
+vanets/out/
+vanets/tests/work/
 veins/.csettings/
 veins/.settings/

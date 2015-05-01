@@ -23,11 +23,11 @@ class TestMetrics : public Metrics
 #endif
   
 %file: package.ned
-package vanets.test.work.MetricsTests;
+package vanets.tests.work.MetricsTests;
 @namespace(MetricsTests);
 
 %file: test.ned
-package vanets.test.work.MetricsTests;
+package vanets.tests.work.MetricsTests;
 
 simple Test
 {
