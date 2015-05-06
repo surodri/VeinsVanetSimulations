@@ -23,27 +23,7 @@ public:
     virtual void handleMessage(cMessage *msg);
     virtual void finish();
     virtual long updateNumberOfBits(long numberOfBits, cPacket* packet);
-  // virtual void initialize(){
-  //     numberOfBits = 0;
-
-  //     WATCH(numberOfBits);
-
-  // }
-
-  // virtual void handleMessage(cMessage *msg)
-  // {
-
-  //     cPacket *packet = PK(msg);
-  //     numberOfBits = updateNumberOfBits(numberOfBits, packet);
-  // }
-
-  // virtual long updateNumberOfBits(long numberOfBits, cPacket* packet){
-  //     return numberOfBits += packet->getBitLength();
-  // }
-
-  // virtual void finish(){
-  //     recordScalar("numberOfBits", numberOfBits);
-  // }
+    virtual long computeThroughput(long numberOfBits, simtime_t currentSimulationTime);
 };
 
 #endif /* INET_INET_METRICS_H_ */

@@ -1,0 +1,53 @@
+                                                                
+version 2
+run nodebug-0-20150504-15:37:03-26378
+attr configname nodebug
+attr datetime 20150504-15:37:03
+attr experiment nodebug
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network RSUScenario
+attr processid 26378
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+vector 414  RSUScenario.node[0].veinsmobility  posx  ETV
+vector 415  RSUScenario.node[0].veinsmobility  posy  ETV
+vector 416  RSUScenario.node[0].veinsmobility  speed  ETV
+vector 417  RSUScenario.node[0].veinsmobility  acceleration  ETV
+vector 418  RSUScenario.node[0].veinsmobility  co2emission  ETV
+vector 421  RSUScenario.node[1].veinsmobility  posx  ETV
+vector 422  RSUScenario.node[1].veinsmobility  posy  ETV
+vector 423  RSUScenario.node[1].veinsmobility  speed  ETV
+vector 424  RSUScenario.node[1].veinsmobility  acceleration  ETV
+vector 425  RSUScenario.node[1].veinsmobility  co2emission  ETV
+vector 428  RSUScenario.node[2].veinsmobility  posx  ETV
+vector 429  RSUScenario.node[2].veinsmobility  posy  ETV
+vector 430  RSUScenario.node[2].veinsmobility  speed  ETV
+vector 431  RSUScenario.node[2].veinsmobility  acceleration  ETV
+vector 432  RSUScenario.node[2].veinsmobility  co2emission  ETV
+vector 435  RSUScenario.node[3].veinsmobility  posx  ETV
+vector 436  RSUScenario.node[3].veinsmobility  posy  ETV
+vector 437  RSUScenario.node[3].veinsmobility  speed  ETV
+vector 438  RSUScenario.node[3].veinsmobility  acceleration  ETV
+vector 439  RSUScenario.node[3].veinsmobility  co2emission  ETV
+vector 442  RSUScenario.node[4].veinsmobility  posx  ETV
+vector 443  RSUScenario.node[4].veinsmobility  posy  ETV
+vector 444  RSUScenario.node[4].veinsmobility  speed  ETV
+vector 445  RSUScenario.node[4].veinsmobility  acceleration  ETV
+vector 446  RSUScenario.node[4].veinsmobility  co2emission  ETV
+vector 449  RSUScenario.node[5].veinsmobility  posx  ETV
+vector 450  RSUScenario.node[5].veinsmobility  posy  ETV
+vector 451  RSUScenario.node[5].veinsmobility  speed  ETV
+vector 452  RSUScenario.node[5].veinsmobility  acceleration  ETV
+vector 453  RSUScenario.node[5].veinsmobility  co2emission  ETV
+vector 456  RSUScenario.node[6].veinsmobility  posx  ETV
+vector 457  RSUScenario.node[6].veinsmobility  posy  ETV
+vector 458  RSUScenario.node[6].veinsmobility  speed  ETV
+vector 459  RSUScenario.node[6].veinsmobility  acceleration  ETV
+vector 460  RSUScenario.node[6].veinsmobility  co2emission  ETV

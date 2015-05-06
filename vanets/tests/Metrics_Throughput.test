@@ -1,0 +1,63 @@
+%description:
+computeThroughput() should return zero  
+when simulation time is Zero 
+
+%includes:
+#include <TestMetrics2.h>
+#include <INETDefs.h>; 
+
+%file: TestMetrics2.h
+#ifndef __TESTMETRICS2_H
+#define __TESTMETRICSTh2_H
+
+#include <../../../src/Metrics.h>
+
+class TestMetrics2 : public Metrics
+{
+	public:
+			long testComputeThroughput(long numberOfBits, simtime_t simulationTime){				
+			
+			return Metrics::computeThroughput(numberOfBits, simulationTime);
+			};
+};
+#endif
+
+%file: test.ned
+package vanets.tests.work.Metrics_Throughput;
+
+simple Test{
+	@isNetwork(true);
+}
+
+%file: package.ned
+package vanets.tests.work.Metrics_Throughput;
+@namespace(Metrics_Throughput);
+
+
+%activity:
+std::string outputDescription = "Throughput: ";
+long expected = 0;
+
+long bitLength = 10;
+long currentNumBits = 2;
+simtime_t currentSimulationTime = 0;
+
+
+cPacket *pkt = new cPacket();
+cMessage *message = pkt; //Valid cPacket descendant of cMessage
+
+cPacket *packet = dynamic_cast<cPacket*>(message);
+packet ->setBitLength(bitLength);
+
+TestMetrics2 *metrics = new TestMetrics2();
+long throughput = metrics->testComputeThroughput(currentNumBits, currentSimulationTime);
+
+ev << outputDescription << throughput;
+std::cout<<"Expected: "<< outputDescription << expected<<std::endl;
+std::cout<<"Actual: "<<std::endl;
+
+delete pkt;
+delete metrics;
+
+%contains: stdout
+Throughput: 0

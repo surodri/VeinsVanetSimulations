@@ -18,12 +18,12 @@ simulation finishes
 
 
 %file: package.ned
-package vanets.tests.work.MetricsNedScalar;
-@namespace(MetricsNedScalar);
+package vanets.tests.work.Metrics_NedScalar;
+@namespace(Metrics_NedScalar);
 
 %file: test.ned
-package vanets.tests.work.MetricsNedScalar;
-@namespace(MetricsNedScalar);
+package vanets.tests.work.Metrics_NedScalar;
+@namespace(Metrics_NedScalar);
 
 %inifile: omnetpp.ini
 [General]

@@ -1,5 +1,5 @@
 %description:
-numberOfBits should be incremented 
+updateNumBits(..) should increment numberOfBits 
 when new message arrives with the bit length of message
 
 %includes:
@@ -23,11 +23,11 @@ class TestMetrics : public Metrics
 #endif
   
 %file: package.ned
-package vanets.tests.work.MetricsTests;
-@namespace(MetricsTests);
+package vanets.tests.work.Metrics_NumberOfBits;
+@namespace(Metrics_NumberOfBits);
 
 %file: test.ned
-package vanets.tests.work.MetricsTests;
+package vanets.tests.work.Metrics_NumberOfBits;
 
 simple Test
 {
