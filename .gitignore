@@ -6,8 +6,9 @@
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
 vanets/.cProject
+vanets/Makefile
+
 vanets/out/
 vanets/tests/work/
 veins/.csettings/
 veins/.settings/
-veins/Makefile
