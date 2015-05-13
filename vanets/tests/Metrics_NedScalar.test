@@ -23,7 +23,11 @@ package vanets.tests.work.Metrics_NedScalar;
 
 %file: test.ned
 package vanets.tests.work.Metrics_NedScalar;
-@namespace(Metrics_NedScalar);
+
+simple Test
+{
+	@isNetwork(true);
+}
 
 %inifile: omnetpp.ini
 [General]

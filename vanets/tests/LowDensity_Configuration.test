@@ -1,0 +1,32 @@
+%prerun-command: cp -f -v ../../../src/singlechannel/LowDensityScenario.rou.xml LowDensityScenario.rou.xml
+
+%file:package.ned
+package vanets.tests.work.LowDensity_Configuration;
+@namespace(LowDensity_Configuration);
+
+%file:test.ned
+package vanets.tests.work.LowDensity_Configuration;
+
+simple Test
+{
+	@isNetwork(true);
+}
+
+%includes:
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+%activity:
+
+ifstream configFile ("LowDensityScenario.rou.xml"); 
+
+if(configFile.is_open()){
+        for(std::string line; getline(configFile, line);){
+		std::cout<<line<<std::endl;
+	}
+}
+
+%contains:stdout
+number="137"

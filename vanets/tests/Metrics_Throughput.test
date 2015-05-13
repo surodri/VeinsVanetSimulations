@@ -4,7 +4,7 @@ when simulation time is Zero
 
 %includes:
 #include <TestMetrics2.h>
-#include <INETDefs.h>; 
+#include <INETDefs.h> 
 
 %file: TestMetrics2.h
 #ifndef __TESTMETRICS2_H
