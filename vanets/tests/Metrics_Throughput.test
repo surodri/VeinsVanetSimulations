@@ -39,7 +39,7 @@ std::string outputDescription = "Throughput: ";
 long expected = 0;
 
 long bitLength = 10;
-long currentNumBits = 2;
+long currentNumPackets = 2;
 simtime_t currentSimulationTime = 0;
 
 
@@ -50,14 +50,19 @@ cPacket *packet = dynamic_cast<cPacket*>(message);
 packet ->setBitLength(bitLength);
 
 TestMetrics2 *metrics = new TestMetrics2();
-long throughput = metrics->testComputeThroughput(currentNumBits, currentSimulationTime);
+long throughput = metrics->testComputeThroughput(currentNumPackets, currentSimulationTime);
+simtime_t startTime= metrics->testComputeStartTime(currentSimulationTime);
 
 ev << outputDescription << throughput;
-std::cout<<"Expected: "<< outputDescription << expected<<std::endl;
+//std::cout<<"Expected: "<< outputDescription << expected<<std::endl;
 std::cout<<"Actual: "<<std::endl;
 
+ev << "startTime:" << startTime; 
 delete pkt;
 delete metrics;
 
 %contains: stdout
 Throughput: 0
+
+%contains: stdout
+startTime: 0 

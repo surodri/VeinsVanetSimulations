@@ -1,0 +1,56 @@
+%description:
+updateNumberOfPacketsReceived(..) should increment numberOfPacketsReceived 
+when new message arrives with the bit length of message
+
+%includes:
+#include<TestMetrics.h>
+#include <INETDefs.h>
+
+
+%file: TestMetrics.h
+#ifndef __TESTMETRICS_H
+#define __TESTMETRICS_H
+
+#include <../../../src/Metrics.h>
+
+class TestMetrics : public Metrics
+{       
+	public:
+		long testUpdateNumberOfPacketsReceived(long packetsDeliveredToMetrics){
+			return Metrics::updateNumberOfPacketsReceived(packetsDeliveredToMetrics);
+		};
+};
+#endif
+  
+%file: package.ned
+package vanets.tests.work.Metrics_PacketsDeliveredToMetrics;
+@namespace(Metrics_PacketsDeliveredToMetrics);
+
+%file: test.ned
+package vanets.tests.work.Metrics_PacketsDeliveredToMetrics;
+
+simple Test
+{
+    @isNetwork(true);
+}	
+
+%activity:
+
+long currentNumPackets = 5; 
+std::string outputDescription = "packetsDelivered: ";
+
+cPacket *pkt = new cPacket();
+cMessage *message = pkt; // Valid   cPacket is a descendant of cMessage
+cPacket *packet = dynamic_cast<cPacket*>(message);
+
+TestMetrics* metrics = new TestMetrics(); 
+long packetsDelivered = metrics->testUpdateNumberOfPacketsReceived(currentNumPackets); 
+
+std::cout<<"Actual: "<<std::endl;
+ev <<outputDescription << packetsDelivered ; 
+
+delete pkt;
+delete metrics;
+
+%contains: stdout
+packetsDelivered: 6

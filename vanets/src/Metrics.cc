@@ -5,19 +5,24 @@ Define_Module(Metrics);
 simsignal_t Metrics::throughputSignal = registerSignal("throughput");
 
 void Metrics::initialize(){
-    numberOfBits = 0;
+    packetsDeliveredToMetrics = 0;
 
-    WATCH(numberOfBits);
+    WATCH(packetsDeliveredToMetrics);
     WATCH(throughputSignal);
 
 }
 
-long Metrics::computeThroughput(long currentNumberOfBits,simtime_t currentSimulationTime) {
+int Metrics::computeThroughput(int currentPacketsReceived,simtime_t currentSimulationTime) {
 
     long result = 0;
+    simtime_t testSimTime;
+    getSimTime(testSimTime);
+
     std::cout<< "Simulation Time: "<<currentSimulationTime<<std::endl;
+    std::cout<< "TestNowTime:"<<testSimTime<<std::endl;
+
     if (currentSimulationTime!=0){
-        result = currentNumberOfBits/currentSimulationTime;
+        result = currentPacketsReceived/currentSimulationTime;
     }
     return result;
 }
@@ -25,16 +30,16 @@ long Metrics::computeThroughput(long currentNumberOfBits,simtime_t currentSimula
 void Metrics::handleMessage(cMessage *msg)
 {
      cPacket *packet = PK(msg);
-     numberOfBits = updateNumberOfBits(numberOfBits, packet);
+     packetsDeliveredToMetrics = updateNumberOfPacketsReceived(packetsDeliveredToMetrics);
 
-     long throughput = computeThroughput(numberOfBits,simTime());
+     int throughput = computeThroughput(packetsDeliveredToMetrics,simTime()+delta);
      emit(throughputSignal,throughput);
 }
 
-long Metrics::updateNumberOfBits(long numberOfBits, cPacket* packet){
-     return numberOfBits += packet->getBitLength();
+long Metrics::updateNumberOfPacketsReceived(long packetsDeliveredToMetrics){
+     return packetsDeliveredToMetrics = packetsDeliveredToMetrics +1;
 }
 
 void Metrics::finish(){
-    recordScalar("numberOfBits", numberOfBits);
+    recordScalar("packetsDeliveredToMetrics", packetsDeliveredToMetrics);
 }

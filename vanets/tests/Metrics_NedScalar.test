@@ -1,5 +1,5 @@
 %description:
-Metrics should record numberOfBits 
+Metrics should record numberOfPackets 
 in scalar file via signal 
 when RSUScenario(road side unit) with Metrics
 simulation finishes
@@ -193,7 +193,7 @@ description = "(very slow!) draw and print additional debug information"
 
 
 %contains: results/General-0.sca
-numberOfBits
+packetsDelivered
 %contains: results/General-0.sca
 throughput 
 
