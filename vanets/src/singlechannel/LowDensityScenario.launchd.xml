@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- debug config -->
+<launch>
+	<copy file="LowDensityScenario.net.xml" />
+	<copy file="LowDensityScenario.rou.xml" />
+	<copy file="erlangen.poly.xml" />
+	<copy file="LowDensityScenario.sumo.cfg" type="config" />
+</launch>
+

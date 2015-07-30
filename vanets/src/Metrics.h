@@ -15,15 +15,17 @@ public:
     virtual ~Metrics(){}
 
   protected:
-    long packetsDeliveredToMetrics;
-    static simsignal_t throughputSignal;
+    simtime_t currentSimulationTime;
+    float packetsDeliveredToMetrics;
+    float throughputSignal;
 
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);
     virtual void finish();
-    virtual long updateNumberOfPacketsReceived(long packetsDeliveredToMetrics);
-    virtual int computeThroughput(int packetsDeliveredToMetrics, simtime_t currentSimulationTime);
+    virtual float updateNumberOfPacketsReceived(float packetsDeliveredToMetrics);
+    virtual simtime_t getCurrentTime();
+    virtual float computeThroughput(float packetsDeliveredToMetrics, simtime_t currentSimulationTime);
 };
 
 #endif /* INET_INET_METRICS_H_ */

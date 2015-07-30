@@ -4,18 +4,20 @@ in scalar file via signal
 when RSUScenario(road side unit) with Metrics
 simulation finishes
 
-%prerun-command: cp ../../../src/erlangen.launchd.xml erlangen.launchd.xml
 
-%prerun-command: cp ../../../src/erlangen.net.xml erlangen.net.xml
-
-%prerun-command: cp ../../../src/erlangen.rou.xml erlangen.rou.xml
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.net.xml LowDensityScenario.net.xml
 
 %prerun-command: cp ../../../src/erlangen.poly.xml erlangen.poly.xml
 
 %prerun-command: cp ../../../src/config.xml config.xml
 
-%prerun-command: cp ../../../src/erlangen.sumo.cfg erlangen.sumo.cfg
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.sumo.cfg LowDensityScenario.sumo.cfg
 
+%prerun-command: mkdir singlechannel
+
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.launchd.xml LowDensityScenario.launchd.xml
+
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.rou.xml LowDensityScenario.rou.xml
 
 %file: package.ned
 package vanets.tests.work.Metrics_NedScalar;
@@ -94,7 +96,7 @@ print-undisposed = false
 *.manager.moduleDisplayString = ""
 *.manager.autoShutdown = true
 *.manager.margin = 25
-*.manager.launchConfig = xmldoc("erlangen.launchd.xml")
+*.manager.launchConfig = xmldoc("LowDensityScenario.launchd.xml")
 
 ##########################################################
 # RSU SETTINGS											 #
@@ -197,5 +199,6 @@ packetsDelivered
 %contains: results/General-0.sca
 throughput 
 
-
+%contains:stdout
+timer 40
 
