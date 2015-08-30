@@ -1,5 +1,5 @@
 %description:
-Metrics should record numberOfPackets 
+Metrics should record throughput (numberOfPackets/sec) 
 in scalar file via signal 
 when RSUScenario(road side unit) with Metrics
 simulation finishes
@@ -91,7 +91,7 @@ print-undisposed = false
 *.manager.updateInterval = 0.1s
 *.manager.host = "localhost"
 *.manager.port = 9999
-*.manager.moduleType = "org.car2x.veins.nodes.Car"
+*.manager.moduleType = "vanets.src.CarWithMetrics"
 *.manager.moduleName = "node"
 *.manager.moduleDisplayString = ""
 *.manager.autoShutdown = true
@@ -197,8 +197,9 @@ description = "(very slow!) draw and print additional debug information"
 %contains: results/General-0.sca
 packetsDelivered
 %contains: results/General-0.sca
-throughput 
-
+throughput
+%contains: results/General-0.sca
+calar RSUScenario.node[2].metrics 	throughputSignal
 %contains:stdout
 timer 40
 

@@ -15,7 +15,7 @@ when simulation time is Zero
 class TestMetrics2 : public Metrics
 {
 	public:
-			long testComputeThroughput(long numberOfBits, simtime_t simulationTime){				
+			double testComputeThroughput(double numberOfBits, double simulationTime){				
 				return Metrics::computeThroughput(numberOfBits, simulationTime);
 			};
 
@@ -48,7 +48,7 @@ packet ->setBitLength(bitLength);
 
 
 TestMetrics2 *metrics = new TestMetrics2();
-long throughput = metrics->testComputeThroughput(currentNumPackets, currentSimulationTime);
+double throughput = metrics->testComputeThroughput(currentNumPackets, currentSimulationTime);
 
 ev << outputDescription << throughput;
 std::cout<<"Actual: "<<std::endl;

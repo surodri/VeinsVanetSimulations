@@ -12,21 +12,28 @@ void Metrics::initialize(){
     cMessage *timerMessage = new cPacket();
     timerMessage->setName("timer");
 
+    cMessage *dataMessage = new cPacket();
+    dataMessage->setName("data");
+
     scheduleAt(simTime(),timerMessage);
+    scheduleAt(simTime(),dataMessage);
     WATCH(packetsDeliveredToMetrics);
     WATCH(throughputSignal);
 
 }
 
-float Metrics::computeThroughput(float currentPacketsReceived,simtime_t currentSimulationTime) {
+double Metrics::computeThroughput(double currentPacketsReceived,double currentSimulationTime) {
 
-    float result = 0;
+    double result = 0;
     simtime_t testSimTime=simTime();
 
+    std::cout<< "Test Time double: "<<testSimTime.dbl()<<std::endl;
     std::cout<< "Simulation Time: "<<currentSimulationTime<<std::endl;
-    std::cout<< "TestNowTime:"<<testSimTime<<std::endl;
+    std::cout<< "Test Time simetime_t type:"<<testSimTime<<std::endl;
 
     if (currentSimulationTime>0){
+        std::cout<<"currentPacketsReceived type: "<<typeid(currentPacketsReceived).name()<<'\n';
+        std::cout<<"currentSimulationTime type: "<<typeid(currentSimulationTime).name()<<'\n';
         result = currentPacketsReceived/currentSimulationTime;
     }
     return result;
@@ -46,14 +53,15 @@ void Metrics::handleMessage(cMessage *msg)
 
      if(msg->isName("data")){
          packetsDeliveredToMetrics = updateNumberOfPacketsReceived(packetsDeliveredToMetrics);
-
+         double currentSimulationTimeDouble = currentSimulationTime.dbl();
+         throughputSignal = computeThroughput(packetsDeliveredToMetrics, currentSimulationTimeDouble);
+         std::cout<<"Current Throughput:"<<throughputSignal<<std::endl;
      }
-     throughputSignal = computeThroughput(packetsDeliveredToMetrics, currentSimulationTime);
-     std::cout<<"Current Throughput:"<<throughputSignal<<std::endl;
+
      //emit(throughputSignal,throughput);
 }
 
-float Metrics::updateNumberOfPacketsReceived(float packetsDeliveredToMetrics){
+double Metrics::updateNumberOfPacketsReceived(double packetsDeliveredToMetrics){
      return packetsDeliveredToMetrics = packetsDeliveredToMetrics +1;
 }
 

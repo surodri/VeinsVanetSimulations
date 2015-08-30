@@ -16,16 +16,16 @@ public:
 
   protected:
     simtime_t currentSimulationTime;
-    float packetsDeliveredToMetrics;
-    float throughputSignal;
+    double packetsDeliveredToMetrics;
+    double throughputSignal;
 
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);
     virtual void finish();
-    virtual float updateNumberOfPacketsReceived(float packetsDeliveredToMetrics);
+    virtual double updateNumberOfPacketsReceived(double packetsDeliveredToMetrics);
     virtual simtime_t getCurrentTime();
-    virtual float computeThroughput(float packetsDeliveredToMetrics, simtime_t currentSimulationTime);
+    virtual double computeThroughput(double packetsDeliveredToMetrics, double currentSimulationTime);
 };
 
 #endif /* INET_INET_METRICS_H_ */

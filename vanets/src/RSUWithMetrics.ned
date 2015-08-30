@@ -3,8 +3,6 @@ package vanets.src;
 import org.car2x.veins.base.modules.*;
 import org.car2x.veins.modules.nic.Nic80211p;
 
-
-
 network RSUWithMetrics 
 {
     parameters:
@@ -14,7 +12,6 @@ network RSUWithMetrics
         input veinsradioInDirect @directIn;
         
  	submodules:
- 	    
  	    
  	    metrics:Metrics{
  	        parameters:
@@ -36,10 +33,11 @@ network RSUWithMetrics
  	            @display("p=130,172;i=block/cogwheel");
  	    }
  	    
- 	    
- 	connections allowunconnected:
+ 	connections:
+		nic.upperLayerOut --> appl.lowerLayerIn;
+		nic.upperLayerIn <-- appl.lowerLayerOut;
+		nic.upperControlOut --> appl.lowerControlIn;
+		nic.upperControlIn <-- appl.lowerControlOut; 
+         
 		veinsradioInDirect --> { @display("m=s"); } --> nic.radioIn;
-		nic.upperLayerOut --> metrics.in++;
-		
-		
 }
