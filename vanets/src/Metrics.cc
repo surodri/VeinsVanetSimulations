@@ -6,8 +6,8 @@ void Metrics::initialize(){
 
     currentSimulationTime = 0;
     packetsDeliveredToMetrics = 0;
-    throughputSignal = 0;
-
+    throughputMetric = 0;
+    throughputSignal = registerSignal("throughputSignal");
 
     cMessage *timerMessage = new cPacket();
     timerMessage->setName("timer");
@@ -18,7 +18,7 @@ void Metrics::initialize(){
     scheduleAt(simTime(),timerMessage);
     scheduleAt(simTime(),dataMessage);
     WATCH(packetsDeliveredToMetrics);
-    WATCH(throughputSignal);
+    WATCH(throughputMetric);
 
 }
 
@@ -54,11 +54,12 @@ void Metrics::handleMessage(cMessage *msg)
      if(msg->isName("data")){
          packetsDeliveredToMetrics = updateNumberOfPacketsReceived(packetsDeliveredToMetrics);
          double currentSimulationTimeDouble = currentSimulationTime.dbl();
-         throughputSignal = computeThroughput(packetsDeliveredToMetrics, currentSimulationTimeDouble);
-         std::cout<<"Current Throughput:"<<throughputSignal<<std::endl;
+         throughputMetric = computeThroughput(packetsDeliveredToMetrics, currentSimulationTimeDouble);
+         std::cout<<"Current Throughput:"<<throughputMetric<<std::endl;
+         emit(throughputSignal,throughputMetric);
      }
 
-     //emit(throughputSignal,throughput);
+
 }
 
 double Metrics::updateNumberOfPacketsReceived(double packetsDeliveredToMetrics){
@@ -67,5 +68,5 @@ double Metrics::updateNumberOfPacketsReceived(double packetsDeliveredToMetrics){
 
 void Metrics::finish(){
     recordScalar("packetsDeliveredToMetrics", packetsDeliveredToMetrics);
-    recordScalar("throughputSignal", throughputSignal);
+    recordScalar("throughputMetric", throughputMetric);
 }

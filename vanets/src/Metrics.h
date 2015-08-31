@@ -17,7 +17,8 @@ public:
   protected:
     simtime_t currentSimulationTime;
     double packetsDeliveredToMetrics;
-    double throughputSignal;
+    double throughputMetric;
+    simsignal_t throughputSignal;
 
   protected:
     virtual void initialize();

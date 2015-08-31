@@ -1,15 +1,15 @@
-file 7629791 1440968812                                         
+file 7629791 1440979864                                         
 version 2
-run nodebugBeaconLength400ServicePacket1000-0-20150830-17:06:26-10202
+run nodebugBeaconLength400ServicePacket1000-0-20150830-20:10:09-12707
 attr configname nodebugBeaconLength400ServicePacket1000
-attr datetime 20150830-17:06:26
+attr datetime 20150830-20:10:09
 attr experiment nodebugBeaconLength400ServicePacket1000
 attr inifile omnetpp.ini
 attr iterationvars $0=1
 attr iterationvars2 "$0=1, $repetition=0"
 attr measurement $0=1
 attr network RSUScenario
-attr processid 10202
+attr processid 12707
 attr repetition 0
 attr replication #0
 attr resultdir results

@@ -30,6 +30,4 @@ network RSUScenario extends Scenario
  		 parameters:
                 @display("p=200,200;r=,,#707070");
         }   
- 		
-    
 }
