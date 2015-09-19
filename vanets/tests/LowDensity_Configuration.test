@@ -113,8 +113,8 @@ number="137"
 writingToFile
 
 %contains: omnetpp.ini
-[Config nodebugBeaconLength400ServicePacket1000]
-description = "low beacon length and service packet"
+[Config B_400Bytes_P_1000Bytes_Q_5]
+description = "BeaconLength 400Bytes, ServicePacketLength 1000Bytes, QueueSize 5"
 **.debug = false
 **.coreDebug = false
 *.annotations.draw = false
@@ -124,9 +124,7 @@ description = "low beacon length and service packet"
 *.node[*].appl.dataLengthBits = 8000bit
 *.rsu[*].appl.dataOnSch = true
 *.node[*].appl.dataOnSch = true
-
-%contains: omnetpp.ini
-*.**.nic.mac1609_4.queueSize = ${1,2,5}
+*.**.nic.mac1609_4.queueSize = 5
 
 %contains: omnetpp.ini
 *.manager.launchConfig = xmldoc("singlechannel/LowDensityScenario.launchd.xml")
