@@ -1,0 +1,243 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1030 rid B_400Bytes_P_1000Bytes_Q_5-0-20151002-11:49:24-8152 b 1000
+KF p -1 c "" s ""
+MC id 1 c cModule t vanets.src.RSUScenario n RSUScenario cm 1
+MS id 1 d bgb=$playgroundSizeX,$playgroundSizeY
+MC id 2 c Veins::ObstacleControl t org.car2x.veins.modules.obstacle.ObstacleControl pid 1 n obstacles
+MS id 2 d p=240,50;i=misc/town
+MC id 3 c Veins::AnnotationManager t org.car2x.veins.modules.world.annotations.AnnotationManager pid 1 n annotations
+MS id 3 d p=260,50;i=msg/paperclip
+MC id 4 c ConnectionManager t org.car2x.veins.base.connectionManager.ConnectionManager pid 1 n connectionManager
+MS id 4 d p=150,0;i=abstract/multicast
+MC id 5 c BaseWorldUtility t org.car2x.veins.base.modules.BaseWorldUtility pid 1 n world
+MS id 5 d p=30,0;i=misc/globe
+MC id 6 c Veins::TraCIScenarioManagerLaunchd t org.car2x.veins.modules.mobility.traci.TraCIScenarioManagerLaunchd pid 1 n manager
+MS id 6 d p=512,128;i=block/network2
+MC id 7 c cModule t org.car2x.veins.nodes.RSU pid 1 n rsu[0] cm 1
+GC m 7 g 0 n veinsradioIn o 0
+MS id 7 d p=150,140;b=10,10,oval
+MC id 8 c cModule t vanets.src.RSUWithMetrics pid 1 n metricsApplication cm 1
+GC m 8 g 0 n veinsradioInDirect o 0
+MS id 8 d p=200,200;r=,,#707070
+MC id 9 c TraCIDemoRSU11p t org.car2x.veins.modules.application.traci.TraCIDemoRSU11p pid 7 n appl
+GC m 9 g 0 n lowerLayerIn o 0
+GC m 9 g 3 n lowerLayerOut o 1
+GC m 9 g 4 n lowerControlIn o 0
+GC m 9 g 7 n lowerControlOut o 1
+MS id 9 d p=60,50;i=block/app2
+MC id 10 c cModule t org.car2x.veins.modules.nic.Nic80211p pid 7 n nic cm 1
+GC m 10 g 0 n upperLayerIn o 0
+GC m 10 g 3 n upperLayerOut o 1
+GC m 10 g 5 n upperControlOut o 1
+GC m 10 g 6 n upperControlIn o 0
+GC m 10 g 8 n radioIn o 0
+MS id 10 d p=60,166
+MC id 11 c BaseMobility t org.car2x.veins.base.modules.BaseMobility pid 7 n mobility
+MS id 11 d p=130,172;i=block/cogwheel
+CC sm 10 sg 3 dm 9 dg 0
+CC sm 9 sg 3 dm 10 dg 0
+CC sm 10 sg 5 dm 9 dg 4
+CC sm 9 sg 7 dm 10 dg 6
+CC sm 7 sg 0 dm 10 dg 8
+MC id 12 c PhyLayer80211p t org.car2x.veins.modules.phy.PhyLayer80211p pid 10 n phy80211p
+GC m 12 g 0 n upperLayerIn o 0
+GC m 12 g 3 n upperLayerOut o 1
+GC m 12 g 4 n upperControlIn o 0
+GC m 12 g 7 n upperControlOut o 1
+GC m 12 g 8 n radioIn o 0
+MS id 12 d p=69,218;i=block/process_s
+MC id 13 c Mac1609_4 t org.car2x.veins.modules.mac.ieee80211p.Mac1609_4 pid 10 n mac1609_4
+GC m 13 g 0 n upperLayerIn o 0
+GC m 13 g 3 n upperLayerOut o 1
+GC m 13 g 4 n upperControlIn o 0
+GC m 13 g 7 n upperControlOut o 1
+GC m 13 g 8 n lowerLayerIn o 0
+GC m 13 g 11 n lowerLayerOut o 1
+GC m 13 g 12 n lowerControlIn o 0
+GC m 13 g 15 n lowerControlOut o 1
+MS id 13 d p=69,82
+CC sm 10 sg 8 dm 12 dg 8
+CC sm 13 sg 15 dm 12 dg 4
+CC sm 13 sg 11 dm 12 dg 0
+CC sm 12 sg 3 dm 13 dg 8
+CC sm 12 sg 7 dm 13 dg 12
+CC sm 10 sg 6 dm 13 dg 4
+CC sm 10 sg 0 dm 13 dg 0
+CC sm 13 sg 3 dm 10 dg 3
+CC sm 13 sg 7 dm 10 dg 5
+MC id 14 c Metrics t vanets.src.Metrics pid 8 n metrics
+MS id 14 d p=169,124;i=block/sink
+MC id 15 c TraCIDemoRSU11p t org.car2x.veins.modules.application.traci.TraCIDemoRSU11p pid 8 n appl
+GC m 15 g 0 n lowerLayerIn o 0
+GC m 15 g 3 n lowerLayerOut o 1
+GC m 15 g 4 n lowerControlIn o 0
+GC m 15 g 7 n lowerControlOut o 1
+MS id 15 d p=60,50;i=block/app2
+MC id 16 c cModule t org.car2x.veins.modules.nic.Nic80211p pid 8 n nic cm 1
+GC m 16 g 0 n upperLayerIn o 0
+GC m 16 g 3 n upperLayerOut o 1
+GC m 16 g 5 n upperControlOut o 1
+GC m 16 g 6 n upperControlIn o 0
+GC m 16 g 8 n radioIn o 0
+MS id 16 d p=6-,50
+MC id 17 c BaseMobility t org.car2x.veins.base.modules.BaseMobility pid 8 n mobility
+MS id 17 d p=130,172;i=block/cogwheel
+CC sm 16 sg 3 dm 15 dg 0
+CC sm 15 sg 3 dm 16 dg 0
+CC sm 16 sg 5 dm 15 dg 4
+CC sm 15 sg 7 dm 16 dg 6
+CC sm 8 sg 0 dm 16 dg 8
+CS sm 8 sg 0 d m=s
+MC id 18 c PhyLayer80211p t org.car2x.veins.modules.phy.PhyLayer80211p pid 16 n phy80211p
+GC m 18 g 0 n upperLayerIn o 0
+GC m 18 g 3 n upperLayerOut o 1
+GC m 18 g 4 n upperControlIn o 0
+GC m 18 g 7 n upperControlOut o 1
+GC m 18 g 8 n radioIn o 0
+MS id 18 d p=69,218;i=block/process_s
+MC id 19 c Mac1609_4 t org.car2x.veins.modules.mac.ieee80211p.Mac1609_4 pid 16 n mac1609_4
+GC m 19 g 0 n upperLayerIn o 0
+GC m 19 g 3 n upperLayerOut o 1
+GC m 19 g 4 n upperControlIn o 0
+GC m 19 g 7 n upperControlOut o 1
+GC m 19 g 8 n lowerLayerIn o 0
+GC m 19 g 11 n lowerLayerOut o 1
+GC m 19 g 12 n lowerControlIn o 0
+GC m 19 g 15 n lowerControlOut o 1
+MS id 19 d p=69,82
+CC sm 16 sg 8 dm 18 dg 8
+CC sm 19 sg 15 dm 18 dg 4
+CC sm 19 sg 11 dm 18 dg 0
+CC sm 18 sg 3 dm 19 dg 8
+CC sm 18 sg 7 dm 19 dg 12
+CC sm 16 sg 6 dm 19 dg 4
+CC sm 16 sg 0 dm 19 dg 0
+CC sm 19 sg 3 dm 16 dg 3
+CC sm 19 sg 7 dm 16 dg 5
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 4 m initialize(0)
+ME
+MB sm 1 tm 5 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+ME
+MB sm 1 tm 7 m initialize(0)
+ME
+MB sm 1 tm 9 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c cMessage n "beacon evt" k 25001 pe -1
+ME
+MB sm 1 tm 10 m initialize(0)
+ME
+MB sm 1 tm 12 m initialize(0)
+CM id 1 tid 1 eid 1 etid 1 c cMessage n "radio switching over" k 22001 pe -1
+CM id 2 tid 2 eid 2 etid 2 c cMessage n "transmission over" k 22000 pe -1
+ME
+MB sm 1 tm 13 m initialize(0)
+MB sm 13 tm 12 m ""
+ME
+CM id 3 tid 3 eid 3 etid 3 c cMessage n "next Mac Event" pe -1
+CM id 4 tid 4 eid 4 etid 4 c cMessage n "Channel Switch" pe -1
+BS id 4 tid 4 eid 4 etid 4 c cMessage n "Channel Switch" pe 0
+ES t 0.050253279723
+- Channel turned idle: Switch: 1
+- Restarting contention.
+- Channel is already idle for:0 since 0.004
+- I don't have any new events in this EDCA sub system
+ME
+MB sm 1 tm 11 m initialize(0)
+ME
+MB sm 1 tm 8 m initialize(0)
+ME
+MB sm 1 tm 14 m initialize(0)
+CM id 5 tid 5 eid 5 etid 5 c cMessage n "" pe -1
+CM id 6 tid 6 eid 6 etid 6 c cMessage n "" pe -1
+BS id 5 tid 5 eid 5 etid 5 c cPacket n timer pe 0
+ES t 0
+BS id 6 tid 6 eid 6 etid 6 c cPacket n data pe 0
+ES t 0
+ME
+MB sm 1 tm 15 m initialize(0)
+CM id 7 tid 7 eid 7 etid 7 c cMessage n "beacon evt" k 25001 pe -1
+ME
+MB sm 1 tm 16 m initialize(0)
+ME
+MB sm 1 tm 18 m initialize(0)
+CM id 8 tid 8 eid 8 etid 8 c cMessage n "radio switching over" k 22001 pe -1
+CM id 9 tid 9 eid 9 etid 9 c cMessage n "transmission over" k 22000 pe -1
+ME
+MB sm 1 tm 19 m initialize(0)
+MB sm 19 tm 18 m ""
+ME
+CM id 10 tid 10 eid 10 etid 10 c cMessage n "next Mac Event" pe -1
+CM id 11 tid 11 eid 11 etid 11 c cMessage n "Channel Switch" pe -1
+BS id 11 tid 11 eid 11 etid 11 c cMessage n "Channel Switch" pe 0
+ES t 0.050193768234
+- Channel turned idle: Switch: 1
+- Restarting contention.
+- Channel is already idle for:0 since 0.004
+- I don't have any new events in this EDCA sub system
+ME
+MB sm 1 tm 17 m initialize(0)
+ME
+MB sm 1 tm 2 m initialize(1)
+ME
+MB sm 1 tm 4 m initialize(1)
+ME
+MB sm 1 tm 6 m initialize(1)
+CM id 12 tid 12 eid 12 etid 12 c cMessage n myAddVehicleTimer pe -1
+CM id 13 tid 13 eid 13 etid 13 c cMessage n connect pe -1
+BS id 13 tid 13 eid 13 etid 13 c cMessage n connect pe 0
+ES t 0
+CM id 14 tid 14 eid 14 etid 14 c cMessage n step pe -1
+BS id 14 tid 14 eid 14 etid 14 c cMessage n step pe 0
+ES t 0.1
+- initialized TraCIScenarioManager
+ME
+MB sm 1 tm 9 m initialize(1)
+ME
+MB sm 1 tm 12 m initialize(1)
+ME
+MB sm 1 tm 13 m initialize(1)
+ME
+MB sm 1 tm 11 m initialize(1)
+- updatePosition:  HostMove  startPos: (2000, 2000, 3) direction: (0, 0, 0) startTime: 0 speed: 0
+MB sm 11 tm 9 m ""
+ME
+MS id 7 d p=2000.00000,140;b=10,10,oval
+MS id 7 d p=2000.00000,2000.00000;b=10,10,oval
+MS id 7 d p=2000.00000,2000.00000;b=9.55000,10,oval
+MS id 7 d p=2000.00000,2000.00000;b=9.55000,9.55000,oval
+ME
+MB sm 1 tm 15 m initialize(1)
+ME
+MB sm 1 tm 18 m initialize(1)
+ME
+MB sm 1 tm 19 m initialize(1)
+ME
+MB sm 1 tm 17 m initialize(1)
+- updatePosition:  HostMove  startPos: (2000, 2000, 3) direction: (0, 0, 0) startTime: 0 speed: 0
+MB sm 17 tm 15 m ""
+ME
+MS id 8 d p=2000.00000,200;r=,,#707070
+MS id 8 d p=2000.00000,2000.00000;r=,,#707070
+ME
+
+E # 1 t 0 m 14 ce 0 msg 5
+BS id 5 tid 5 eid 5 etid 5 c cPacket n timer pe 1
+ES t 1
+
+E # 2 t 0 m 14 ce 0 msg 6
+BS id 6 tid 6 eid 6 etid 6 c cPacket n data pe 2
+ES t 1
+
+E # 3 t 0 m 6 ce 0 msg 13
+- TraCIScenarioManager connecting to TraCI server
+- Writing TraCI message of 2 bytes
+- Reading TraCI message of 37 bytes
+- TraCI server "sumo-launchd.py 1.00" reports API version 1
+- Writing TraCI message of 362 bytes
+- Reading TraCI message of 7 bytes
+- Wr

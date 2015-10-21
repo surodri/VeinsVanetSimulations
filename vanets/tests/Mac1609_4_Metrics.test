@@ -1,0 +1,61 @@
+%description:
+handleLowerMsg should call metrics class 
+method computThroughput() when packet is received
+
+%includes:
+#include <TestMac16094Metrics.h>
+#include <../../../src/Mac16094Metrics.h>
+
+%file:TestMac16094Metrics.h
+#ifndef __TESTMAC16094METRICS_H
+#define __TESTMAC16094METRICSh_H
+
+#include <../../src/Mac16094Metrics.h>
+
+class TestMac16094Metrics : public  Mac16094Metrics {
+
+	
+   public: 
+	void testComputeThroughputPacketsPerSecond(Metrics* metrics, double packetsReceived, double currentTime){
+		Mac16094Metrics::computeThroughput(metrics, packetsReceived, currentTime); 
+	} 
+	void testHandleLowerMsg(cMessage* message){
+		Mac16094Metrics::handleLowerMsg(message); 
+	};
+	
+	double testGetThroughputMetric(){
+		Mac16094Metrics::metrics->getThroughputMetric(); 
+	}
+
+	double testGetThroughputSignal(){
+		Mac16094Metrics::metrics->getThroughputSignal(); 
+	}
+};
+#endif
+
+%file: test.ned
+package vanets.tests.work.Mac1609_4_Metrics;
+
+simple Test{ 
+	@isNetwork(true);
+}
+
+%file:package.ned
+package vanets.tests.work.Mac1609_4_Metrics;
+@namespace(Mac1609_4_Metrics);
+
+
+%activity:
+
+Metrics *metrics = new Metrics();
+double currentNumPackets = 5;
+double currentSimulationTime = 10;
+
+TestMac16094Metrics *macMetrics = new TestMac16094Metrics();
+macMetrics->testComputeThroughputPacketsPerSecond(metrics, currentNumPackets, currentSimulationTime);
+
+double throughput = metrics->getThroughputMetric();  
+ev<<"throughput:"<<throughput ;
+
+%contains: stdout
+throughput:0.5

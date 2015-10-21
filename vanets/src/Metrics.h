@@ -13,11 +13,12 @@ class INET_API Metrics : public cSimpleModule
 {
 public:
     virtual ~Metrics(){}
+    double throughputMetric;
 
   protected:
     simtime_t currentSimulationTime;
     double packetsDeliveredToMetrics;
-    double throughputMetric;
+
     simsignal_t throughputSignal;
 
   protected:
@@ -26,7 +27,10 @@ public:
     virtual void finish();
     virtual double updateNumberOfPacketsReceived(double packetsDeliveredToMetrics);
     virtual simtime_t getCurrentTime();
+  public:
     virtual double computeThroughput(double packetsDeliveredToMetrics, double currentSimulationTime);
+    double getThroughputMetric();
+    double getThroughputSignal();
 };
 
 #endif /* INET_INET_METRICS_H_ */

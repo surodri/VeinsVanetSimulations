@@ -3,6 +3,7 @@ computeThroughput() should return zero
 when simulation time is Zero 
 
 %includes:
+#include <../../../src/Metrics.h>
 #include <TestMetrics2.h>
 #include <INETDefs.h> 
 

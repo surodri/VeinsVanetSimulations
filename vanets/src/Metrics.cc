@@ -36,6 +36,7 @@ double Metrics::computeThroughput(double currentPacketsReceived,double currentSi
         std::cout<<"currentSimulationTime type: "<<typeid(currentSimulationTime).name()<<'\n';
         result = currentPacketsReceived/currentSimulationTime;
     }
+    emit(throughputSignal,result);
     return result;
 }
 
@@ -43,6 +44,13 @@ simtime_t Metrics::getCurrentTime(){
     return currentSimulationTime;
 }
 
+double Metrics::getThroughputMetric(){
+    return throughputMetric;
+}
+
+double Metrics::getThroughputSignal(){
+    return throughputSignal;
+}
 void Metrics::handleMessage(cMessage *msg)
 {
      if(msg->isSelfMessage()){
@@ -56,7 +64,7 @@ void Metrics::handleMessage(cMessage *msg)
          double currentSimulationTimeDouble = currentSimulationTime.dbl();
          throughputMetric = computeThroughput(packetsDeliveredToMetrics, currentSimulationTimeDouble);
          std::cout<<"Current Throughput:"<<throughputMetric<<std::endl;
-         emit(throughputSignal,throughputMetric);
+         //emit(throughputSignal,throughputMetric);
      }
 
 

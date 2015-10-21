@@ -95,6 +95,18 @@ test->testHelperPrintsContentsOfFileToUseContains("testFileForPrinter.xml");
 number="137"
 
 %contains:stdout
+carFollowing-Krauss
+
+%contains:stdout
+accel="2.6"
+
+%contains:stdout
+minGap="2.5"
+
+%contains:stdout
+maxSpeed="33.33"
+
+%contains:stdout
 <copy file="LowDensityScenario.rou.xml" />
 
 %contains:stdout
