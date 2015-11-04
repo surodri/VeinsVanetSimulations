@@ -23,7 +23,7 @@ PROJECTRELATIVE_PATH = /src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/Metrics.o
+OBJS = $O/Mac16094Metrics.o $O/Metrics.o
 
 # Message files
 MSGFILES =
@@ -112,5 +112,14 @@ depend:
 	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc results/*.cc singlechannel/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+$O/Mac16094Metrics.o: Mac16094Metrics.cc \
+  results/../../../veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h \
+  ./Metrics.h \
+  results/../../../veins/src/veins/modules/phy/DeciderResult80211.h \
+  results/../../../veins/src/veins/base/phyLayer/PhyToMacControlInfo.h \
+  results/../../../veins/src/veins/base/modules/BaseLayer.h \
+  results/../../../veins/src/veins/base/utils/miximkerneldefs.h \
+  ./Mac16094Metrics.h \
+  results/../../../veins/src/veins/base/utils/MiXiMDefs.h
 $O/Metrics.o: Metrics.cc \
   ./Metrics.h
