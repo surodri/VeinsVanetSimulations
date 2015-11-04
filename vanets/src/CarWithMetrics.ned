@@ -6,18 +6,13 @@ import org.car2x.veins.modules.nic.Nic80211p;
 module CarWithMetrics
 {
     parameters:
-        string nicType = default("Nic80211p");
+        string nicType = default("Nic80211pMetrics");
         string applType;
         string veinsmobilityType;
     gates:
         input veinsradioIn;
         
 	submodules:    
-    
-        metrics:Metrics{
-         	   parameters:
-         	       @display("p=169, 124");
-        }
         
         appl: <applType> like org.car2x.veins.base.modules.IBaseApplLayer {
         	parameters:

@@ -26,9 +26,14 @@ class Mac16094Metrics : public Mac1609_4{
 public:
     virtual ~Mac16094Metrics();
     Metrics* metrics;
-
+    double throughputMetricMac;
+    double statsMbpsReceived;
+    double throughputMbps;
+    simsignal_t throughputSignalMac;
+    double throughputMbpsSignal;
 protected:
     void computeThroughput(Metrics*, double, double);
+    void computeThroughputMbps(Metrics*, double , double, double);
 
     virtual void initialize(int);
     virtual void finish();
@@ -37,7 +42,8 @@ protected:
     virtual void handleSelfMsg(cMessage*);
     virtual void handleLowerControl(cMessage* msg);
     virtual void handleUpperControl(cMessage* msg);
-
+    double getThroughputMetricMac();
+    double getThroughputMbps();
 };
 
 #endif /* MAC16094METRICS_H_ */

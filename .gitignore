@@ -6,7 +6,9 @@
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
 vanets/.cProject
+vanets/.cproject
 vanets/Makefile
+vanets/src/.tkenvrs
 
 vanets/out/
 vanets/tests/work/

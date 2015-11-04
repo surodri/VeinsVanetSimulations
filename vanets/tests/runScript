@@ -34,7 +34,7 @@ echo
 echo
 
 ( g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
- -pthread -c ${GTEST_DIR}/src/gtest-all.cc ; ar -rv libgtest.a gtest-all.o; cd ${GTEST_DIR}/make; make) || exit 1
+-g -Wall -Wextra -Wno-missing-field-initializers -pthread -c ${GTEST_DIR}/src/gtest-all.cc ; ar -rv libgtest.a gtest-all.o; cd ${GTEST_DIR}/make; make) || exit 1
 echo
 	
 

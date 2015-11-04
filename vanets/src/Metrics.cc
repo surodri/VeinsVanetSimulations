@@ -25,18 +25,11 @@ void Metrics::initialize(){
 double Metrics::computeThroughput(double currentPacketsReceived,double currentSimulationTime) {
 
     double result = 0;
-    simtime_t testSimTime=simTime();
-
-    std::cout<< "Test Time double: "<<testSimTime.dbl()<<std::endl;
-    std::cout<< "Simulation Time: "<<currentSimulationTime<<std::endl;
-    std::cout<< "Test Time simetime_t type:"<<testSimTime<<std::endl;
 
     if (currentSimulationTime>0){
-        std::cout<<"currentPacketsReceived type: "<<typeid(currentPacketsReceived).name()<<'\n';
-        std::cout<<"currentSimulationTime type: "<<typeid(currentSimulationTime).name()<<'\n';
+
         result = currentPacketsReceived/currentSimulationTime;
     }
-    emit(throughputSignal,result);
     return result;
 }
 
@@ -62,9 +55,10 @@ void Metrics::handleMessage(cMessage *msg)
      if(msg->isName("data")){
          packetsDeliveredToMetrics = updateNumberOfPacketsReceived(packetsDeliveredToMetrics);
          double currentSimulationTimeDouble = currentSimulationTime.dbl();
+
          throughputMetric = computeThroughput(packetsDeliveredToMetrics, currentSimulationTimeDouble);
-         std::cout<<"Current Throughput:"<<throughputMetric<<std::endl;
-         //emit(throughputSignal,throughputMetric);
+
+         emit(throughputSignal,throughputMetric);
      }
 
 

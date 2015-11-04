@@ -39,9 +39,6 @@ simple Test
 long currentNumPackets = 5; 
 std::string outputDescription = "packetsDelivered: ";
 
-cPacket *pkt = new cPacket();
-cMessage *message = pkt; // Valid   cPacket is a descendant of cMessage
-cPacket *packet = dynamic_cast<cPacket*>(message);
 
 TestMetrics* metrics = new TestMetrics(); 
 long packetsDelivered = metrics->testUpdateNumberOfPacketsReceived(currentNumPackets); 
@@ -49,7 +46,6 @@ long packetsDelivered = metrics->testUpdateNumberOfPacketsReceived(currentNumPac
 std::cout<<"Actual: "<<std::endl;
 ev <<outputDescription << packetsDelivered ; 
 
-delete pkt;
 delete metrics;
 
 %contains: stdout

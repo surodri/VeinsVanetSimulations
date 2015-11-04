@@ -199,7 +199,7 @@ packetsDelivered
 %contains: results/General-0.sca
 throughput
 %contains: results/General-0.sca
-scalar RSUScenario.node[2].metrics 	throughputMetric:mean
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:mean
 %contains:stdout
 timer 40
 

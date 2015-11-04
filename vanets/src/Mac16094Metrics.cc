@@ -16,17 +16,32 @@
 #include <Mac16094Metrics.h>
 #include <../../../veins/src/veins/modules/phy/DeciderResult80211.h>
 #include <../../../veins/src/veins/base/phyLayer/PhyToMacControlInfo.h>
-
+using namespace std;
 #define DBG_MAC EV
 Define_Module(Mac16094Metrics); 
 
 void Mac16094Metrics::initialize(int i){
+    cout<<setiosflags(ios::fixed)<<setprecision(10);
+
     metrics= new Metrics();
+    statsReceivedPackets = 0;
+    statsMbpsReceived = 0;
+    throughputMetricMac = 0;
+    throughputMbps = 0;
+
+    throughputSignalMac = registerSignal("throughputSignalMac");
+
     Mac1609_4::initialize(i);
+
+    WATCH(throughputMetricMac);
+    WATCH(throughputMbps);
 }
 
 
 void Mac16094Metrics::finish(){
+
+    recordScalar("throughputMetricMac", throughputMetricMac);
+    recordScalar("throughputMbps", throughputMbps);
     Mac1609_4::finish();
 }
 
@@ -52,11 +67,32 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
     if (macPkt->getDestAddr() == myMacAddress) {
         DBG_MAC << "Received a data packet addressed to me." << std::endl;
         statsReceivedPackets++;
-        metrics->computeThroughput(statsReceivedPackets,simTime().dbl());
+
+        double statsReceivedPacketsDbl = (double) statsReceivedPackets;
+        double time = simTime().dbl();
+        std::cout<<"statsReceivedPacketDbl"<< statsReceivedPacketsDbl<<endl;
+        std::cout<<"time"<< time<<endl;
+        computeThroughput(metrics, statsReceivedPacketsDbl,time);
+
         sendUp(wsm);
     }
     else if (dest == LAddress::L2BROADCAST) {
+
+        cout<<setiosflags(ios::fixed)<<setprecision(16);
+
         statsReceivedBroadcasts++;
+        double statsReceivedBroadcastsDbl = (double) statsReceivedBroadcasts;
+        double time = simTime().dbl();
+
+        std::cout<<"statsReceivedBroadcastsDbl"<< statsReceivedBroadcastsDbl<<endl;
+        std::cout<<"time"<< time;
+
+        double messageBits = (double)wsm->getBitLength();
+        cout<<messageBits<<endl;
+
+        computeThroughput(metrics, statsReceivedBroadcastsDbl,time);
+        computeThroughputMbps(metrics, messageBits, statsMbpsReceived, time);
+
         sendUp(wsm);
     }
     else {
@@ -82,10 +118,37 @@ void Mac16094Metrics::handleUpperControl(cMessage* message){
     Mac1609_4::handleUpperControl(message);
 }
 
-void Mac16094Metrics::computeThroughput(Metrics* metrics, double receivedPackets, double currentSimulationTime){
-  double throughput = metrics->computeThroughput(receivedPackets, currentSimulationTime);
-  metrics->throughputMetric = throughput;
 
+void Mac16094Metrics::computeThroughput(Metrics* metrics, double receivedPackets, double currentSimulationTime){
+  throughputMetricMac = metrics->computeThroughput(receivedPackets, currentSimulationTime);
+  emit(throughputSignalMac, throughputMetricMac);
+  metrics->throughputMetric = throughputMetricMac;
+}
+
+void Mac16094Metrics::computeThroughputMbps(Metrics* metrics, double messageBits, double currentMbs, double currentTime){
+  cout<<setiosflags(ios::fixed)<<setprecision(16);
+
+  double messageMbs = (messageBits)/1000000;
+
+  cout<<"messageMbs: "<< messageMbs << endl;
+  cout<<"currentMbs: "<< currentMbs << endl;
+  cout<<"temp: "<< currentMbs + messageMbs << endl;
+
+  statsMbpsReceived = currentMbs + messageMbs;
+
+  cout<<"statsMbpsReceived: "<<statsMbpsReceived <<endl;
+
+  throughputMbps = metrics->computeThroughput(statsMbpsReceived, currentTime);
+
+  cout<<"statsMbpsReceived: "<< throughputMbps<<endl;
+}
+
+double Mac16094Metrics::getThroughputMbps(){
+    return throughputMbps;
+}
+
+double Mac16094Metrics::getThroughputMetricMac(){
+    return throughputMetricMac;
 }
 
 Mac16094Metrics::~Mac16094Metrics(){
