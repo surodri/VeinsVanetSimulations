@@ -9,8 +9,11 @@ vanets/.cProject
 vanets/.cproject
 vanets/Makefile
 vanets/src/.tkenvrs
+vanets/src/.tkenvrc
+vanets/src/Makefile
 
 vanets/out/
 vanets/tests/work/
+vanets/tests/libgtest.a
 veins/.csettings/
 veins/.settings/

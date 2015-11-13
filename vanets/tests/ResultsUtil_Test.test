@@ -1,0 +1,76 @@
+%description: 
+Get total avg throughput from 
+results file 
+
+%includes: 
+#include <ResultsUtilTest.h>
+
+%file:ResultsUtilTest.h
+#ifndef __RESULTSUTILSTEST_H
+#define __RESULTSUTILSTESTh_H 
+
+#include <../../../src/ResultsUtil.h> 
+#include <fstream> 
+#include <iostream> 
+#include <string> 
+#include <vector> 
+
+using namespace std;
+
+class ResultsUtilTest : public ResultsUtil{
+
+	public: 
+		void testTotalAvgReturnsZeroWhenThroughputPpsIsZero(){
+			vector<string> results = {"throughputMps: 0"}; 
+ 			createTestFile("ZeroThroughput.sca", results);	
+			
+			double avgResult = ResultsUtil::totalAvg("ZeroThroghput.sca", "ThroughputPps:");  	
+			cout<< "throughputTotalAvg: " << avgResult<< endl; 
+		}
+
+		void testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(){
+			vector<string> results = {"throughputMps: 0", "throughputMps: 2.5"}; 
+			createTestFile("ZeroAndNonzeroThrouhghtput.sca", results); 
+		}
+	
+		void createTestFile(const char* fileName, vector<string> & results){
+			cout<<fileName<<endl; 
+			ofstream myFile(fileName); 
+			if(myFile.is_open())
+			{
+				
+				for(int i=0; i< results.size(); i++){
+					myFile<<results.at(i)<<endl;
+				} 
+				myFile.close();			
+			}else{
+				cerr<<"Cannot open the test file." <<endl; 
+			}
+			 
+		}
+}; 
+
+#endif
+
+%file:package.ned
+package vanets.tests.work.ResultsUtil_Test; 
+@namespace(ResultsUtil_Test); 
+
+%file:test.ned
+package vanets.tests.work.ResultsUtil_Test; 
+
+simple Test{
+	
+	@isNetwork(true); 
+}
+
+%activity:
+
+ResultsUtilTest* resultsUtilTest = new ResultsUtilTest(); 
+
+resultsUtilTest -> testTotalAvgReturnsZeroWhenThroughputPpsIsZero();
+
+resultsUtilTest -> testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(); 
+
+%contains: stdout
+throughputTotalAvg: 0
