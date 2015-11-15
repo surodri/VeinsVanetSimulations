@@ -10,7 +10,7 @@ results file
 #define __RESULTSUTILSTESTh_H 
 
 #include <../../../src/ResultsUtil.h> 
-#include <fstream> 
+#include <fstream>
 #include <iostream> 
 #include <string> 
 #include <vector> 
@@ -21,16 +21,19 @@ class ResultsUtilTest : public ResultsUtil{
 
 	public: 
 		void testTotalAvgReturnsZeroWhenThroughputPpsIsZero(){
-			vector<string> results = {"throughputMps: 0"}; 
+			vector<string> results = {"throughputPps: 0"}; 
  			createTestFile("ZeroThroughput.sca", results);	
 			
-			double avgResult = ResultsUtil::totalAvg("ZeroThroghput.sca", "ThroughputPps:");  	
+			double avgResult = ResultsUtil::totalAvg("ZeroThroughput.sca", "throughputPps:");  	
 			cout<< "throughputTotalAvg: " << avgResult<< endl; 
 		}
 
 		void testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(){
-			vector<string> results = {"throughputMps: 0", "throughputMps: 2.5"}; 
-			createTestFile("ZeroAndNonzeroThrouhghtput.sca", results); 
+			vector<string> results = {"throughputPps: 0", "throughputPps: 2.5"}; 
+			createTestFile("ZeroAndNonzeroThroughput.sca", results);
+			double avgResult = ResultsUtil::totalAvg("ZeroAndNonzeroThroughput.sca", "throughputPps:"); 
+			
+			cout<< "throughputTotalAvg: " << avgResult<< endl; 
 		}
 	
 		void createTestFile(const char* fileName, vector<string> & results){
@@ -39,31 +42,32 @@ class ResultsUtilTest : public ResultsUtil{
 			if(myFile.is_open())
 			{
 				
-				for(int i=0; i< results.size(); i++){
+				for(unsigned int i=0; i< results.size(); i++){
 					myFile<<results.at(i)<<endl;
 				} 
 				myFile.close();			
 			}else{
-				cerr<<"Cannot open the test file." <<endl; 
+				wcerr<<"Cannot open the test file." <<endl; 
 			}
 			 
 		}
-}; 
 
-#endif
-
-%file:package.ned
-package vanets.tests.work.ResultsUtil_Test; 
-@namespace(ResultsUtil_Test); 
-
-%file:test.ned
-package vanets.tests.work.ResultsUtil_Test; 
-
-simple Test{
-	
-	@isNetwork(true); 
-}
-
+};                                                                                       
+                                                                                         
+#endif                                                                                   
+                                                                                         
+%file:package.ned                                                                        
+package vanets.tests.work.ResultsUtil_Test;                                              
+@namespace(ResultsUtil_Test);                                                            
+                                                                                         
+%file:test.ned                                                                           
+package vanets.tests.work.ResultsUtil_Test;                                              
+                                                                                         
+simple Test{                                                                             
+	                                                                                 
+	@isNetwork(true);                                                                
+}                                                                                        
+                                              
 %activity:
 
 ResultsUtilTest* resultsUtilTest = new ResultsUtilTest(); 
@@ -74,3 +78,6 @@ resultsUtilTest -> testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero();
 
 %contains: stdout
 throughputTotalAvg: 0
+
+%contains: stdout
+throughputTotalAvg: 1.25

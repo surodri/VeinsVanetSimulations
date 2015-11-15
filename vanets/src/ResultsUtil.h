@@ -21,7 +21,7 @@ using namespace std;
 class ResultsUtil {
 public:
 
-    double totalAvg(string, string);
+    double totalAvg(const char*, string);
 
 
     virtual ~ResultsUtil();

@@ -22,34 +22,42 @@
 using namespace std;
 
 
-double ResultsUtil::totalAvg(string fileName, string resultType){
+double ResultsUtil::totalAvg(const char* fileName, string resultType){
 
+		
+    string word = "";
+	string value = "";
+	stringstream lineStream;
+	double currentAvg = 0;
+	double newValue = 0; 
+	double numOfValues = 0; 
+	
+	ifstream myFile;
+ 	myFile.open(fileName);
+	
+	if(myFile.is_open()){
+		while(myFile>>word){
+			cout<<"***********Word: " << word << endl;
+			cout<<"*****ResultType: " << resultType<<endl; 
+			if (word.compare(resultType)==0){
+				myFile >> value;
+				newValue = (double) atof(value.c_str());
+				currentAvg = ((currentAvg*numOfValues) +newValue)/(numOfValues+1);
+				numOfValues++;  
+			}
 
-    string word;
-    string value;
-    stringstream lineStream;
-    double currentResult = 0;
+		}
+	
+		myFile.close();			
+	}else{
+	
+		wcerr<<"ERROR: Cannot open : "<<fileName <<endl; 
+	}
+     
+	return currentAvg; 
 
-    const char *fileNameConstChar = fileName.c_str();
-    ifstream configFile (fileNameConstChar);
-    if(configFile.is_open()){
-
-        for(string line; getline(configFile, line);){
-            lineStream<<line;
-            while(lineStream >> word){
-		cout<<"Word: " << word << endl; 
-                if (word == resultType){
-                    lineStream >> value;
-                    currentResult = atof(value.c_str());
-                }
-            }
-        }
-    }
-
-    return currentResult;
 }
 
-ResultsUtil::~ResultsUtil() {
+ResultsUtil::~ResultsUtil(){
 
 }
-
