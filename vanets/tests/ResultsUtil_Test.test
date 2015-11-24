@@ -2,6 +2,9 @@
 Get total avg throughput from 
 results file 
 
+
+%prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
+
 %includes: 
 #include <ResultsUtilTest.h>
 
@@ -35,7 +38,10 @@ class ResultsUtilTest : public ResultsUtil{
 			
 			cout<< "throughputTotalAvg: " << avgResult<< endl; 
 		}
-	
+
+		void testTotalAvgPrintsErrorWhenTypeNotInFile(){
+
+		}
 		void createTestFile(const char* fileName, vector<string> & results){
 			cout<<fileName<<endl; 
 			ofstream myFile(fileName); 
@@ -50,6 +56,19 @@ class ResultsUtilTest : public ResultsUtil{
 				wcerr<<"Cannot open the test file." <<endl; 
 			}
 			 
+		}
+
+		void getTotalAvgFromFileInActualResults(){
+			string type = "throughputMbps";
+			double avgResult = ResultsUtil::totalAvg("B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+			cout<<type << "	TotalAvg: "<< avgResult << endl;
+
+			type = "throughputMetricMac";
+			avgResult = ResultsUtil::totalAvg("B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+			cout<<type << "	TotalAvg: "<< avgResult << endl;
+
+			type = "throughputMetricMac:last";
+			avgResult = ResultsUtil::totalAvg("B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
 		}
 
 };                                                                                       
@@ -76,8 +95,15 @@ resultsUtilTest -> testTotalAvgReturnsZeroWhenThroughputPpsIsZero();
 
 resultsUtilTest -> testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(); 
 
+resultsUtilTest -> testTotalAvgPrintsErrorWhenTypeNotInFile(); 
+
+resultsUtilTest -> getTotalAvgFromFileInActualResults(); 
+
 %contains: stdout
 throughputTotalAvg: 0
 
 %contains: stdout
 throughputTotalAvg: 1.25
+
+%contains: stdout
+throughputTotalAvg: 0.00075699

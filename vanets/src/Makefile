@@ -23,7 +23,7 @@ PROJECTRELATIVE_PATH = /src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/Mac16094Metrics.o $O/Metrics.o
+OBJS = $O/Mac16094Metrics.o $O/Metrics.o $O/ResultsUtil.o
 
 # Message files
 MSGFILES =
@@ -123,3 +123,5 @@ $O/Mac16094Metrics.o: Mac16094Metrics.cc \
   results/../../../veins/src/veins/base/utils/MiXiMDefs.h
 $O/Metrics.o: Metrics.cc \
   ./Metrics.h
+$O/ResultsUtil.o: ResultsUtil.cc \
+  ./ResultsUtil.h
