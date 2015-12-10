@@ -5,6 +5,13 @@ results file
 
 %prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca .
+
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca .
+
+
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca .
+
 %includes: 
 #include <ResultsUtilTest.h>
 
@@ -65,11 +72,54 @@ class ResultsUtilTest : public ResultsUtil{
 
 			type = "throughputMetricMac";
 			avgResult = ResultsUtil::totalAvg("B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
-			cout<<type << "	TotalAvg: "<< avgResult << endl;
+			cout << type << "	TotalAvg: "<< avgResult << endl;
 
 			type = "throughputMetricMac:last";
 			avgResult = ResultsUtil::totalAvg("B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+			cout << type << "	TotalAvg: "<< avgResult << endl;
 		}
+
+		void getTotalAvgFromLowDensitySingleChNonSafetyQ5(){
+			string type = "throughputMbps"; 
+			double avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+
+			cout<< type << " TotalAvg: "<< avgResult << endl;
+	
+			type = "throughputMetricMac";
+			avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+
+			cout << type << " TotalAvg: " << avgResult << endl; 				
+					
+			type = "throughputMetricMac:last";
+			avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+
+			cout << type << " TotalAvg: " << avgResult << endl; 			
+		}
+		
+			
+		void getTotalAvgFromLowDensitySingleChNonSafetyQ2(){
+			getThroughputTotalAvgsFromFile("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca"); 
+
+		}
+	
+		void getTotalAvgFromLowDensitySingleChNonSafetyQ1(){
+			getThroughputTotalAvgsFromFile("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca"); 
+		}
+		void getThroughputTotalAvgsFromFile(const char* fileName){
+			string type = "throughputMbps"; 
+			double avgResult = ResultsUtil::totalAvg(fileName, type);
+
+			cout<< type << " TotalAvg: "<< avgResult << endl;
+	
+			type = "throughputMetricMac";
+			avgResult = ResultsUtil::totalAvg(fileName, type);  
+
+			cout << type << " TotalAvg: " << avgResult << endl; 				
+					
+			type = "throughputMetricMac:last";
+			avgResult = ResultsUtil::totalAvg(fileName, type);  
+
+			cout << type << " TotalAvg: " << avgResult << endl; 			}
 
 };                                                                                       
                                                                                          
@@ -98,6 +148,12 @@ resultsUtilTest -> testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero();
 resultsUtilTest -> testTotalAvgPrintsErrorWhenTypeNotInFile(); 
 
 resultsUtilTest -> getTotalAvgFromFileInActualResults(); 
+
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ5(); 
+
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ2();
+ 
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ1(); 
 
 %contains: stdout
 throughputTotalAvg: 0

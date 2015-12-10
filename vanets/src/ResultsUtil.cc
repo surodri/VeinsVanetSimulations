@@ -46,7 +46,6 @@ double ResultsUtil::totalAvg(const char* fileName, string resultType){
 				myFile >> value;
 				newValue = (double) atof(value.c_str());
 				
-				cout<<"newValue: " << newValue << endl;
 				currentAvg = ((currentAvg*numOfValues) +newValue)/(numOfValues+1);
 				numOfValues++;  
 			}
