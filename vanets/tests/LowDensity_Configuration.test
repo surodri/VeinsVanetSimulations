@@ -131,25 +131,16 @@ description = "BeaconLength 400Bytes, ServicePacketLength 1000Bytes, QueueSize 5
 **.coreDebug = false
 *.annotations.draw = false
 *.**.nic.mac1609_4.queueSize = 5
-*.**.nic.mac1609_4.useServiceChannel = true 
+*.**.nic.mac1609_4.useServiceChannel = false
+*.**.appl.headerLength = 256bit
 
-*.node[*].appl.beaconLengthBits = 3200bit
-*.rsu[*].appl.beaconLengthBits = 3200bit
-*.metricsApplication.appl.beaconLengthBits = 3200bit
+*.**.appl.beaconLengthBits = 3200bit
 
-*.node[*].appl.dataLengthBits = 8000bit
-*.rsu[*].appl.dataLengthBits = 8000bit
-*.metricsApplication[*].appl.beaconLengthBits = 3200bit
+*.**.appl.dataLengthBits = 8000bit
 
-*.node[*].appl.sendBeacons = false
-*.rsu[*].appl.sendBeacons = false
-*.metricsApplication[*].appl.sendBeacons = false
+*.**.appl.sendBeacons = false
 
-*.node[*].appl.dataOnSch = true
-*.rsu[*].appl.dataOnSch = true
-*.metricsApplication[*]appl.dataOnSch = true
-
-
+*.**.appl.dataOnSch = false
 
 %contains: omnetpp.ini
 *.manager.launchConfig = xmldoc("singlechannel/LowDensityScenario.launchd.xml")
