@@ -45,12 +45,6 @@ class Mac16094MetricsTest : public Mac16094Metrics{
 		//cout<<"throughputPps:"<<throughputResult<<endl;		
 	}
 	
-	//TEST(HandleLowerMsg, CallsThroughputWhenReceivingBroadcast ){
-	//	Mac16094Metrics::statsReceivedBroadcasts = 1;
-	//	EXPECT_EQ(1, Mac16094Metrics::statsReceivedBroadcasts); 	
-	//}
-	
-
 	double testGetThroughputSignal(){
 		return Mac16094Metrics::metrics->getThroughputSignal(); 
 	}

@@ -20,7 +20,7 @@ EXTRA_INCLUDES="$EXTRA_INCLUDES
 -I./../../../vanets/src
 -I./lib -I./../../../inet/src/base
 -I./../../../veins/src/
--I./../../../../googletest/googletest/include
+#-I./../../../../googletest/googletest/include
 "
 GTEST_DIR="./../../../googletest/googletest/"
 opp_test gen $OPT -v $TESTFILES || exit 1
@@ -33,11 +33,12 @@ echo
 (cd ../../veins/src; opp_makemake -f --deep --make-so -o veins -O out; make) || exit 1
 echo
 
-( g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
--g -Wall -Wextra -Wno-missing-field-initializers -pthread -c ${GTEST_DIR}/src/gtest-all.cc ; ar -rv libgtest.a gtest-all.o; cd ${GTEST_DIR}/make; make) || exit 1
-echo
-	
 
+#--Uncomment to use google test library 
+#( g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
+#-g -Wall -Wextra -Wno-missing-field-initializers -pthread -c ${GTEST_DIR}/src/gtest-all.cc ; ar -rv libgtest.a gtest-all.o; cd ${GTEST_DIR}/make; make) || exit 1
+#echo
+	
 (cd work; opp_makemake -f --deep -P . --no-deep-includes $EXTRA_INCLUDES -L../../src/  -lvanets -L../../../veins/src -lveins ; make) || exit 1 
 
 opp_test run $OPT -v $TESTFILES || exit 1

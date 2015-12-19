@@ -31,7 +31,8 @@ class ResultsUtilTest : public ResultsUtil{
 
 	public: 
 		void testTotalAvgReturnsZeroWhenThroughputPpsIsZero(){
-			vector<string> results = {"throughputPps: 0"}; 
+			vector<string> results ; 
+			results.push_back("throughputPps: 0"); 
  			createTestFile("ZeroThroughput.sca", results);	
 			
 			double avgResult = ResultsUtil::totalAvg("ZeroThroughput.sca", "throughputPps:");  	
@@ -39,7 +40,9 @@ class ResultsUtilTest : public ResultsUtil{
 		}
 
 		void testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(){
-			vector<string> results = {"throughputPps: 0", "throughputPps: 2.5"}; 
+			vector<string> results; 
+			results.push_back("throughputPps: 0");
+			results.push_back("throughputPps: 2.5"); 
 			createTestFile("ZeroAndNonzeroThroughput.sca", results);
 			double avgResult = ResultsUtil::totalAvg("ZeroAndNonzeroThroughput.sca", "throughputPps:"); 
 			
