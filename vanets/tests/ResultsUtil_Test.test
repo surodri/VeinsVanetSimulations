@@ -1,11 +1,9 @@
-%description: 
-Get total avg throughput from 
-results file 
-
-
-%prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
+%description:
+Getting total avg from result files 
 
 %prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca .
+
+%prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
 %prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca .
 
@@ -31,7 +29,7 @@ class ResultsUtilTest : public ResultsUtil{
 
 	public: 
 		void testTotalAvgReturnsZeroWhenThroughputPpsIsZero(){
-			vector<string> results ; 
+			vector<string> results; 
 			results.push_back("throughputPps: 0"); 
  			createTestFile("ZeroThroughput.sca", results);	
 			
