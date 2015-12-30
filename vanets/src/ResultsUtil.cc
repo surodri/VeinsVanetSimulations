@@ -31,11 +31,12 @@ double ResultsUtil::totalAvg(const char* fileName, string resultType){
 	double currentAvg = 0;
 	double newValue = 0; 
 	double numOfValues = 0; 
+	bool typeFound= false;
 	
-	ifstream myFile;
+	fstream myFile;
  	myFile.open(fileName);
-	
-	if(!myFile.is_open()){
+	bool isOpen = myFile.is_open();
+	if(!isOpen){
 		cerr<<"ERROR: Cannot open : "<<fileName <<endl;
 		exit(1);  
 	}else{
@@ -47,9 +48,14 @@ double ResultsUtil::totalAvg(const char* fileName, string resultType){
 				newValue = (double) atof(value.c_str());
 				
 				currentAvg = ((currentAvg*numOfValues) +newValue)/(numOfValues+1);
+				typeFound = true;
 				numOfValues++;  
 			}
 
+		}
+
+		if(typeFound==false){
+		    cerr<<"ERROR: Metric type not found in file: "<<resultType<<endl;
 		}
 	
 		myFile.close();			

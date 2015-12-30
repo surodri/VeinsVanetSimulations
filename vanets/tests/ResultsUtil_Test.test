@@ -7,7 +7,6 @@ Getting total avg from result files
 
 %prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca .
 
-
 %prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca .
 
 %includes: 
@@ -34,7 +33,7 @@ class ResultsUtilTest : public ResultsUtil{
  			createTestFile("ZeroThroughput.sca", results);	
 			
 			double avgResult = ResultsUtil::totalAvg("ZeroThroughput.sca", "throughputPps:");  	
-			cout<< "throughputTotalAvg: " << avgResult<< endl; 
+			cout<< "testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: " << avgResult<< endl; 
 		}
 
 		void testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero(){
@@ -44,12 +43,17 @@ class ResultsUtilTest : public ResultsUtil{
 			createTestFile("ZeroAndNonzeroThroughput.sca", results);
 			double avgResult = ResultsUtil::totalAvg("ZeroAndNonzeroThroughput.sca", "throughputPps:"); 
 			
-			cout<< "throughputTotalAvg: " << avgResult<< endl; 
+			cout<< "testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero	throughputTotalAvg: " << avgResult<< endl; 
 		}
 
 		void testTotalAvgPrintsErrorWhenTypeNotInFile(){
-
+			vector<string> results; 
+			createTestFile("TypeNotInFile.sca", results); 
+		
+			cerr<< "testTotalAvgPrintsErrorWhenTypeNotInFile	"; 
+			double avgResult = ResultsUtil::totalAvg("TypeNotInFile.sca", "randomType:");  
 		}
+
 		void createTestFile(const char* fileName, vector<string> & results){
 			cout<<fileName<<endl; 
 			ofstream myFile(fileName); 
@@ -157,10 +161,10 @@ resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ2();
 resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ1(); 
 
 %contains: stdout
-throughputTotalAvg: 0
+testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: 0
 
 %contains: stdout
-throughputTotalAvg: 1.25
+testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero	throughputTotalAvg: 1.25
 
-%contains: stdout
-throughputTotalAvg: 0.00075699
+%contains: stderr
+testTotalAvgPrintsErrorWhenTypeNotInFile	ERROR: Metric type not found in file: randomType
