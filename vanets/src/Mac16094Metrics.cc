@@ -26,8 +26,10 @@ void Mac16094Metrics::initialize(int i){
     metrics= new Metrics();
     statsReceivedPackets = 0;
     statsMbpsReceived = 0;
+    statsControlMbpsReceived = 0;
     throughputMetricMac = 0;
     throughputMbps = 0;
+    throughputControlMbps = 0;
 
     throughputSignalMac = registerSignal("throughputSignalMac");
 
@@ -35,6 +37,7 @@ void Mac16094Metrics::initialize(int i){
 
     WATCH(throughputMetricMac);
     WATCH(throughputMbps);
+    WATCH(throughputControlMbps);
 }
 
 
@@ -70,9 +73,6 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
 
         double statsReceivedPacketsDbl = (double) statsReceivedPackets;
         double time = simTime().dbl();
-        std::cout<<"statsReceivedPacketDbl"<< statsReceivedPacketsDbl<<endl;
-        std::cout<<"time"<< time<<endl;
-        computeThroughput(metrics, statsReceivedPacketsDbl,time);
 
         sendUp(wsm);
     }
@@ -84,11 +84,7 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
         double statsReceivedBroadcastsDbl = (double) statsReceivedBroadcasts;
         double time = simTime().dbl();
 
-        std::cout<<"statsReceivedBroadcastsDbl"<< statsReceivedBroadcastsDbl<<endl;
-        std::cout<<"time"<< time;
-
         double messageBits = (double)wsm->getBitLength();
-        cout<<messageBits<<endl;
 
         computeThroughput(metrics, statsReceivedBroadcastsDbl,time);
         computeThroughputMbps(metrics, messageBits, statsMbpsReceived, time);
@@ -111,7 +107,54 @@ void Mac16094Metrics::handleSelfMsg(cMessage* message){
 }
 
 void Mac16094Metrics::handleLowerControl(cMessage* message){
-    Mac1609_4::handleLowerControl(message);
+    if (message->getKind() == MacToPhyInterface::TX_OVER) {
+
+        DBG_MAC << "Successfully transmitted a packet on " << lastAC << std::endl;
+
+        phy->setRadioState(Radio::RX);
+
+        //message was sent
+        //update EDCA queue. go into post-transmit backoff and set cwCur to cwMin
+        myEDCA[activeChannel]->postTransmit(lastAC);
+        //channel just turned idle.
+        //don't set the chan to idle. the PHY layer decides, not us.
+
+        if (guardActive()) {
+            opp_error("We shouldnt have sent a packet in guard!");
+        }
+    }
+    else if (message->getKind() == Mac80211pToPhy11pInterface::CHANNEL_BUSY) {
+        channelBusy();
+    }
+    else if (message->getKind() == Mac80211pToPhy11pInterface::CHANNEL_IDLE) {
+        channelIdle();
+    }
+    else if (message->getKind() == Decider80211p::BITERROR || message->getKind() == Decider80211p::COLLISION) {
+        statsSNIRLostPackets++;
+        DBG_MAC << "A packet was not received due to biterrors" << std::endl;
+    }
+    else if (message->getKind() == Decider80211p::RECWHILESEND) {
+        statsTXRXLostPackets++;
+        DBG_MAC << "A packet was not received because we were sending while receiving" << std::endl;
+    }
+    else if (message->getKind() == MacToPhyInterface::RADIO_SWITCHING_OVER) {
+        DBG_MAC << "Phylayer said radio switching is done" << std::endl;
+    }
+    else if (message->getKind() == BaseDecider::PACKET_DROPPED) {
+        phy->setRadioState(Radio::RX);
+        DBG_MAC << "Phylayer said packet was dropped" << std::endl;
+    }
+    else {
+        DBG_MAC << "Invalid control message type (type=NOTHING) : name=" << message->getName() << " modulesrc=" << message->getSenderModule()->getFullPath() << "." << std::endl;
+        assert(false);
+    }
+
+    if (message->getKind() == Decider80211p::COLLISION) {
+        emit(sigCollision, true);
+    }
+
+    delete message;
+
 }
 
 void Mac16094Metrics::handleUpperControl(cMessage* message){
@@ -126,21 +169,12 @@ void Mac16094Metrics::computeThroughput(Metrics* metrics, double receivedPackets
 }
 
 void Mac16094Metrics::computeThroughputMbps(Metrics* metrics, double messageBits, double currentMbs, double currentTime){
-  cout<<setiosflags(ios::fixed)<<setprecision(16);
+  //cout<<setiosflags(ios::fixed)<<setprecision(16);
 
   double messageMbs = (messageBits)/1000000;
-
-  cout<<"messageMbs: "<< messageMbs << endl;
-  cout<<"currentMbs: "<< currentMbs << endl;
-  cout<<"temp: "<< currentMbs + messageMbs << endl;
-
   statsMbpsReceived = currentMbs + messageMbs;
 
-  cout<<"statsMbpsReceived: "<<statsMbpsReceived <<endl;
-
   throughputMbps = metrics->computeThroughput(statsMbpsReceived, currentTime);
-
-  cout<<"statsMbpsReceived: "<< throughputMbps<<endl;
 }
 
 double Mac16094Metrics::getThroughputMbps(){

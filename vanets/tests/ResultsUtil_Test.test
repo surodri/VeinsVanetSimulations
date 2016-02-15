@@ -1,13 +1,21 @@
 %description:
 Getting total avg from result files 
 
-%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca .
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
 %prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
-%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca .
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca .
 
-%prerun-command: cp -r -v ../../../src/results/SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca .
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca .
+
+%prerun-command: cp -r -v ../../../src/results/SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca .
+
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_5-0.sca . 
+
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_2-0.sca . 
+
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_1-0.sca . 
 
 %includes: 
 #include <ResultsUtilTest.h>
@@ -84,32 +92,50 @@ class ResultsUtilTest : public ResultsUtil{
 			cout << type << "	TotalAvg: "<< avgResult << endl;
 		}
 
-		void getTotalAvgFromLowDensitySingleChNonSafetyQ5(){
+		void getTotalAvgFromLowDensitySingleChSafetyQ5(){
 			string type = "throughputMbps"; 
-			double avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+			double avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
 
 			cout<< type << " TotalAvg: "<< avgResult << endl;
 	
 			type = "throughputMetricMac";
-			avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
 
 			cout << type << " TotalAvg: " << avgResult << endl; 				
 					
 			type = "throughputMetricMac:last";
-			avgResult = ResultsUtil::totalAvg("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
 
 			cout << type << " TotalAvg: " << avgResult << endl; 			
 		}
 		
 			
-		void getTotalAvgFromLowDensitySingleChNonSafetyQ2(){
-			getThroughputTotalAvgsFromFile("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca"); 
+		void getTotalAvgFromLowDensitySingleChSafetyQ2(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca"); 
 
 		}
 	
-		void getTotalAvgFromLowDensitySingleChNonSafetyQ1(){
-			getThroughputTotalAvgsFromFile("SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca"); 
+		void getTotalAvgFromLowDensitySingleChSafetyQ1(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca"); 
 		}
+
+		void getTotalAvgFromLowDensitySingleChSafetyQ5B100Bytes(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_100Bytes_Q_5-0.sca"); 
+		}
+
+		void getTotalAvgFromLowDensitySingleChSafetyQ2B100Bytes(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_100Bytes_Q_2-0.sca"); 
+		}
+
+		void getTotalAvgFromLowDensitySingleChSafetyQ1B100Bytes(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_100Bytes_Q_1-0.sca"); 
+		}
+
+		void getTotalAvgFromSlidesParamsB400BytesP1000BytesQ5(){
+			getThroughputTotalAvgsFromFile("SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca"); 
+}
+
+
 		void getThroughputTotalAvgsFromFile(const char* fileName){
 			string type = "throughputMbps"; 
 			double avgResult = ResultsUtil::totalAvg(fileName, type);
@@ -154,11 +180,20 @@ resultsUtilTest -> testTotalAvgPrintsErrorWhenTypeNotInFile();
 
 resultsUtilTest -> getTotalAvgFromFileInActualResults(); 
 
-resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ5(); 
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ5(); 
 
-resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ2();
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ2();
  
-resultsUtilTest -> getTotalAvgFromLowDensitySingleChNonSafetyQ1(); 
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ1();
+
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ5B100Bytes(); 
+
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ2B100Bytes(); 
+
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ1B100Bytes(); 
+
+resultsUtilTest -> getTotalAvgFromSlidesParamsB400BytesP1000BytesQ5();  
+
 
 %contains: stdout
 testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: 0

@@ -50,7 +50,6 @@ void Metrics::handleMessage(cMessage *msg)
          currentSimulationTime = simTime();
          scheduleAt(simTime()+1,msg);
      }
-     std::cout<<msg<<" "<<currentSimulationTime<<std::endl;
 
      if(msg->isName("data")){
          packetsDeliveredToMetrics = updateNumberOfPacketsReceived(packetsDeliveredToMetrics);

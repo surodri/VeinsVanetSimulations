@@ -125,7 +125,7 @@ maxSpeed="33.33"
 writingToFile
 
 %contains: omnetpp.ini
-[Config SingleCH_Non-Safety_B_400Bytes_P_1000Bytes_Q_5]
+[Config SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5]
 description = "BeaconLength 400Bytes, ServicePacketLength 1000Bytes, QueueSize 5"
 **.debug = false
 **.coreDebug = false
@@ -138,7 +138,9 @@ description = "BeaconLength 400Bytes, ServicePacketLength 1000Bytes, QueueSize 5
 
 *.**.appl.dataLengthBits = 8000bit
 
-*.**.appl.sendBeacons = false
+*.node[*].appl.sendBeacons = true
+*.rsu[*].appl.sendBeacons = false
+*.metricsApplication[*].appl.sendBeacons = false
 
 *.**.appl.dataOnSch = false
 
