@@ -5,7 +5,6 @@
  *      Author: karl
  */
 
-
 #ifndef BASEDECIDER_H_
 #define BASEDECIDER_H_
 

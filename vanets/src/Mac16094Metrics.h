@@ -28,9 +28,12 @@ public:
     Metrics* metrics;
     double throughputMetricMac;
     double statsMbpsReceived;
+    double statsControlMbpsReceived;
     double throughputMbps;
     simsignal_t throughputSignalMac;
+    double throughputControlMbps;
     double throughputMbpsSignal;
+
 protected:
     void computeThroughput(Metrics*, double, double);
     void computeThroughputMbps(Metrics*, double , double, double);

@@ -45,6 +45,7 @@ void Mac16094Metrics::finish(){
 
     recordScalar("throughputMetricMac", throughputMetricMac);
     recordScalar("throughputMbps", throughputMbps);
+    recordScalar("throughputControlMbps", throughputControlMbps);
     Mac1609_4::finish();
 }
 
