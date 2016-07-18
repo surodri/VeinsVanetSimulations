@@ -1,7 +1,6 @@
 %description:
 Getting total avg from result files 
 
-%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
 %prerun-command: cp -r -v ../../../src/results/B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
