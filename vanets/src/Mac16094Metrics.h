@@ -16,11 +16,10 @@
 #ifndef MAC16094METRICS_H_
 #define MAC16094METRICS_H_
 
-#include <../../../veins/src/veins/base/utils/miximkerneldefs.h>
-#include <../../../veins/src/veins/base/utils/MiXiMDefs.h>
-#include <../../../veins/src/veins/base/modules/BaseLayer.h>
-#include <../../../veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h>
-#include <INETDefs.h>
+
+//#include <../../veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h>
+#include <Mac1609_4.h>
+
 #include <Metrics.h>
 class Mac16094Metrics : public Mac1609_4{
 public:

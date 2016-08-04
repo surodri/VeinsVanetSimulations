@@ -1,5 +1,5 @@
 //
-// Generated file, do not edit! Created by nedtool 4.6 from veins/modules/messages/AirFrame11p.msg.
+// Generated file, do not edit! Created by nedtool 5.0 from veins/modules/messages/AirFrame11p.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
@@ -12,24 +12,136 @@
 #include <sstream>
 #include "AirFrame11p_m.h"
 
-USING_NAMESPACE
+namespace omnetpp {
 
+// Template pack/unpack rules. They are declared *after* a1l type-specific pack functions for multiple reasons.
+// They are in the omnetpp namespace, to allow them to be found by argument-dependent lookup via the cCommBuffer argument
 
-// Another default rule (prevents compiler from choosing base class' doPacking())
+// Packing/unpacking an std::vector
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::vector<T,A>& v)
+{
+    int n = v.size();
+    doParsimPacking(buffer, n);
+    for (int i = 0; i < n; i++)
+        doParsimPacking(buffer, v[i]);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::vector<T,A>& v)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    v.resize(n);
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(buffer, v[i]);
+}
+
+// Packing/unpacking an std::list
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::list<T,A>& l)
+{
+    doParsimPacking(buffer, (int)l.size());
+    for (typename std::list<T,A>::const_iterator it = l.begin(); it != l.end(); ++it)
+        doParsimPacking(buffer, (T&)*it);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::list<T,A>& l)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        l.push_back(T());
+        doParsimUnpacking(buffer, l.back());
+    }
+}
+
+// Packing/unpacking an std::set
+template<typename T, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::set<T,Tr,A>& s)
+{
+    doParsimPacking(buffer, (int)s.size());
+    for (typename std::set<T,Tr,A>::const_iterator it = s.begin(); it != s.end(); ++it)
+        doParsimPacking(buffer, *it);
+}
+
+template<typename T, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::set<T,Tr,A>& s)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        T x;
+        doParsimUnpacking(buffer, x);
+        s.insert(x);
+    }
+}
+
+// Packing/unpacking an std::map
+template<typename K, typename V, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::map<K,V,Tr,A>& m)
+{
+    doParsimPacking(buffer, (int)m.size());
+    for (typename std::map<K,V,Tr,A>::const_iterator it = m.begin(); it != m.end(); ++it) {
+        doParsimPacking(buffer, it->first);
+        doParsimPacking(buffer, it->second);
+    }
+}
+
+template<typename K, typename V, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::map<K,V,Tr,A>& m)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        K k; V v;
+        doParsimUnpacking(buffer, k);
+        doParsimUnpacking(buffer, v);
+        m[k] = v;
+    }
+}
+
+// Default pack/unpack function for arrays
 template<typename T>
-void doPacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doPacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayPacking(omnetpp::cCommBuffer *b, const T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimPacking(b, t[i]);
 }
 
 template<typename T>
-void doUnpacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doUnpacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayUnpacking(omnetpp::cCommBuffer *b, T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(b, t[i]);
 }
 
+// Default rule to prevent compiler from choosing base class' doParsimPacking() function
+template<typename T>
+void doParsimPacking(omnetpp::cCommBuffer *, const T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimPacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+template<typename T>
+void doParsimUnpacking(omnetpp::cCommBuffer *, T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimUnpacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+}  // namespace omnetpp
 
 
+// forward
+template<typename T, typename A>
+std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec);
 
-// Template rule for outputting std::vector<T> types
+// Template rule which fires if a struct or class doesn't have operator<<
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
+
+// operator<< for std::vector<T>
 template<typename T, typename A>
 inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
 {
@@ -49,16 +161,12 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
     return out;
 }
 
-// Template rule which fires if a struct or class doesn't have operator<<
-template<typename T>
-inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
-
 Register_Class(AirFrame11p);
 
 AirFrame11p::AirFrame11p(const char *name, int kind) : ::AirFrame(name,kind)
 {
-    this->underSensitivity_var = false;
-    this->wasTransmitting_var = false;
+    this->underSensitivity = false;
+    this->wasTransmitting = false;
 }
 
 AirFrame11p::AirFrame11p(const AirFrame11p& other) : ::AirFrame(other)
@@ -80,101 +188,118 @@ AirFrame11p& AirFrame11p::operator=(const AirFrame11p& other)
 
 void AirFrame11p::copy(const AirFrame11p& other)
 {
-    this->underSensitivity_var = other.underSensitivity_var;
-    this->wasTransmitting_var = other.wasTransmitting_var;
+    this->underSensitivity = other.underSensitivity;
+    this->wasTransmitting = other.wasTransmitting;
 }
 
-void AirFrame11p::parsimPack(cCommBuffer *b)
+void AirFrame11p::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::AirFrame::parsimPack(b);
-    doPacking(b,this->underSensitivity_var);
-    doPacking(b,this->wasTransmitting_var);
+    doParsimPacking(b,this->underSensitivity);
+    doParsimPacking(b,this->wasTransmitting);
 }
 
-void AirFrame11p::parsimUnpack(cCommBuffer *b)
+void AirFrame11p::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::AirFrame::parsimUnpack(b);
-    doUnpacking(b,this->underSensitivity_var);
-    doUnpacking(b,this->wasTransmitting_var);
+    doParsimUnpacking(b,this->underSensitivity);
+    doParsimUnpacking(b,this->wasTransmitting);
 }
 
 bool AirFrame11p::getUnderSensitivity() const
 {
-    return underSensitivity_var;
+    return this->underSensitivity;
 }
 
 void AirFrame11p::setUnderSensitivity(bool underSensitivity)
 {
-    this->underSensitivity_var = underSensitivity;
+    this->underSensitivity = underSensitivity;
 }
 
 bool AirFrame11p::getWasTransmitting() const
 {
-    return wasTransmitting_var;
+    return this->wasTransmitting;
 }
 
 void AirFrame11p::setWasTransmitting(bool wasTransmitting)
 {
-    this->wasTransmitting_var = wasTransmitting;
+    this->wasTransmitting = wasTransmitting;
 }
 
-class AirFrame11pDescriptor : public cClassDescriptor
+class AirFrame11pDescriptor : public omnetpp::cClassDescriptor
 {
+  private:
+    mutable const char **propertynames;
   public:
     AirFrame11pDescriptor();
     virtual ~AirFrame11pDescriptor();
 
-    virtual bool doesSupport(cObject *obj) const;
-    virtual const char *getProperty(const char *propertyname) const;
-    virtual int getFieldCount(void *object) const;
-    virtual const char *getFieldName(void *object, int field) const;
-    virtual int findField(void *object, const char *fieldName) const;
-    virtual unsigned int getFieldTypeFlags(void *object, int field) const;
-    virtual const char *getFieldTypeString(void *object, int field) const;
-    virtual const char *getFieldProperty(void *object, int field, const char *propertyname) const;
-    virtual int getArraySize(void *object, int field) const;
+    virtual bool doesSupport(omnetpp::cObject *obj) const override;
+    virtual const char **getPropertyNames() const override;
+    virtual const char *getProperty(const char *propertyname) const override;
+    virtual int getFieldCount() const override;
+    virtual const char *getFieldName(int field) const override;
+    virtual int findField(const char *fieldName) const override;
+    virtual unsigned int getFieldTypeFlags(int field) const override;
+    virtual const char *getFieldTypeString(int field) const override;
+    virtual const char **getFieldPropertyNames(int field) const override;
+    virtual const char *getFieldProperty(int field, const char *propertyname) const override;
+    virtual int getFieldArraySize(void *object, int field) const override;
 
-    virtual std::string getFieldAsString(void *object, int field, int i) const;
-    virtual bool setFieldAsString(void *object, int field, int i, const char *value) const;
+    virtual std::string getFieldValueAsString(void *object, int field, int i) const override;
+    virtual bool setFieldValueAsString(void *object, int field, int i, const char *value) const override;
 
-    virtual const char *getFieldStructName(void *object, int field) const;
-    virtual void *getFieldStructPointer(void *object, int field, int i) const;
+    virtual const char *getFieldStructName(int field) const override;
+    virtual void *getFieldStructValuePointer(void *object, int field, int i) const override;
 };
 
 Register_ClassDescriptor(AirFrame11pDescriptor);
 
-AirFrame11pDescriptor::AirFrame11pDescriptor() : cClassDescriptor("AirFrame11p", "AirFrame")
+AirFrame11pDescriptor::AirFrame11pDescriptor() : omnetpp::cClassDescriptor("AirFrame11p", "AirFrame")
 {
+    propertynames = nullptr;
 }
 
 AirFrame11pDescriptor::~AirFrame11pDescriptor()
 {
+    delete[] propertynames;
 }
 
-bool AirFrame11pDescriptor::doesSupport(cObject *obj) const
+bool AirFrame11pDescriptor::doesSupport(omnetpp::cObject *obj) const
 {
-    return dynamic_cast<AirFrame11p *>(obj)!=NULL;
+    return dynamic_cast<AirFrame11p *>(obj)!=nullptr;
+}
+
+const char **AirFrame11pDescriptor::getPropertyNames() const
+{
+    if (!propertynames) {
+        static const char *names[] = {  nullptr };
+        omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+        const char **basenames = basedesc ? basedesc->getPropertyNames() : nullptr;
+        propertynames = mergeLists(basenames, names);
+    }
+    return propertynames;
 }
 
 const char *AirFrame11pDescriptor::getProperty(const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? basedesc->getProperty(propertyname) : NULL;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->getProperty(propertyname) : nullptr;
 }
 
-int AirFrame11pDescriptor::getFieldCount(void *object) const
+int AirFrame11pDescriptor::getFieldCount() const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 2+basedesc->getFieldCount(object) : 2;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? 2+basedesc->getFieldCount() : 2;
 }
 
-unsigned int AirFrame11pDescriptor::getFieldTypeFlags(void *object, int field) const
+unsigned int AirFrame11pDescriptor::getFieldTypeFlags(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeFlags(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeFlags(field);
+        field -= basedesc->getFieldCount();
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,
@@ -183,65 +308,78 @@ unsigned int AirFrame11pDescriptor::getFieldTypeFlags(void *object, int field) c
     return (field>=0 && field<2) ? fieldTypeFlags[field] : 0;
 }
 
-const char *AirFrame11pDescriptor::getFieldName(void *object, int field) const
+const char *AirFrame11pDescriptor::getFieldName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldName(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldNames[] = {
         "underSensitivity",
         "wasTransmitting",
     };
-    return (field>=0 && field<2) ? fieldNames[field] : NULL;
+    return (field>=0 && field<2) ? fieldNames[field] : nullptr;
 }
 
-int AirFrame11pDescriptor::findField(void *object, const char *fieldName) const
+int AirFrame11pDescriptor::findField(const char *fieldName) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    int base = basedesc ? basedesc->getFieldCount(object) : 0;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    int base = basedesc ? basedesc->getFieldCount() : 0;
     if (fieldName[0]=='u' && strcmp(fieldName, "underSensitivity")==0) return base+0;
     if (fieldName[0]=='w' && strcmp(fieldName, "wasTransmitting")==0) return base+1;
-    return basedesc ? basedesc->findField(object, fieldName) : -1;
+    return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
-const char *AirFrame11pDescriptor::getFieldTypeString(void *object, int field) const
+const char *AirFrame11pDescriptor::getFieldTypeString(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeString(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeString(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldTypeStrings[] = {
         "bool",
         "bool",
     };
-    return (field>=0 && field<2) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<2) ? fieldTypeStrings[field] : nullptr;
 }
 
-const char *AirFrame11pDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
+const char **AirFrame11pDescriptor::getFieldPropertyNames(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldProperty(object, field, propertyname);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldPropertyNames(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     }
 }
 
-int AirFrame11pDescriptor::getArraySize(void *object, int field) const
+const char *AirFrame11pDescriptor::getFieldProperty(int field, const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getArraySize(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldProperty(field, propertyname);
+        field -= basedesc->getFieldCount();
+    }
+    switch (field) {
+        default: return nullptr;
+    }
+}
+
+int AirFrame11pDescriptor::getFieldArraySize(void *object, int field) const
+{
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldArraySize(object, field);
+        field -= basedesc->getFieldCount();
     }
     AirFrame11p *pp = (AirFrame11p *)object; (void)pp;
     switch (field) {
@@ -249,13 +387,13 @@ int AirFrame11pDescriptor::getArraySize(void *object, int field) const
     }
 }
 
-std::string AirFrame11pDescriptor::getFieldAsString(void *object, int field, int i) const
+std::string AirFrame11pDescriptor::getFieldValueAsString(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldAsString(object,field,i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldValueAsString(object,field,i);
+        field -= basedesc->getFieldCount();
     }
     AirFrame11p *pp = (AirFrame11p *)object; (void)pp;
     switch (field) {
@@ -265,13 +403,13 @@ std::string AirFrame11pDescriptor::getFieldAsString(void *object, int field, int
     }
 }
 
-bool AirFrame11pDescriptor::setFieldAsString(void *object, int field, int i, const char *value) const
+bool AirFrame11pDescriptor::setFieldValueAsString(void *object, int field, int i, const char *value) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->setFieldAsString(object,field,i,value);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->setFieldValueAsString(object,field,i,value);
+        field -= basedesc->getFieldCount();
     }
     AirFrame11p *pp = (AirFrame11p *)object; (void)pp;
     switch (field) {
@@ -281,30 +419,30 @@ bool AirFrame11pDescriptor::setFieldAsString(void *object, int field, int i, con
     }
 }
 
-const char *AirFrame11pDescriptor::getFieldStructName(void *object, int field) const
+const char *AirFrame11pDescriptor::getFieldStructName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructName(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     };
 }
 
-void *AirFrame11pDescriptor::getFieldStructPointer(void *object, int field, int i) const
+void *AirFrame11pDescriptor::getFieldStructValuePointer(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructPointer(object, field, i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructValuePointer(object, field, i);
+        field -= basedesc->getFieldCount();
     }
     AirFrame11p *pp = (AirFrame11p *)object; (void)pp;
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     }
 }
 

@@ -3,13 +3,14 @@
 #ifndef __INET_INET_METRICS_H
 #define __INET_INET_METRICS_H
 
-#include <INETDefs.h>
 
+#include <omnetpp.h>
+#include <FindModule.h>
 /**
  * A module that just deletes every packet it receives, and collects
  * basic statistics (packet count, bit count, packet rate, bit rate).
  */
-class INET_API Metrics : public cSimpleModule
+class  Metrics : public cSimpleModule
 {
 public:
     virtual ~Metrics(){}

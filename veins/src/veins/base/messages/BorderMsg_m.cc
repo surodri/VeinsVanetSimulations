@@ -1,5 +1,5 @@
 //
-// Generated file, do not edit! Created by nedtool 4.6 from veins/base/messages/BorderMsg.msg.
+// Generated file, do not edit! Created by nedtool 5.0 from veins/base/messages/BorderMsg.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
@@ -12,24 +12,136 @@
 #include <sstream>
 #include "BorderMsg_m.h"
 
-USING_NAMESPACE
+namespace omnetpp {
 
+// Template pack/unpack rules. They are declared *after* a1l type-specific pack functions for multiple reasons.
+// They are in the omnetpp namespace, to allow them to be found by argument-dependent lookup via the cCommBuffer argument
 
-// Another default rule (prevents compiler from choosing base class' doPacking())
+// Packing/unpacking an std::vector
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::vector<T,A>& v)
+{
+    int n = v.size();
+    doParsimPacking(buffer, n);
+    for (int i = 0; i < n; i++)
+        doParsimPacking(buffer, v[i]);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::vector<T,A>& v)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    v.resize(n);
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(buffer, v[i]);
+}
+
+// Packing/unpacking an std::list
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::list<T,A>& l)
+{
+    doParsimPacking(buffer, (int)l.size());
+    for (typename std::list<T,A>::const_iterator it = l.begin(); it != l.end(); ++it)
+        doParsimPacking(buffer, (T&)*it);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::list<T,A>& l)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        l.push_back(T());
+        doParsimUnpacking(buffer, l.back());
+    }
+}
+
+// Packing/unpacking an std::set
+template<typename T, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::set<T,Tr,A>& s)
+{
+    doParsimPacking(buffer, (int)s.size());
+    for (typename std::set<T,Tr,A>::const_iterator it = s.begin(); it != s.end(); ++it)
+        doParsimPacking(buffer, *it);
+}
+
+template<typename T, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::set<T,Tr,A>& s)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        T x;
+        doParsimUnpacking(buffer, x);
+        s.insert(x);
+    }
+}
+
+// Packing/unpacking an std::map
+template<typename K, typename V, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::map<K,V,Tr,A>& m)
+{
+    doParsimPacking(buffer, (int)m.size());
+    for (typename std::map<K,V,Tr,A>::const_iterator it = m.begin(); it != m.end(); ++it) {
+        doParsimPacking(buffer, it->first);
+        doParsimPacking(buffer, it->second);
+    }
+}
+
+template<typename K, typename V, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::map<K,V,Tr,A>& m)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        K k; V v;
+        doParsimUnpacking(buffer, k);
+        doParsimUnpacking(buffer, v);
+        m[k] = v;
+    }
+}
+
+// Default pack/unpack function for arrays
 template<typename T>
-void doPacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doPacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayPacking(omnetpp::cCommBuffer *b, const T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimPacking(b, t[i]);
 }
 
 template<typename T>
-void doUnpacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doUnpacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayUnpacking(omnetpp::cCommBuffer *b, T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(b, t[i]);
 }
 
+// Default rule to prevent compiler from choosing base class' doParsimPacking() function
+template<typename T>
+void doParsimPacking(omnetpp::cCommBuffer *, const T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimPacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+template<typename T>
+void doParsimUnpacking(omnetpp::cCommBuffer *, T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimUnpacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+}  // namespace omnetpp
 
 
+// forward
+template<typename T, typename A>
+std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec);
 
-// Template rule for outputting std::vector<T> types
+// Template rule which fires if a struct or class doesn't have operator<<
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
+
+// operator<< for std::vector<T>
 template<typename T, typename A>
 inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
 {
@@ -49,18 +161,14 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
     return out;
 }
 
-// Template rule which fires if a struct or class doesn't have operator<<
-template<typename T>
-inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
-
 Register_Class(BorderMsg);
 
-BorderMsg::BorderMsg(const char *name, int kind) : ::cPacket(name,kind)
+BorderMsg::BorderMsg(const char *name, int kind) : ::omnetpp::cPacket(name,kind)
 {
-    this->policy_var = 0;
+    this->policy = 0;
 }
 
-BorderMsg::BorderMsg(const BorderMsg& other) : ::cPacket(other)
+BorderMsg::BorderMsg(const BorderMsg& other) : ::omnetpp::cPacket(other)
 {
     copy(other);
 }
@@ -72,121 +180,138 @@ BorderMsg::~BorderMsg()
 BorderMsg& BorderMsg::operator=(const BorderMsg& other)
 {
     if (this==&other) return *this;
-    ::cPacket::operator=(other);
+    ::omnetpp::cPacket::operator=(other);
     copy(other);
     return *this;
 }
 
 void BorderMsg::copy(const BorderMsg& other)
 {
-    this->policy_var = other.policy_var;
-    this->startPos_var = other.startPos_var;
-    this->direction_var = other.direction_var;
+    this->policy = other.policy;
+    this->startPos = other.startPos;
+    this->direction = other.direction;
 }
 
-void BorderMsg::parsimPack(cCommBuffer *b)
+void BorderMsg::parsimPack(omnetpp::cCommBuffer *b) const
 {
-    ::cPacket::parsimPack(b);
-    doPacking(b,this->policy_var);
-    doPacking(b,this->startPos_var);
-    doPacking(b,this->direction_var);
+    ::omnetpp::cPacket::parsimPack(b);
+    doParsimPacking(b,this->policy);
+    doParsimPacking(b,this->startPos);
+    doParsimPacking(b,this->direction);
 }
 
-void BorderMsg::parsimUnpack(cCommBuffer *b)
+void BorderMsg::parsimUnpack(omnetpp::cCommBuffer *b)
 {
-    ::cPacket::parsimUnpack(b);
-    doUnpacking(b,this->policy_var);
-    doUnpacking(b,this->startPos_var);
-    doUnpacking(b,this->direction_var);
+    ::omnetpp::cPacket::parsimUnpack(b);
+    doParsimUnpacking(b,this->policy);
+    doParsimUnpacking(b,this->startPos);
+    doParsimUnpacking(b,this->direction);
 }
 
 int BorderMsg::getPolicy() const
 {
-    return policy_var;
+    return this->policy;
 }
 
 void BorderMsg::setPolicy(int policy)
 {
-    this->policy_var = policy;
+    this->policy = policy;
 }
 
 Coord& BorderMsg::getStartPos()
 {
-    return startPos_var;
+    return this->startPos;
 }
 
 void BorderMsg::setStartPos(const Coord& startPos)
 {
-    this->startPos_var = startPos;
+    this->startPos = startPos;
 }
 
 Coord& BorderMsg::getDirection()
 {
-    return direction_var;
+    return this->direction;
 }
 
 void BorderMsg::setDirection(const Coord& direction)
 {
-    this->direction_var = direction;
+    this->direction = direction;
 }
 
-class BorderMsgDescriptor : public cClassDescriptor
+class BorderMsgDescriptor : public omnetpp::cClassDescriptor
 {
+  private:
+    mutable const char **propertynames;
   public:
     BorderMsgDescriptor();
     virtual ~BorderMsgDescriptor();
 
-    virtual bool doesSupport(cObject *obj) const;
-    virtual const char *getProperty(const char *propertyname) const;
-    virtual int getFieldCount(void *object) const;
-    virtual const char *getFieldName(void *object, int field) const;
-    virtual int findField(void *object, const char *fieldName) const;
-    virtual unsigned int getFieldTypeFlags(void *object, int field) const;
-    virtual const char *getFieldTypeString(void *object, int field) const;
-    virtual const char *getFieldProperty(void *object, int field, const char *propertyname) const;
-    virtual int getArraySize(void *object, int field) const;
+    virtual bool doesSupport(omnetpp::cObject *obj) const override;
+    virtual const char **getPropertyNames() const override;
+    virtual const char *getProperty(const char *propertyname) const override;
+    virtual int getFieldCount() const override;
+    virtual const char *getFieldName(int field) const override;
+    virtual int findField(const char *fieldName) const override;
+    virtual unsigned int getFieldTypeFlags(int field) const override;
+    virtual const char *getFieldTypeString(int field) const override;
+    virtual const char **getFieldPropertyNames(int field) const override;
+    virtual const char *getFieldProperty(int field, const char *propertyname) const override;
+    virtual int getFieldArraySize(void *object, int field) const override;
 
-    virtual std::string getFieldAsString(void *object, int field, int i) const;
-    virtual bool setFieldAsString(void *object, int field, int i, const char *value) const;
+    virtual std::string getFieldValueAsString(void *object, int field, int i) const override;
+    virtual bool setFieldValueAsString(void *object, int field, int i, const char *value) const override;
 
-    virtual const char *getFieldStructName(void *object, int field) const;
-    virtual void *getFieldStructPointer(void *object, int field, int i) const;
+    virtual const char *getFieldStructName(int field) const override;
+    virtual void *getFieldStructValuePointer(void *object, int field, int i) const override;
 };
 
 Register_ClassDescriptor(BorderMsgDescriptor);
 
-BorderMsgDescriptor::BorderMsgDescriptor() : cClassDescriptor("BorderMsg", "cPacket")
+BorderMsgDescriptor::BorderMsgDescriptor() : omnetpp::cClassDescriptor("BorderMsg", "omnetpp::cPacket")
 {
+    propertynames = nullptr;
 }
 
 BorderMsgDescriptor::~BorderMsgDescriptor()
 {
+    delete[] propertynames;
 }
 
-bool BorderMsgDescriptor::doesSupport(cObject *obj) const
+bool BorderMsgDescriptor::doesSupport(omnetpp::cObject *obj) const
 {
-    return dynamic_cast<BorderMsg *>(obj)!=NULL;
+    return dynamic_cast<BorderMsg *>(obj)!=nullptr;
+}
+
+const char **BorderMsgDescriptor::getPropertyNames() const
+{
+    if (!propertynames) {
+        static const char *names[] = {  nullptr };
+        omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+        const char **basenames = basedesc ? basedesc->getPropertyNames() : nullptr;
+        propertynames = mergeLists(basenames, names);
+    }
+    return propertynames;
 }
 
 const char *BorderMsgDescriptor::getProperty(const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? basedesc->getProperty(propertyname) : NULL;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->getProperty(propertyname) : nullptr;
 }
 
-int BorderMsgDescriptor::getFieldCount(void *object) const
+int BorderMsgDescriptor::getFieldCount() const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 3+basedesc->getFieldCount(object) : 3;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? 3+basedesc->getFieldCount() : 3;
 }
 
-unsigned int BorderMsgDescriptor::getFieldTypeFlags(void *object, int field) const
+unsigned int BorderMsgDescriptor::getFieldTypeFlags(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeFlags(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeFlags(field);
+        field -= basedesc->getFieldCount();
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,
@@ -196,68 +321,81 @@ unsigned int BorderMsgDescriptor::getFieldTypeFlags(void *object, int field) con
     return (field>=0 && field<3) ? fieldTypeFlags[field] : 0;
 }
 
-const char *BorderMsgDescriptor::getFieldName(void *object, int field) const
+const char *BorderMsgDescriptor::getFieldName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldName(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldNames[] = {
         "policy",
         "startPos",
         "direction",
     };
-    return (field>=0 && field<3) ? fieldNames[field] : NULL;
+    return (field>=0 && field<3) ? fieldNames[field] : nullptr;
 }
 
-int BorderMsgDescriptor::findField(void *object, const char *fieldName) const
+int BorderMsgDescriptor::findField(const char *fieldName) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    int base = basedesc ? basedesc->getFieldCount(object) : 0;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    int base = basedesc ? basedesc->getFieldCount() : 0;
     if (fieldName[0]=='p' && strcmp(fieldName, "policy")==0) return base+0;
     if (fieldName[0]=='s' && strcmp(fieldName, "startPos")==0) return base+1;
     if (fieldName[0]=='d' && strcmp(fieldName, "direction")==0) return base+2;
-    return basedesc ? basedesc->findField(object, fieldName) : -1;
+    return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
-const char *BorderMsgDescriptor::getFieldTypeString(void *object, int field) const
+const char *BorderMsgDescriptor::getFieldTypeString(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeString(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeString(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldTypeStrings[] = {
         "int",
         "Coord",
         "Coord",
     };
-    return (field>=0 && field<3) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<3) ? fieldTypeStrings[field] : nullptr;
 }
 
-const char *BorderMsgDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
+const char **BorderMsgDescriptor::getFieldPropertyNames(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldProperty(object, field, propertyname);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldPropertyNames(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     }
 }
 
-int BorderMsgDescriptor::getArraySize(void *object, int field) const
+const char *BorderMsgDescriptor::getFieldProperty(int field, const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getArraySize(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldProperty(field, propertyname);
+        field -= basedesc->getFieldCount();
+    }
+    switch (field) {
+        default: return nullptr;
+    }
+}
+
+int BorderMsgDescriptor::getFieldArraySize(void *object, int field) const
+{
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldArraySize(object, field);
+        field -= basedesc->getFieldCount();
     }
     BorderMsg *pp = (BorderMsg *)object; (void)pp;
     switch (field) {
@@ -265,13 +403,13 @@ int BorderMsgDescriptor::getArraySize(void *object, int field) const
     }
 }
 
-std::string BorderMsgDescriptor::getFieldAsString(void *object, int field, int i) const
+std::string BorderMsgDescriptor::getFieldValueAsString(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldAsString(object,field,i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldValueAsString(object,field,i);
+        field -= basedesc->getFieldCount();
     }
     BorderMsg *pp = (BorderMsg *)object; (void)pp;
     switch (field) {
@@ -282,13 +420,13 @@ std::string BorderMsgDescriptor::getFieldAsString(void *object, int field, int i
     }
 }
 
-bool BorderMsgDescriptor::setFieldAsString(void *object, int field, int i, const char *value) const
+bool BorderMsgDescriptor::setFieldValueAsString(void *object, int field, int i, const char *value) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->setFieldAsString(object,field,i,value);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->setFieldValueAsString(object,field,i,value);
+        field -= basedesc->getFieldCount();
     }
     BorderMsg *pp = (BorderMsg *)object; (void)pp;
     switch (field) {
@@ -297,34 +435,34 @@ bool BorderMsgDescriptor::setFieldAsString(void *object, int field, int i, const
     }
 }
 
-const char *BorderMsgDescriptor::getFieldStructName(void *object, int field) const
+const char *BorderMsgDescriptor::getFieldStructName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructName(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        case 1: return opp_typename(typeid(Coord));
-        case 2: return opp_typename(typeid(Coord));
-        default: return NULL;
+        case 1: return omnetpp::opp_typename(typeid(Coord));
+        case 2: return omnetpp::opp_typename(typeid(Coord));
+        default: return nullptr;
     };
 }
 
-void *BorderMsgDescriptor::getFieldStructPointer(void *object, int field, int i) const
+void *BorderMsgDescriptor::getFieldStructValuePointer(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructPointer(object, field, i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructValuePointer(object, field, i);
+        field -= basedesc->getFieldCount();
     }
     BorderMsg *pp = (BorderMsg *)object; (void)pp;
     switch (field) {
         case 1: return (void *)(&pp->getStartPos()); break;
         case 2: return (void *)(&pp->getDirection()); break;
-        default: return NULL;
+        default: return nullptr;
     }
 }
 

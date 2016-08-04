@@ -48,9 +48,6 @@ void BaseWaveApplLayer::initialize(int stage) {
 		//simulate asynchronous channel access
 		double offSet = dblrand() * (par("beaconInterval").doubleValue()/2);
 		offSet = offSet + floor(offSet/0.050)*0.050;
-
-		std::cout<<offSet <<std::endl;
-		std::cout<<simTime()<<std::endl;
 		individualOffset = dblrand() * maxOffset;
 
 		findHost()->subscribe(mobilityStateChangedSignal, this);
@@ -90,7 +87,7 @@ WaveShortMessage*  BaseWaveApplLayer::prepareWSM(std::string name, int lengthBit
 	return wsm;
 }
 
-void BaseWaveApplLayer::receiveSignal(cComponent* source, simsignal_t signalID, cObject* obj) {
+void BaseWaveApplLayer::receiveSignal(cComponent* source, simsignal_t signalID, cObject* obj, cObject* details) {
 	Enter_Method_Silent();
 	if (signalID == mobilityStateChangedSignal) {
 		handlePositionUpdate(obj);
@@ -123,8 +120,6 @@ void BaseWaveApplLayer::handleSelfMsg(cMessage* msg) {
 	switch (msg->getKind()) {
 		case SEND_BEACON_EVT: {
 			sendWSM(prepareWSM("beacon", beaconLengthBits, type_CCH, beaconPriority, 0, -1));
-
-			std::cout << " Sending beacon event: "<< simTime() + par("beaconInterval")<< std::endl;
 			scheduleAt(simTime() + par("beaconInterval").doubleValue(), sendBeaconEvt);
 			break;
 		}

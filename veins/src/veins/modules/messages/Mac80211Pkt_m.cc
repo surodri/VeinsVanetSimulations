@@ -1,5 +1,5 @@
 //
-// Generated file, do not edit! Created by nedtool 4.6 from veins/modules/messages/Mac80211Pkt.msg.
+// Generated file, do not edit! Created by nedtool 5.0 from veins/modules/messages/Mac80211Pkt.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
@@ -12,24 +12,136 @@
 #include <sstream>
 #include "Mac80211Pkt_m.h"
 
-USING_NAMESPACE
+namespace omnetpp {
 
+// Template pack/unpack rules. They are declared *after* a1l type-specific pack functions for multiple reasons.
+// They are in the omnetpp namespace, to allow them to be found by argument-dependent lookup via the cCommBuffer argument
 
-// Another default rule (prevents compiler from choosing base class' doPacking())
+// Packing/unpacking an std::vector
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::vector<T,A>& v)
+{
+    int n = v.size();
+    doParsimPacking(buffer, n);
+    for (int i = 0; i < n; i++)
+        doParsimPacking(buffer, v[i]);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::vector<T,A>& v)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    v.resize(n);
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(buffer, v[i]);
+}
+
+// Packing/unpacking an std::list
+template<typename T, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::list<T,A>& l)
+{
+    doParsimPacking(buffer, (int)l.size());
+    for (typename std::list<T,A>::const_iterator it = l.begin(); it != l.end(); ++it)
+        doParsimPacking(buffer, (T&)*it);
+}
+
+template<typename T, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::list<T,A>& l)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        l.push_back(T());
+        doParsimUnpacking(buffer, l.back());
+    }
+}
+
+// Packing/unpacking an std::set
+template<typename T, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::set<T,Tr,A>& s)
+{
+    doParsimPacking(buffer, (int)s.size());
+    for (typename std::set<T,Tr,A>::const_iterator it = s.begin(); it != s.end(); ++it)
+        doParsimPacking(buffer, *it);
+}
+
+template<typename T, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::set<T,Tr,A>& s)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        T x;
+        doParsimUnpacking(buffer, x);
+        s.insert(x);
+    }
+}
+
+// Packing/unpacking an std::map
+template<typename K, typename V, typename Tr, typename A>
+void doParsimPacking(omnetpp::cCommBuffer *buffer, const std::map<K,V,Tr,A>& m)
+{
+    doParsimPacking(buffer, (int)m.size());
+    for (typename std::map<K,V,Tr,A>::const_iterator it = m.begin(); it != m.end(); ++it) {
+        doParsimPacking(buffer, it->first);
+        doParsimPacking(buffer, it->second);
+    }
+}
+
+template<typename K, typename V, typename Tr, typename A>
+void doParsimUnpacking(omnetpp::cCommBuffer *buffer, std::map<K,V,Tr,A>& m)
+{
+    int n;
+    doParsimUnpacking(buffer, n);
+    for (int i=0; i<n; i++) {
+        K k; V v;
+        doParsimUnpacking(buffer, k);
+        doParsimUnpacking(buffer, v);
+        m[k] = v;
+    }
+}
+
+// Default pack/unpack function for arrays
 template<typename T>
-void doPacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doPacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayPacking(omnetpp::cCommBuffer *b, const T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimPacking(b, t[i]);
 }
 
 template<typename T>
-void doUnpacking(cCommBuffer *, T& t) {
-    throw cRuntimeError("Parsim error: no doUnpacking() function for type %s or its base class (check .msg and _m.cc/h files!)",opp_typename(typeid(t)));
+void doParsimArrayUnpacking(omnetpp::cCommBuffer *b, T *t, int n)
+{
+    for (int i = 0; i < n; i++)
+        doParsimUnpacking(b, t[i]);
 }
 
+// Default rule to prevent compiler from choosing base class' doParsimPacking() function
+template<typename T>
+void doParsimPacking(omnetpp::cCommBuffer *, const T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimPacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+template<typename T>
+void doParsimUnpacking(omnetpp::cCommBuffer *, T& t)
+{
+    throw omnetpp::cRuntimeError("Parsim error: no doParsimUnpacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+}
+
+}  // namespace omnetpp
 
 
+// forward
+template<typename T, typename A>
+std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec);
 
-// Template rule for outputting std::vector<T> types
+// Template rule which fires if a struct or class doesn't have operator<<
+template<typename T>
+inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
+
+// operator<< for std::vector<T>
 template<typename T, typename A>
 inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
 {
@@ -49,21 +161,17 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
     return out;
 }
 
-// Template rule which fires if a struct or class doesn't have operator<<
-template<typename T>
-inline std::ostream& operator<<(std::ostream& out,const T&) {return out;}
-
 Register_Class(Mac80211Pkt);
 
 Mac80211Pkt::Mac80211Pkt(const char *name, int kind) : ::MacPkt(name,kind)
 {
-    this->address3_var = 0;
-    this->address4_var = 0;
-    this->fragmentation_var = 0;
-    this->informationDS_var = 0;
-    this->sequenceControl_var = 0;
-    this->retry_var = 0;
-    this->duration_var = 0;
+    this->address3 = 0;
+    this->address4 = 0;
+    this->fragmentation = 0;
+    this->informationDS = 0;
+    this->sequenceControl = 0;
+    this->retry = false;
+    this->duration = 0;
 }
 
 Mac80211Pkt::Mac80211Pkt(const Mac80211Pkt& other) : ::MacPkt(other)
@@ -85,166 +193,183 @@ Mac80211Pkt& Mac80211Pkt::operator=(const Mac80211Pkt& other)
 
 void Mac80211Pkt::copy(const Mac80211Pkt& other)
 {
-    this->address3_var = other.address3_var;
-    this->address4_var = other.address4_var;
-    this->fragmentation_var = other.fragmentation_var;
-    this->informationDS_var = other.informationDS_var;
-    this->sequenceControl_var = other.sequenceControl_var;
-    this->retry_var = other.retry_var;
-    this->duration_var = other.duration_var;
+    this->address3 = other.address3;
+    this->address4 = other.address4;
+    this->fragmentation = other.fragmentation;
+    this->informationDS = other.informationDS;
+    this->sequenceControl = other.sequenceControl;
+    this->retry = other.retry;
+    this->duration = other.duration;
 }
 
-void Mac80211Pkt::parsimPack(cCommBuffer *b)
+void Mac80211Pkt::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::MacPkt::parsimPack(b);
-    doPacking(b,this->address3_var);
-    doPacking(b,this->address4_var);
-    doPacking(b,this->fragmentation_var);
-    doPacking(b,this->informationDS_var);
-    doPacking(b,this->sequenceControl_var);
-    doPacking(b,this->retry_var);
-    doPacking(b,this->duration_var);
+    doParsimPacking(b,this->address3);
+    doParsimPacking(b,this->address4);
+    doParsimPacking(b,this->fragmentation);
+    doParsimPacking(b,this->informationDS);
+    doParsimPacking(b,this->sequenceControl);
+    doParsimPacking(b,this->retry);
+    doParsimPacking(b,this->duration);
 }
 
-void Mac80211Pkt::parsimUnpack(cCommBuffer *b)
+void Mac80211Pkt::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::MacPkt::parsimUnpack(b);
-    doUnpacking(b,this->address3_var);
-    doUnpacking(b,this->address4_var);
-    doUnpacking(b,this->fragmentation_var);
-    doUnpacking(b,this->informationDS_var);
-    doUnpacking(b,this->sequenceControl_var);
-    doUnpacking(b,this->retry_var);
-    doUnpacking(b,this->duration_var);
+    doParsimUnpacking(b,this->address3);
+    doParsimUnpacking(b,this->address4);
+    doParsimUnpacking(b,this->fragmentation);
+    doParsimUnpacking(b,this->informationDS);
+    doParsimUnpacking(b,this->sequenceControl);
+    doParsimUnpacking(b,this->retry);
+    doParsimUnpacking(b,this->duration);
 }
 
 int Mac80211Pkt::getAddress3() const
 {
-    return address3_var;
+    return this->address3;
 }
 
 void Mac80211Pkt::setAddress3(int address3)
 {
-    this->address3_var = address3;
+    this->address3 = address3;
 }
 
 int Mac80211Pkt::getAddress4() const
 {
-    return address4_var;
+    return this->address4;
 }
 
 void Mac80211Pkt::setAddress4(int address4)
 {
-    this->address4_var = address4;
+    this->address4 = address4;
 }
 
 int Mac80211Pkt::getFragmentation() const
 {
-    return fragmentation_var;
+    return this->fragmentation;
 }
 
 void Mac80211Pkt::setFragmentation(int fragmentation)
 {
-    this->fragmentation_var = fragmentation;
+    this->fragmentation = fragmentation;
 }
 
 int Mac80211Pkt::getInformationDS() const
 {
-    return informationDS_var;
+    return this->informationDS;
 }
 
 void Mac80211Pkt::setInformationDS(int informationDS)
 {
-    this->informationDS_var = informationDS;
+    this->informationDS = informationDS;
 }
 
 int Mac80211Pkt::getSequenceControl() const
 {
-    return sequenceControl_var;
+    return this->sequenceControl;
 }
 
 void Mac80211Pkt::setSequenceControl(int sequenceControl)
 {
-    this->sequenceControl_var = sequenceControl;
+    this->sequenceControl = sequenceControl;
 }
 
 bool Mac80211Pkt::getRetry() const
 {
-    return retry_var;
+    return this->retry;
 }
 
 void Mac80211Pkt::setRetry(bool retry)
 {
-    this->retry_var = retry;
+    this->retry = retry;
 }
 
-simtime_t Mac80211Pkt::getDuration() const
+::omnetpp::simtime_t Mac80211Pkt::getDuration() const
 {
-    return duration_var;
+    return this->duration;
 }
 
-void Mac80211Pkt::setDuration(simtime_t duration)
+void Mac80211Pkt::setDuration(::omnetpp::simtime_t duration)
 {
-    this->duration_var = duration;
+    this->duration = duration;
 }
 
-class Mac80211PktDescriptor : public cClassDescriptor
+class Mac80211PktDescriptor : public omnetpp::cClassDescriptor
 {
+  private:
+    mutable const char **propertynames;
   public:
     Mac80211PktDescriptor();
     virtual ~Mac80211PktDescriptor();
 
-    virtual bool doesSupport(cObject *obj) const;
-    virtual const char *getProperty(const char *propertyname) const;
-    virtual int getFieldCount(void *object) const;
-    virtual const char *getFieldName(void *object, int field) const;
-    virtual int findField(void *object, const char *fieldName) const;
-    virtual unsigned int getFieldTypeFlags(void *object, int field) const;
-    virtual const char *getFieldTypeString(void *object, int field) const;
-    virtual const char *getFieldProperty(void *object, int field, const char *propertyname) const;
-    virtual int getArraySize(void *object, int field) const;
+    virtual bool doesSupport(omnetpp::cObject *obj) const override;
+    virtual const char **getPropertyNames() const override;
+    virtual const char *getProperty(const char *propertyname) const override;
+    virtual int getFieldCount() const override;
+    virtual const char *getFieldName(int field) const override;
+    virtual int findField(const char *fieldName) const override;
+    virtual unsigned int getFieldTypeFlags(int field) const override;
+    virtual const char *getFieldTypeString(int field) const override;
+    virtual const char **getFieldPropertyNames(int field) const override;
+    virtual const char *getFieldProperty(int field, const char *propertyname) const override;
+    virtual int getFieldArraySize(void *object, int field) const override;
 
-    virtual std::string getFieldAsString(void *object, int field, int i) const;
-    virtual bool setFieldAsString(void *object, int field, int i, const char *value) const;
+    virtual std::string getFieldValueAsString(void *object, int field, int i) const override;
+    virtual bool setFieldValueAsString(void *object, int field, int i, const char *value) const override;
 
-    virtual const char *getFieldStructName(void *object, int field) const;
-    virtual void *getFieldStructPointer(void *object, int field, int i) const;
+    virtual const char *getFieldStructName(int field) const override;
+    virtual void *getFieldStructValuePointer(void *object, int field, int i) const override;
 };
 
 Register_ClassDescriptor(Mac80211PktDescriptor);
 
-Mac80211PktDescriptor::Mac80211PktDescriptor() : cClassDescriptor("Mac80211Pkt", "MacPkt")
+Mac80211PktDescriptor::Mac80211PktDescriptor() : omnetpp::cClassDescriptor("Mac80211Pkt", "MacPkt")
 {
+    propertynames = nullptr;
 }
 
 Mac80211PktDescriptor::~Mac80211PktDescriptor()
 {
+    delete[] propertynames;
 }
 
-bool Mac80211PktDescriptor::doesSupport(cObject *obj) const
+bool Mac80211PktDescriptor::doesSupport(omnetpp::cObject *obj) const
 {
-    return dynamic_cast<Mac80211Pkt *>(obj)!=NULL;
+    return dynamic_cast<Mac80211Pkt *>(obj)!=nullptr;
+}
+
+const char **Mac80211PktDescriptor::getPropertyNames() const
+{
+    if (!propertynames) {
+        static const char *names[] = {  nullptr };
+        omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+        const char **basenames = basedesc ? basedesc->getPropertyNames() : nullptr;
+        propertynames = mergeLists(basenames, names);
+    }
+    return propertynames;
 }
 
 const char *Mac80211PktDescriptor::getProperty(const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? basedesc->getProperty(propertyname) : NULL;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? basedesc->getProperty(propertyname) : nullptr;
 }
 
-int Mac80211PktDescriptor::getFieldCount(void *object) const
+int Mac80211PktDescriptor::getFieldCount() const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 7+basedesc->getFieldCount(object) : 7;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    return basedesc ? 7+basedesc->getFieldCount() : 7;
 }
 
-unsigned int Mac80211PktDescriptor::getFieldTypeFlags(void *object, int field) const
+unsigned int Mac80211PktDescriptor::getFieldTypeFlags(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeFlags(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeFlags(field);
+        field -= basedesc->getFieldCount();
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,
@@ -258,13 +383,13 @@ unsigned int Mac80211PktDescriptor::getFieldTypeFlags(void *object, int field) c
     return (field>=0 && field<7) ? fieldTypeFlags[field] : 0;
 }
 
-const char *Mac80211PktDescriptor::getFieldName(void *object, int field) const
+const char *Mac80211PktDescriptor::getFieldName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldName(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldNames[] = {
         "address3",
@@ -275,13 +400,13 @@ const char *Mac80211PktDescriptor::getFieldName(void *object, int field) const
         "retry",
         "duration",
     };
-    return (field>=0 && field<7) ? fieldNames[field] : NULL;
+    return (field>=0 && field<7) ? fieldNames[field] : nullptr;
 }
 
-int Mac80211PktDescriptor::findField(void *object, const char *fieldName) const
+int Mac80211PktDescriptor::findField(const char *fieldName) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
-    int base = basedesc ? basedesc->getFieldCount(object) : 0;
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    int base = basedesc ? basedesc->getFieldCount() : 0;
     if (fieldName[0]=='a' && strcmp(fieldName, "address3")==0) return base+0;
     if (fieldName[0]=='a' && strcmp(fieldName, "address4")==0) return base+1;
     if (fieldName[0]=='f' && strcmp(fieldName, "fragmentation")==0) return base+2;
@@ -289,16 +414,16 @@ int Mac80211PktDescriptor::findField(void *object, const char *fieldName) const
     if (fieldName[0]=='s' && strcmp(fieldName, "sequenceControl")==0) return base+4;
     if (fieldName[0]=='r' && strcmp(fieldName, "retry")==0) return base+5;
     if (fieldName[0]=='d' && strcmp(fieldName, "duration")==0) return base+6;
-    return basedesc ? basedesc->findField(object, fieldName) : -1;
+    return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
-const char *Mac80211PktDescriptor::getFieldTypeString(void *object, int field) const
+const char *Mac80211PktDescriptor::getFieldTypeString(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldTypeString(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldTypeString(field);
+        field -= basedesc->getFieldCount();
     }
     static const char *fieldTypeStrings[] = {
         "int",
@@ -309,29 +434,42 @@ const char *Mac80211PktDescriptor::getFieldTypeString(void *object, int field) c
         "bool",
         "simtime_t",
     };
-    return (field>=0 && field<7) ? fieldTypeStrings[field] : NULL;
+    return (field>=0 && field<7) ? fieldTypeStrings[field] : nullptr;
 }
 
-const char *Mac80211PktDescriptor::getFieldProperty(void *object, int field, const char *propertyname) const
+const char **Mac80211PktDescriptor::getFieldPropertyNames(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldProperty(object, field, propertyname);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldPropertyNames(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     }
 }
 
-int Mac80211PktDescriptor::getArraySize(void *object, int field) const
+const char *Mac80211PktDescriptor::getFieldProperty(int field, const char *propertyname) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getArraySize(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldProperty(field, propertyname);
+        field -= basedesc->getFieldCount();
+    }
+    switch (field) {
+        default: return nullptr;
+    }
+}
+
+int Mac80211PktDescriptor::getFieldArraySize(void *object, int field) const
+{
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldArraySize(object, field);
+        field -= basedesc->getFieldCount();
     }
     Mac80211Pkt *pp = (Mac80211Pkt *)object; (void)pp;
     switch (field) {
@@ -339,13 +477,13 @@ int Mac80211PktDescriptor::getArraySize(void *object, int field) const
     }
 }
 
-std::string Mac80211PktDescriptor::getFieldAsString(void *object, int field, int i) const
+std::string Mac80211PktDescriptor::getFieldValueAsString(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldAsString(object,field,i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldValueAsString(object,field,i);
+        field -= basedesc->getFieldCount();
     }
     Mac80211Pkt *pp = (Mac80211Pkt *)object; (void)pp;
     switch (field) {
@@ -355,18 +493,18 @@ std::string Mac80211PktDescriptor::getFieldAsString(void *object, int field, int
         case 3: return long2string(pp->getInformationDS());
         case 4: return long2string(pp->getSequenceControl());
         case 5: return bool2string(pp->getRetry());
-        case 6: return double2string(pp->getDuration());
+        case 6: return simtime2string(pp->getDuration());
         default: return "";
     }
 }
 
-bool Mac80211PktDescriptor::setFieldAsString(void *object, int field, int i, const char *value) const
+bool Mac80211PktDescriptor::setFieldValueAsString(void *object, int field, int i, const char *value) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->setFieldAsString(object,field,i,value);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->setFieldValueAsString(object,field,i,value);
+        field -= basedesc->getFieldCount();
     }
     Mac80211Pkt *pp = (Mac80211Pkt *)object; (void)pp;
     switch (field) {
@@ -376,35 +514,35 @@ bool Mac80211PktDescriptor::setFieldAsString(void *object, int field, int i, con
         case 3: pp->setInformationDS(string2long(value)); return true;
         case 4: pp->setSequenceControl(string2long(value)); return true;
         case 5: pp->setRetry(string2bool(value)); return true;
-        case 6: pp->setDuration(string2double(value)); return true;
+        case 6: pp->setDuration(string2simtime(value)); return true;
         default: return false;
     }
 }
 
-const char *Mac80211PktDescriptor::getFieldStructName(void *object, int field) const
+const char *Mac80211PktDescriptor::getFieldStructName(int field) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructName(object, field);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructName(field);
+        field -= basedesc->getFieldCount();
     }
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     };
 }
 
-void *Mac80211PktDescriptor::getFieldStructPointer(void *object, int field, int i) const
+void *Mac80211PktDescriptor::getFieldStructValuePointer(void *object, int field, int i) const
 {
-    cClassDescriptor *basedesc = getBaseClassDescriptor();
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     if (basedesc) {
-        if (field < basedesc->getFieldCount(object))
-            return basedesc->getFieldStructPointer(object, field, i);
-        field -= basedesc->getFieldCount(object);
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldStructValuePointer(object, field, i);
+        field -= basedesc->getFieldCount();
     }
     Mac80211Pkt *pp = (Mac80211Pkt *)object; (void)pp;
     switch (field) {
-        default: return NULL;
+        default: return nullptr;
     }
 }
 

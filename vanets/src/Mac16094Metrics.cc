@@ -14,8 +14,9 @@
 // 
 
 #include <Mac16094Metrics.h>
-#include <../../../veins/src/veins/modules/phy/DeciderResult80211.h>
-#include <../../../veins/src/veins/base/phyLayer/PhyToMacControlInfo.h>
+
+#include <../../veins/src/veins/modules/phy/DeciderResult80211.h>
+#include <../../veins/src/veins/base/phyLayer/PhyToMacControlInfo.h>
 using namespace std;
 #define DBG_MAC EV
 Define_Module(Mac16094Metrics); 
@@ -77,7 +78,7 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
 
         sendUp(wsm);
     }
-    else if (dest == LAddress::L2BROADCAST) {
+    else if (dest == LAddress::L2BROADCAST()) {
 
         cout<<setiosflags(ios::fixed)<<setprecision(16);
 
@@ -121,7 +122,7 @@ void Mac16094Metrics::handleLowerControl(cMessage* message){
         //don't set the chan to idle. the PHY layer decides, not us.
 
         if (guardActive()) {
-            opp_error("We shouldnt have sent a packet in guard!");
+            throw cRuntimeError("We shouldnt have sent a packet in guard!");
         }
     }
     else if (message->getKind() == Mac80211pToPhy11pInterface::CHANNEL_BUSY) {
