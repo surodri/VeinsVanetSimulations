@@ -1,0 +1,148 @@
+
+
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.net.xml LowDensityScenario.net.xml
+
+%prerun-command: cp ../../../src/erlangen.poly.xml erlangen.poly.xml
+
+%prerun-command: cp ../../../src/config.xml config.xml
+
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.sumo.cfg LowDensityScenario.sumo.cfg
+
+%prerun-command: mkdir singlechannel
+
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.launchd.xml LowDensityScenario.launchd.xml
+
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.rou.xml LowDensityScenario.rou.xml
+
+%prerun-command: cp -r -v ../../../src/omnetpp.ini omnetpp.ini
+
+
+%file:package.ned
+package vanets.tests.work.LowDensity_Configuration;
+@namespace(LowDensity_Configuration);
+
+%file:test.ned
+package vanets.tests.work.LowDensity_Configuration;
+
+simple Test
+{
+	@isNetwork(true);
+}
+
+%includes:
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+#include <TestConfiguration.h>
+
+%file: TestConfiguration.h
+#ifndef __TESTCONFIGURATION_H
+#define __TESTCONFIGURATIONh_H
+using namespace std;
+
+class TestConfiguration 
+{
+	public:
+		void launchdFileShouldCallLowDensityScenarioRouSumoFiles(string fileName){
+			testHelperPrintsContentsOfFileToUseContains(fileName);	
+		}
+
+		void rouFileShouldHaveLowDensityOf137(string fileName){
+			testHelperPrintsContentsOfFileToUseContains(fileName); 
+		}
+	
+		void netFileShouldCallLowDensityScenarioNetFile(string fileName){
+			testHelperPrintsContentsOfFileToUseContains(fileName);
+		}
+
+		void sumoCfgFileShouldUseLowDensityScenarioNetAndRouFile( string fileName){
+			testHelperPrintsContentsOfFileToUseContains(fileName);
+		}	
+
+		void testHelperPrintsContentsOfFileToUseContains(std::string fileName){
+			
+			const char *fileNameConstChar = fileName.c_str();
+			ifstream configFile (fileNameConstChar); 
+			if(configFile.is_open()){
+        			for(std::string line; getline(configFile, line);){
+					std::cout<<line<<std::endl;
+				}
+			}
+		}
+};
+#endif
+
+
+%activity:
+
+TestConfiguration *test = new TestConfiguration(); 
+
+test->rouFileShouldHaveLowDensityOf137("LowDensityScenario.rou.xml");
+
+test->launchdFileShouldCallLowDensityScenarioRouSumoFiles("LowDensityScenario.launchd.xml");
+
+test->netFileShouldCallLowDensityScenarioNetFile("LowDensityScenario.net.xml");
+
+test->sumoCfgFileShouldUseLowDensityScenarioNetAndRouFile("LowDensityScenario.sumo.cfg"); 
+
+ofstream outPutFile("testFileForPrinter.xml");
+outPutFile << "writingToFile" << endl;
+outPutFile.close();
+test->testHelperPrintsContentsOfFileToUseContains("testFileForPrinter.xml");
+
+%contains:stdout
+number="137"
+
+%contains:stdout
+carFollowing-Krauss
+
+%contains:stdout
+accel="2.6"
+
+%contains:stdout
+minGap="2.5"
+
+%contains:stdout
+maxSpeed="33.33"
+
+%contains:stdout
+<copy file="LowDensityScenario.rou.xml" />
+
+%contains:stdout
+<copy file="LowDensityScenario.net.xml" />
+
+%contains:stdout
+<output-file value="LowDensityScenario.net.xml"/>
+
+%contains:stdout
+<copy file="LowDensityScenario.sumo.cfg" type="config" />
+
+%contains:stdout
+<net-file value="LowDensityScenario.net.xml"/>
+
+%contains:stdout
+writingToFile
+
+%contains: omnetpp.ini
+[Config SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5]
+description = "BeaconLength 400Bytes, ServicePacketLength 1000Bytes, QueueSize 5"
+**.debug = false
+**.coreDebug = false
+*.annotations.draw = false
+*.**.nic.mac1609_4.queueSize = 5
+*.**.nic.mac1609_4.useServiceChannel = false
+*.**.appl.headerLength = 256bit
+
+*.**.appl.beaconLengthBits = 3200bit
+
+*.**.appl.dataLengthBits = 8000bit
+
+*.node[*].appl.sendBeacons = true
+*.rsu[*].appl.sendBeacons = false
+*.metricsApplication[*].appl.sendBeacons = false
+
+*.**.appl.dataOnSch = false
+
+%contains: omnetpp.ini
+*.manager.launchConfig = xmldoc("singlechannel/LowDensityScenario.launchd.xml")

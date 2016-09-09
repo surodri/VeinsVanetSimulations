@@ -171,7 +171,6 @@ simple Test{
                                               
 %activity:
 
-cout<< "WHHAT LKDSJFLSKDJFL:S?"<<endl; 
 ResultsUtilTest* resultsUtilTest = new ResultsUtilTest(); 
 
 resultsUtilTest -> testTotalAvgReturnsZeroWhenThroughputPpsIsZero();
