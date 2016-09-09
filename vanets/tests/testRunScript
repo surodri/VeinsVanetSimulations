@@ -1,0 +1,12 @@
+#! /bin/sh 
+
+CURRENT_FULLPATH=$(pwd)
+TESTFILES=*.test
+BASENAME_OF_TESTFILE=
+
+for filename in $TESTFILES; do 
+	 BASENAME_OF_TESTFILE=`find . '-name' "${filename%.test}" -type d | sed "s|^\.||"`
+	 
+	 BASENAME_OF_TESTFILE="$CURRENT_FULLPATH$BASENAME_OF_TESTFILE"	
+done
+echo $BASENAME_OF_TESTFILE

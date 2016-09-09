@@ -1,0 +1,203 @@
+%description:
+Metrics should record throughput (numberOfPackets/sec) 
+in scalar file via signal 
+when RSUScenario(road side unit) with Metrics
+simulation finishes
+
+
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.net.xml LowDensityScenario.net.xml
+
+%prerun-command: cp ../../../src/erlangen.poly.xml erlangen.poly.xml
+
+%prerun-command: cp ../../../src/config.xml config.xml
+
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.sumo.cfg LowDensityScenario.sumo.cfg
+
+%prerun-command: mkdir singlechannel
+
+%prerun-command: cp -r -v ../../../src/singlechannel/LowDensityScenario.launchd.xml LowDensityScenario.launchd.xml
+
+%prerun-command: cp ../../../src/singlechannel/LowDensityScenario.rou.xml LowDensityScenario.rou.xml
+
+%file: package.ned
+package vanets.tests.work.Metrics_NedScalar;
+@namespace(Metrics_NedScalar);
+
+%file: test.ned
+package vanets.tests.work.Metrics_NedScalar;
+
+simple Test
+{
+	@isNetwork(true);
+}
+
+%inifile: omnetpp.ini
+[General]
+
+########## Testing parameters
+
+network = vanets.src.RSUScenario
+**.scalar-recording = true
+**.throughput.scalar-recording = true
+sim-time-limit = 40s
+cmdenv-interactive=true
+
+##########################################################
+cmdenv-express-mode = true
+cmdenv-autoflush = true
+cmdenv-status-frequency = 10000000s
+
+#tkenv-default-config = debug
+#tkenv-default-run = 1
+tkenv-image-path = bitmaps
+ned-path = .:../../../src/:../../../../inet/src/:../../../../veins/src/veins/
+
+##########################################################
+#            Simulation parameters                       #
+##########################################################
+debug-on-errors = true
+print-undisposed = false
+
+
+
+**.vector-recording = true
+
+**.debug = false
+**.coreDebug = false
+
+*.playgroundSizeX = 2500m
+*.playgroundSizeY = 2500m
+*.playgroundSizeZ = 50m
+
+##########################################################
+# Annotation parameters                                  #
+##########################################################
+*.annotations.draw = false
+
+##########################################################
+# Obstacle parameters                                    #
+##########################################################
+*.obstacles.debug = false
+
+##########################################################
+#WorldUtilityParameters									 #
+##########################################################
+*.world.useTorus = false
+*.world.use2D = false
+
+##########################################################
+#TraCIScenarioManager Parameters						 #
+##########################################################
+*.manager.updateInterval = 0.1s
+*.manager.host = "localhost"
+*.manager.port = 9999
+*.manager.moduleType = "vanets.src.CarWithMetrics"
+*.manager.moduleName = "node"
+*.manager.moduleDisplayString = ""
+*.manager.autoShutdown = true
+*.manager.margin = 25
+*.manager.launchConfig = xmldoc("LowDensityScenario.launchd.xml")
+
+##########################################################
+# RSU SETTINGS											 #
+##########################################################
+*.rsu[0].mobility.x = 2000
+*.rsu[0].mobility.y = 2000
+*.rsu[0].mobility.z = 3
+*.rsu[*].applType = "TraCIDemoRSU11p"
+*.rsu[*].appl.debug = false
+*.rsu[*].appl.headerLength = 256 bit
+*.rsu[*].appl.sendBeacons = false
+*.rsu[*].appl.dataOnSch = false
+*.rsu[*].appl.sendData = true
+*.rsu[*].appl.beaconInterval = 1s
+*.rsu[*].appl.beaconPriority = 3
+*.rsu[*].appl.dataPriority = 2
+*.rsu[*].appl.maxOffset = 0.005s
+
+*.metricsApplication.mobility.x = 1000
+*.metricsApplication.mobility.y = 1000
+*.metricsApplication.mobility.z = 3
+*.metricsApplication.applType = "TraCIDemoRSU11p"
+*.metricsApplication.appl.debug = false
+*.metricsApplication.appl.headerLength = 256 bit
+*.metricsApplication.appl.sendBeacons = false
+*.metricsApplication.appl.dataOnSch = false
+*.metricsApplicaiton.appl.sendData = true
+*.metricsApplication.appl.beaconInterval = 1s
+*.metricsApplication.appl.beaconPriority = 3
+*.metricsApplication.appl.dataPriority = 2
+*.metricsApplication.appl.maxOffset = 0.005s
+
+##########################################################
+#            11p specific parameters                     #
+#                                                        #
+#                    NIC-Settings                        #
+##########################################################
+*.connectionManager.pMax = 20mW
+*.connectionManager.sat = -89dBm
+*.connectionManager.alpha = 2.0
+*.connectionManager.carrierFrequency = 5.890e9 Hz
+*.connectionManager.sendDirect = true
+
+*.**.nic.mac1609_4.useServiceChannel = false
+
+*.**.nic.mac1609_4.txPower = 20mW
+*.**.nic.mac1609_4.bitrate = 6Mbps
+
+*.**.nic.phy80211p.sensitivity = -89dBm
+*.**.nic.phy80211p.maxTXPower = 10mW
+*.**.nic.phy80211p.useThermalNoise = true
+*.**.nic.phy80211p.thermalNoise = -110dBm
+*.**.nic.phy80211p.decider = xmldoc("config.xml")
+*.**.nic.phy80211p.analogueModels = xmldoc("config.xml")
+*.**.nic.phy80211p.usePropagationDelay = true
+
+##########################################################
+#                    WaveAppLayer                        #
+##########################################################
+*.node[*].applType = "TraCIDemo11p"
+*.node[*].appl.debug = false
+*.node[*].appl.headerLength = 256 bit
+*.node[*].appl.sendBeacons = false
+*.node[*].appl.dataOnSch = false
+*.node[*].appl.sendData = true
+*.node[*].appl.beaconInterval = 1s
+*.node[*].appl.beaconPriority = 3
+*.node[*].appl.dataPriority = 2
+*.node[*].appl.maxOffset = 0.005s
+
+##########################################################
+#                      Mobility                          #
+##########################################################
+*.node[*].veinsmobilityType = "org.car2x.veins.modules.mobility.traci.TraCIMobility"
+*.node[*].mobilityType = "TraCIMobility"
+*.node[*].mobilityType.debug = true
+*.node[*].veinsmobilityType.debug = true
+*.node[*].veinsmobility.x = 0
+*.node[*].veinsmobility.y = 0
+*.node[*].veinsmobility.z = 1.895
+*.node[*0].veinsmobility.accidentCount = 1
+*.node[*0].veinsmobility.accidentStart = 10s
+*.node[*0].veinsmobility.accidentDuration = 30s
+
+[Config nodebug]
+description = "default settings"
+**.debug = false
+**.coreDebug = false
+*.annotations.draw = false
+
+[Config debug]
+description = "(very slow!) draw and print additional debug information"
+**.debug = true
+**.coreDebug = true
+*.annotations.draw = true
+
+
+%contains: results/General-0.sca
+packetsDelivered
+%contains: results/General-0.sca
+throughput
+%contains: results/General-0.sca
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:mean
+

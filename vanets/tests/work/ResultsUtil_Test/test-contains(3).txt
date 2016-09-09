@@ -1,0 +1,1 @@
+testTotalAvgPrintsErrorWhenTypeNotInFile	ERROR: Metric type not found in file: randomType

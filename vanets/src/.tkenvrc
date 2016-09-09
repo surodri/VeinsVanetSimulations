@@ -1,0 +1,4 @@
+# Partial OMNeT++/Tkenv config file -- see $HOME/.tkenvrc as well
+config default-configname	{SingleCH_Safety_B_100Bytes_Q_100}
+config default-runnumber	{0}
+

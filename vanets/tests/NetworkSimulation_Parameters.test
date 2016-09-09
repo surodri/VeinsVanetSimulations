@@ -1,0 +1,34 @@
+%description: 
+Omnetpp.ini file should have network paramaters set to 
+the replicated research simulation parameters
+
+
+%prerun-command: cp -f -v ../../../src/omnetpp.ini omnetpp.ini
+
+%file: package.ned
+package vanets.tests.work.NetworkSimulation_Parameters;
+@namespace(NetworkSimulation_Parameters);
+
+%file: test.ned
+package vanets.tests.work.NetworkSimulation_Parameters;
+
+simple Test
+{
+	@isNetwork(true); 
+}
+
+
+%activity:
+std::cout<<"WHAT UP " <<std::endl; 
+
+%contains:omnetpp.ini
+*.connectionManager.carrierFrequency = 5.890e9 Hz
+
+%contains:omnetpp.ini
+*.**.nic.mac1609_4.bitrate = 6Mbps
+
+%contains:omnetpp.ini
+*.**.nic.phy80211p.maxTXPower = 100mW
+
+%contains:omnetpp.ini
+*.**.nic.phy80211p.sensitivity = -89dBm

@@ -1,0 +1,46 @@
+----------------------------------------------------------------------
+
+
+Tcl error: moduleinspector.cc#499: bad window path name ""
+    while executing
+"winfo toplevel [focus]"
+    invoked from within
+"if [catch {
+       opp_displaystring $dispstr parse tags $submodptr 1
+
+       # scale (x,y)
+       if {$scaling != ""} {
+           set x [expr $scali..."
+    (procedure "ModuleInspector:drawSubmodule" line 20)
+    invoked from within
+"ModuleInspector:drawSubmodule .network.c ptr0x3c33ce0 150 140 {rsu[0]} {p=150, 140;b=10, 10, oval} {} 0"
+
+
+----------------------------------------------------------------------
+
+
+Tcl error: moduleinspector.cc#631: ptr0x2ef98f0 not found
+    while executing
+"error "$tag not found""
+    (procedure "ModuleInspector:getSubmodCoords" line 4)
+    invoked from within
+"ModuleInspector:getSubmodCoords $c $modptr"
+    (procedure "ModuleInspector:drawNextEventMarker" line 2)
+    invoked from within
+"ModuleInspector:drawNextEventMarker .inspector2.c ptr0x2ef98f0 2"
+
+
+----------------------------------------------------------------------
+
+
+Tcl error: watchinspector.cc#62: can't read "insp": no such variable
+    while executing
+"inspector:bindSideButtons $insp"
+    (procedure "createWatchViewer" line 7)
+    invoked from within
+"createWatchViewer $insp.main"
+    (procedure "createWatchInspector" line 7)
+    invoked from within
+"createWatchInspector .inspector1 {}"
+
+
