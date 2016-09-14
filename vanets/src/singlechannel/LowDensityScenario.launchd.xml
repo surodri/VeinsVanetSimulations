@@ -2,7 +2,7 @@
 <!-- debug config -->
 	
 <launch>
-	<basedir path="/home/srodriguez/Documents/Research/VeinsVanetSimulations/vanets/src/singlechannel/" />
+	<basedir path="/Users/susanarodriguez/Documents/Thesis/VeinsVanetSimulations/vanets/src/singlechannel/" />
 	<copy file="LowDensityScenario.net.xml" />
 	<copy file="LowDensityScenario.rou.xml" />
 	<copy file="erlangen.poly.xml" />
