@@ -1,0 +1,71 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2014 Andras Varga, OpenSim Ltd.
+Version: 4.6, build: 141202-f785492, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+Setting up Cmdenv...
+Loading NED files from .: 2
+
+Preparing for running configuration General, run #0...
+Scenario: $repetition=0
+Assigned runID=General-0-20160808-14:05:51-8844
+Setting up network `Test'...
+Initializing...
+Initializing module Test, stage 0
+
+Running simulation...
+** Event #1  T=0   Test (Test, id=1)
+WHHAT LKDSJFLSKDJFL:S?
+ZeroThroughput.sca
+Opened File: ZeroThroughput.sca
+testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: 0
+ZeroAndNonzeroThroughput.sca
+Opened File: ZeroAndNonzeroThroughput.sca
+testTotalAvgIsNonzeroWhenOneOfTwoThroughputsIsZero	throughputTotalAvg: 1.25
+TypeNotInFile.sca
+Opened File: TypeNotInFile.sca
+Getting Rid of warning for AVGRESULT0
+Opened File: B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMbps	TotalAvg: 0.285623
+Opened File: B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMetricMac	TotalAvg: 82.5842
+Opened File: B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMetricMac:last	TotalAvg: 82.5842
+throughputMbps TotalAvg: 82.5842
+throughputMetricMac TotalAvg: 82.5842
+throughputMetricMac:last TotalAvg: 82.5842
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca
+throughputMbps TotalAvg: 0.283113
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca
+throughputMetricMac TotalAvg: 81.865
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_2-0.sca
+throughputMetricMac:last TotalAvg: 81.865
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca
+throughputMbps TotalAvg: 0.283113
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca
+throughputMetricMac TotalAvg: 81.865
+Opened File: SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca
+throughputMetricMac:last TotalAvg: 81.865
+Opened File: SingleCH_Safety_B_100Bytes_Q_100-0.sca
+throughputMbps TotalAvg: 0.0868088
+Opened File: SingleCH_Safety_B_100Bytes_Q_100-0.sca
+throughputMetricMac TotalAvg: 82.1931
+Opened File: SingleCH_Safety_B_100Bytes_Q_100-0.sca
+throughputMetricMac:last TotalAvg: 82.1931
+Opened File: SingleCH_Safety_B_100Bytes_Q_1-0.sca
+throughputMbps TotalAvg: 0
+Opened File: SingleCH_Safety_B_100Bytes_Q_1-0.sca
+throughputMetricMac TotalAvg: 0
+Opened File: SingleCH_Safety_B_100Bytes_Q_1-0.sca
+throughputMetricMac:last TotalAvg: 0
+Opened File: SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMbps TotalAvg: 0.272491
+Opened File: SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMetricMac TotalAvg: 78.7898
+Opened File: SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca
+throughputMetricMac:last TotalAvg: 78.7898
+
+<!> No more events -- simulation ended at event #2, t=0.
+
+
+Calling finish() at end of Run #0...
+
+End.

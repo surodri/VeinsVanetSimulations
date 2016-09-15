@@ -1,0 +1,1 @@
+testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: 0

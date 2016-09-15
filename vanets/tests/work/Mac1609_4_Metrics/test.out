@@ -1,0 +1,32 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2014 Andras Varga, OpenSim Ltd.
+Version: 4.6, build: 141202-f785492, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+Setting up Cmdenv...
+Loading NED files from .: 2
+
+Preparing for running configuration General, run #0...
+Scenario: $repetition=0
+Assigned runID=General-0-20160808-14:05:49-8824
+Setting up network `Test'...
+Initializing...
+Initializing module Test, stage 0
+
+Running simulation...
+** Event #1  T=0   Test (Test, id=1)
+throughputPps: 0.0000000000000000
+throughputPps: 0.0000000000000000
+throughputPps: 0.5000000000000000
+throughputMbps: 0.0000001000000000
+throughputMbps: 0.6000000000000000
+throughputMbps: 0.2000000000000000
+throughputMbps: 458494841882057920.0000000000000000
+
+<!> No more events -- simulation ended at event #2, t=0.
+
+
+Calling finish() at end of Run #0...
+undisposed object: (cPacket) .Test. -- check module destructor
+undisposed object: (Metrics)  -- check module destructor
+undisposed object: (Mac16094MetricsTest)  -- check module destructor
+
+End.

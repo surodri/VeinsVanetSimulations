@@ -10,7 +10,7 @@ Getting total avg from result files
 
 %prerun-command: cp -r -v ../../../src/results/SlidesParams_B_400Bytes_P_1000Bytes_Q_5-0.sca .
 
-%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_5-0.sca . 
+%prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_100-0.sca . 
 
 %prerun-command: cp -r -v ../../../src/results/SingleCH_Safety_B_100Bytes_Q_2-0.sca . 
 
@@ -59,6 +59,8 @@ class ResultsUtilTest : public ResultsUtil{
 		
 			cerr<< "testTotalAvgPrintsErrorWhenTypeNotInFile	"; 
 			double avgResult = ResultsUtil::totalAvg("TypeNotInFile.sca", "randomType:");  
+			cout<< "Getting Rid of warning for AVGRESULT" << avgResult << endl;
+
 		}
 
 		void createTestFile(const char* fileName, vector<string> & results){
@@ -93,17 +95,17 @@ class ResultsUtilTest : public ResultsUtil{
 
 		void getTotalAvgFromLowDensitySingleChSafetyQ5(){
 			string type = "throughputMbps"; 
-			double avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
+			double avgResult;// = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);
 
 			cout<< type << " TotalAvg: "<< avgResult << endl;
 	
 			type = "throughputMetricMac";
-			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+//			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
 
 			cout << type << " TotalAvg: " << avgResult << endl; 				
 					
 			type = "throughputMetricMac:last";
-			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
+//			avgResult = ResultsUtil::totalAvg("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_5-0.sca", type);  
 
 			cout << type << " TotalAvg: " << avgResult << endl; 			
 		}
@@ -118,8 +120,8 @@ class ResultsUtilTest : public ResultsUtil{
 			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_400Bytes_P_1000Bytes_Q_1-0.sca"); 
 		}
 
-		void getTotalAvgFromLowDensitySingleChSafetyQ5B100Bytes(){
-			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_100Bytes_Q_5-0.sca"); 
+		void getTotalAvgFromLowDensitySingleChSafetyQ100B100Bytes(){
+			getThroughputTotalAvgsFromFile("SingleCH_Safety_B_100Bytes_Q_100-0.sca"); 
 		}
 
 		void getTotalAvgFromLowDensitySingleChSafetyQ2B100Bytes(){
@@ -185,14 +187,13 @@ resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ2();
  
 resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ1();
 
-resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ5B100Bytes(); 
+resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ100B100Bytes(); 
 
-resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ2B100Bytes(); 
+//resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ2B100Bytes(); 
 
 resultsUtilTest -> getTotalAvgFromLowDensitySingleChSafetyQ1B100Bytes(); 
 
 resultsUtilTest -> getTotalAvgFromSlidesParamsB400BytesP1000BytesQ5();  
-
 
 %contains: stdout
 testTotalAvgReturnsZeroWhenThroughputPpsIsZero	throughputTotalAvg: 0
