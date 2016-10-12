@@ -1,0 +1,18 @@
+class DataParser():
+		
+	def parseValue(self, fileNames, metric):
+		
+		outputLines = []
+		for fileName in fileNames:
+			file = open(fileName, 'r')
+			lineNum = 0
+			for line in file: 
+				value = line.split(metric, 1)[1]
+				outputLines[linenNum] = value
+				print outputLines[lineNum]
+				lineNum = lineNum+1
+
+dataParser = DataParser()
+
+files = ['DroppedPacketsInMac_B_100_Q_2.txt', 'DroppedPacketsInMac_B_100_Q_5.txt']
+dataParser.parseValue(files, 'DroppedPacketsInMac')

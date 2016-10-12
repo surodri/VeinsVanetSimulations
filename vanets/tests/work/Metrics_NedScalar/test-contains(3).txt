@@ -1,1 +1,0 @@
-scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:mean

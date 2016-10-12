@@ -1,1 +1,0 @@
-*.**.nic.phy80211p.sensitivity = -89dBm

@@ -1,1 +1,0 @@
-*.connectionManager.carrierFrequency = 5.890e9 Hz

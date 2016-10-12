@@ -1,4 +1,0 @@
-testTotalAvgPrintsErrorWhenTypeNotInFile	ERROR: Metric type not found in file: randomType:
-ERROR: Metric type not found in file: throughputMbps
-ERROR: Metric type not found in file: throughputMetricMac
-ERROR: Metric type not found in file: throughputMetricMac:last

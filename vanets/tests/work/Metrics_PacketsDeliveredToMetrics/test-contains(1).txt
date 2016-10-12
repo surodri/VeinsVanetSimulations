@@ -1,1 +1,0 @@
-packetsDelivered: 6
