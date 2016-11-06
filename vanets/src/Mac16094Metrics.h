@@ -32,6 +32,8 @@ public:
     simsignal_t throughputSignalMac;
     double throughputControlMbps;
     double throughputMbpsSignal;
+    double receivedFramesLowerMsg;
+    double receivedBitsLowerPackets;
 
 protected:
     void computeThroughput(Metrics*, double, double);

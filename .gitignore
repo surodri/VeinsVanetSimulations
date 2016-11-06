@@ -7,14 +7,28 @@
 
 
 vanets/.oppbuildspec
-vanets/.cProject
+vanets/.cproject
+vanets/.project
+vanets/.csettings
+vanets/.settings
 vanets/Makefile
 vanets/src/.tkenvrs
+vanets/src/.tkenvlog
 vanets/src/.tkenvrc
 vanets/src/Makefile
+vanets/src/.cmdenv-log
 
 vanets/out/
 vanets/tests/work/
 vanets/tests/libgtest.a
 veins/.csettings/
 veins/.settings/
+**/.cproject
+veins/.nedexclusions
+veins/.nedfolders
+veins/.oppbuildspec
+*/.oppfeatures
+*/.project
+.DS_Store
+veins/src/veins/modules/.DS_Store
+veins/src/veins/modules/messages/.DS_Store

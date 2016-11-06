@@ -31,6 +31,9 @@ void Mac16094Metrics::initialize(int i){
     throughputMetricMac = 0;
     throughputMbps = 0;
     throughputControlMbps = 0;
+    receivedFramesLowerMsg = 0;
+    receivedBitsLowerPackets = 0;
+
 
     throughputSignalMac = registerSignal("throughputSignalMac");
 
@@ -47,6 +50,8 @@ void Mac16094Metrics::finish(){
     recordScalar("throughputMetricMac", throughputMetricMac);
     recordScalar("throughputMbps", throughputMbps);
     recordScalar("throughputControlMbps", throughputControlMbps);
+    recordScalar("ReceivedFramesLowerMsg",receivedFramesLowerMsg);
+    recordScalar("ReceivedBitsLowerPackets",receivedBitsLowerPackets);
     Mac1609_4::finish();
 }
 
@@ -54,7 +59,12 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
     Mac80211Pkt* macPkt = static_cast<Mac80211Pkt*>(message);
     ASSERT(macPkt);
 
+
+
     WaveShortMessage*  wsm =  dynamic_cast<WaveShortMessage*>(macPkt->decapsulate());
+    receivedFramesLowerMsg++;
+    double tempBitLength = (wsm->getBitLength())/1000000;
+    receivedBitsLowerPackets= receivedBitsLowerPackets + tempBitLength;
 
     //pass information about received frame to the upper layers
     DeciderResult80211 *macRes = dynamic_cast<DeciderResult80211 *>(PhyToMacControlInfo::getDeciderResult(message));
