@@ -5,7 +5,8 @@
 .metadata/.metadata
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
-
+vanets/.nedexclusions
+vanets/.oppfeaturestate
 vanets/.oppbuildspec
 vanets/.cproject
 vanets/.project
@@ -17,8 +18,8 @@ vanets/src/.tkenvlog
 vanets/src/.tkenvrc
 vanets/src/Makefile
 vanets/src/.cmdenv-log
+vanets/out/gcc-debug
 
-vanets/out/
 vanets/tests/work/
 vanets/tests/libgtest.a
 veins/.csettings/
