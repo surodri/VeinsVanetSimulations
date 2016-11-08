@@ -19,6 +19,7 @@ vanets/src/.tkenvrc
 vanets/src/Makefile
 vanets/src/.cmdenv-log
 vanets/out/gcc-debug
+vanets/.metadata
 
 vanets/tests/work/
 vanets/tests/libgtest.a

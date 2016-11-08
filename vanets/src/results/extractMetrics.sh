@@ -6,9 +6,13 @@ declare -a arr=("SentPackets"
 		"SNIRLostPackets"
 		"RXTXLostPackets"
 		"TotalLostPackets"
-		"DroppedPacketsInMac")
+		"DroppedPacketsInMac"
+		"receivedFramesLowerMsg"
+		"receivedBitsLowerPackets"
+		"receivedBits"
+		"packetsNotForMe")
 
-declare -a sizes=("1") 
+declare -a sizes=("5") 
 
 for metric in "${arr[@]}"
 do

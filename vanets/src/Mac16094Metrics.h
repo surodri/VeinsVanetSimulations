@@ -17,7 +17,7 @@
 #define MAC16094METRICS_H_
 
 
-#include <../../veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h>
+#include "../../veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h"
 //#include <Mac1609_4.h>
 
 #include <Metrics.h>
@@ -32,8 +32,11 @@ public:
     simsignal_t throughputSignalMac;
     double throughputControlMbps;
     double throughputMbpsSignal;
-    double receivedFramesLowerMsg;
-    double receivedBitsLowerPackets;
+    int receivedFramesLowerMsg;
+    int receivedBitsLowerPackets;
+    int receivedBitsLowerWsm;
+    int packetsNotForMe;
+    double statsReceivedBits;
 
 protected:
     void computeThroughput(Metrics*, double, double);

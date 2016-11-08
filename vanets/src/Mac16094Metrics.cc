@@ -5,7 +5,6 @@
 // (at your option) any later version.
 // 
 // This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 // 
@@ -13,7 +12,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include <Mac16094Metrics.h>
+#include "Mac16094Metrics.h"
 
 #include <../../veins/src/veins/modules/phy/DeciderResult80211.h>
 #include <../../veins/src/veins/base/phyLayer/PhyToMacControlInfo.h>
@@ -33,6 +32,11 @@ void Mac16094Metrics::initialize(int i){
     throughputControlMbps = 0;
     receivedFramesLowerMsg = 0;
     receivedBitsLowerPackets = 0;
+    receivedBitsLowerWsm = 0;
+    packetsNotForMe = 0;
+    statsReceivedBits = 0 ;
+
+
 
 
     throughputSignalMac = registerSignal("throughputSignalMac");
@@ -50,12 +54,16 @@ void Mac16094Metrics::finish(){
     recordScalar("throughputMetricMac", throughputMetricMac);
     recordScalar("throughputMbps", throughputMbps);
     recordScalar("throughputControlMbps", throughputControlMbps);
-    recordScalar("ReceivedFramesLowerMsg",receivedFramesLowerMsg);
-    recordScalar("ReceivedBitsLowerPackets",receivedBitsLowerPackets);
+    recordScalar("receivedFramesLowerMsg",receivedFramesLowerMsg);
+    recordScalar("receivedBitsLowerPackets",receivedBitsLowerPackets);
+    recordScalar("receivedBitsLoserWsm", receivedBitsLowerPackets);
+    recordScalar("packetsNotForMe", packetsNotForMe);
+    recordScalar("receivedTotalBits", statsReceivedBits);
     Mac1609_4::finish();
 }
 
 void Mac16094Metrics::handleLowerMsg(cMessage* message){
+
     Mac80211Pkt* macPkt = static_cast<Mac80211Pkt*>(message);
     ASSERT(macPkt);
 
@@ -63,8 +71,14 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
 
     WaveShortMessage*  wsm =  dynamic_cast<WaveShortMessage*>(macPkt->decapsulate());
     receivedFramesLowerMsg++;
-    double tempBitLength = (wsm->getBitLength())/1000000;
-    receivedBitsLowerPackets= receivedBitsLowerPackets + tempBitLength;
+
+
+    double macPktBitLength = (macPkt->getBitLength());
+    receivedBitsLowerPackets= receivedBitsLowerPackets + macPktBitLength;
+
+
+    double tempBitLength = (wsm->getWsmLength());
+    receivedBitsLowerWsm= receivedBitsLowerWsm + tempBitLength;
 
     //pass information about received frame to the upper layers
     DeciderResult80211 *macRes = dynamic_cast<DeciderResult80211 *>(PhyToMacControlInfo::getDeciderResult(message));
@@ -97,7 +111,7 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
         double time = simTime().dbl();
 
         double messageBits = (double)wsm->getBitLength();
-
+        statsReceivedBits = statsReceivedBits + messageBits;
         computeThroughput(metrics, statsReceivedBroadcastsDbl,time);
         computeThroughputMbps(metrics, messageBits, statsMbpsReceived, time);
 
@@ -105,6 +119,7 @@ void Mac16094Metrics::handleLowerMsg(cMessage* message){
     }
     else {
         DBG_MAC << "Packet not for me, deleting..." << std::endl;
+        packetsNotForMe++;
         delete wsm;
     }
     delete macPkt;
@@ -182,6 +197,7 @@ void Mac16094Metrics::computeThroughput(Metrics* metrics, double receivedPackets
 
 void Mac16094Metrics::computeThroughputMbps(Metrics* metrics, double messageBits, double currentMbs, double currentTime){
   //cout<<setiosflags(ios::fixed)<<setprecision(16);
+
 
   double messageMbs = (messageBits)/1000000;
   statsMbpsReceived = currentMbs + messageMbs;

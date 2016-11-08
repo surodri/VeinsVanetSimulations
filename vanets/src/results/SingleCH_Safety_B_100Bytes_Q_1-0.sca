@@ -1,14 +1,14 @@
 version 2
-run SingleCH_Safety_B_100Bytes_Q_1-0-20161012-13:16:54-19764
+run SingleCH_Safety_B_100Bytes_Q_1-0-20161107-12:28:17-23566
 attr configname SingleCH_Safety_B_100Bytes_Q_1
-attr datetime 20161012-13:16:54
+attr datetime 20161107-12:28:17
 attr experiment SingleCH_Safety_B_100Bytes_Q_1
 attr inifile omnetpp.ini
 attr iterationvars $0=1
 attr iterationvars2 "$0=1, $repetition=0"
 attr measurement $0=1
 attr network RSUScenario
-attr processid 19764
+attr processid 23566
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -109,6 +109,11 @@ scalar RSUScenario.node[1].nic.phy80211p 	busyTime 	0.034195050301815
 scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac 	144.07617912958
 scalar RSUScenario.node[1].nic.mac1609_4 	throughputMbps 	0.15217021163099
 scalar RSUScenario.node[1].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedFramesLowerMsg 	28808
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBits 	30426400
 scalar RSUScenario.node[1].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[1].nic.mac1609_4 	ReceivedBroadcasts 	28808
 scalar RSUScenario.node[1].nic.mac1609_4 	SentPackets 	1989
@@ -144,6 +149,11 @@ scalar RSUScenario.node[3].nic.phy80211p 	busyTime 	0.035290317212693
 scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac 	143.98115528225
 scalar RSUScenario.node[3].nic.mac1609_4 	throughputMbps 	0.15206986644821
 scalar RSUScenario.node[3].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedFramesLowerMsg 	28789
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBits 	30406336
 scalar RSUScenario.node[3].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[3].nic.mac1609_4 	ReceivedBroadcasts 	28789
 scalar RSUScenario.node[3].nic.mac1609_4 	SentPackets 	1924
@@ -179,6 +189,11 @@ scalar RSUScenario.node[4].nic.phy80211p 	busyTime 	0.034836755625331
 scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac 	143.82611635221
 scalar RSUScenario.node[4].nic.mac1609_4 	throughputMbps 	0.15190614533808
 scalar RSUScenario.node[4].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedFramesLowerMsg 	28758
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBits 	30373600
 scalar RSUScenario.node[4].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[4].nic.mac1609_4 	ReceivedBroadcasts 	28758
 scalar RSUScenario.node[4].nic.mac1609_4 	SentPackets 	1912
@@ -214,6 +229,11 @@ scalar RSUScenario.node[0].nic.phy80211p 	busyTime 	0.0066609704852427
 scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac 	51.675185436927
 scalar RSUScenario.node[0].nic.mac1609_4 	throughputMbps 	0.054594851171914
 scalar RSUScenario.node[0].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedFramesLowerMsg 	5820
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBits 	6148832
 scalar RSUScenario.node[0].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[0].nic.mac1609_4 	ReceivedBroadcasts 	5820
 scalar RSUScenario.node[0].nic.mac1609_4 	SentPackets 	2000
@@ -249,6 +269,11 @@ scalar RSUScenario.node[5].nic.phy80211p 	busyTime 	0.035871834512796
 scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac 	140.11018275415
 scalar RSUScenario.node[5].nic.mac1609_4 	throughputMbps 	0.14798211945845
 scalar RSUScenario.node[5].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedFramesLowerMsg 	28015
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBits 	29588992
 scalar RSUScenario.node[5].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[5].nic.mac1609_4 	ReceivedBroadcasts 	28015
 scalar RSUScenario.node[5].nic.mac1609_4 	SentPackets 	1838
@@ -284,6 +309,11 @@ scalar RSUScenario.node[14].nic.phy80211p 	busyTime 	0.048817717601539
 scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac 	102.19150356035
 scalar RSUScenario.node[14].nic.mac1609_4 	throughputMbps 	0.10792431037465
 scalar RSUScenario.node[14].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedFramesLowerMsg 	20433
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBits 	21579264
 scalar RSUScenario.node[14].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[14].nic.mac1609_4 	ReceivedBroadcasts 	20433
 scalar RSUScenario.node[14].nic.mac1609_4 	SentPackets 	1035
@@ -319,6 +349,11 @@ scalar RSUScenario.node[15].nic.phy80211p 	busyTime 	0.04917246031745
 scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac 	100.30018654963
 scalar RSUScenario.node[15].nic.mac1609_4 	throughputMbps 	0.10592707952823
 scalar RSUScenario.node[15].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedFramesLowerMsg 	20055
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBits 	21180096
 scalar RSUScenario.node[15].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[15].nic.mac1609_4 	ReceivedBroadcasts 	20055
 scalar RSUScenario.node[15].nic.mac1609_4 	SentPackets 	1009
@@ -354,6 +389,11 @@ scalar RSUScenario.node[16].nic.phy80211p 	busyTime 	0.049511771894083
 scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac 	98.849822326083
 scalar RSUScenario.node[16].nic.mac1609_4 	throughputMbps 	0.10439549490816
 scalar RSUScenario.node[16].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedFramesLowerMsg 	19765
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBits 	20873856
 scalar RSUScenario.node[16].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[16].nic.mac1609_4 	ReceivedBroadcasts 	19765
 scalar RSUScenario.node[16].nic.mac1609_4 	SentPackets 	983
@@ -389,6 +429,11 @@ scalar RSUScenario.node[17].nic.phy80211p 	busyTime 	0.049895958115171
 scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac 	97.769551037844
 scalar RSUScenario.node[17].nic.mac1609_4 	throughputMbps 	0.10325472842778
 scalar RSUScenario.node[17].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedFramesLowerMsg 	19549
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBits 	20645760
 scalar RSUScenario.node[17].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[17].nic.mac1609_4 	ReceivedBroadcasts 	19549
 scalar RSUScenario.node[17].nic.mac1609_4 	SentPackets 	956
@@ -424,6 +469,11 @@ scalar RSUScenario.node[18].nic.phy80211p 	busyTime 	0.050325350593298
 scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac 	96.274175515268
 scalar RSUScenario.node[18].nic.mac1609_4 	throughputMbps 	0.10167561187594
 scalar RSUScenario.node[18].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedFramesLowerMsg 	19250
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBits 	20330016
 scalar RSUScenario.node[18].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[18].nic.mac1609_4 	ReceivedBroadcasts 	19250
 scalar RSUScenario.node[18].nic.mac1609_4 	SentPackets 	928
@@ -459,6 +509,11 @@ scalar RSUScenario.node[19].nic.phy80211p 	busyTime 	0.050736394176916
 scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac 	93.903580215248
 scalar RSUScenario.node[19].nic.mac1609_4 	throughputMbps 	0.099172263239117
 scalar RSUScenario.node[19].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedFramesLowerMsg 	18776
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBits 	19829472
 scalar RSUScenario.node[19].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[19].nic.mac1609_4 	ReceivedBroadcasts 	18776
 scalar RSUScenario.node[19].nic.mac1609_4 	SentPackets 	894
@@ -494,6 +549,11 @@ scalar RSUScenario.node[20].nic.phy80211p 	busyTime 	0.050402934911223
 scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac 	91.132884446031
 scalar RSUScenario.node[20].nic.mac1609_4 	throughputMbps 	0.096246408506827
 scalar RSUScenario.node[20].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedFramesLowerMsg 	18222
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBits 	19244448
 scalar RSUScenario.node[20].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[20].nic.mac1609_4 	ReceivedBroadcasts 	18222
 scalar RSUScenario.node[20].nic.mac1609_4 	SentPackets 	846
@@ -529,6 +589,11 @@ scalar RSUScenario.node[21].nic.phy80211p 	busyTime 	0.050640613026795
 scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac 	85.366436421029
 scalar RSUScenario.node[21].nic.mac1609_4 	throughputMbps 	0.090157039392433
 scalar RSUScenario.node[21].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedFramesLowerMsg 	17069
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBits 	18026880
 scalar RSUScenario.node[21].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[21].nic.mac1609_4 	ReceivedBroadcasts 	17069
 scalar RSUScenario.node[21].nic.mac1609_4 	SentPackets 	784
@@ -564,6 +629,11 @@ scalar RSUScenario.node[22].nic.phy80211p 	busyTime 	0.058550234741773
 scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac 	52.513186619261
 scalar RSUScenario.node[22].nic.mac1609_4 	throughputMbps 	0.055453925069946
 scalar RSUScenario.node[22].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedFramesLowerMsg 	10500
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBits 	11088000
 scalar RSUScenario.node[22].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[22].nic.mac1609_4 	ReceivedBroadcasts 	10500
 scalar RSUScenario.node[22].nic.mac1609_4 	SentPackets 	426
@@ -599,6 +669,11 @@ scalar RSUScenario.node[23].nic.phy80211p 	busyTime 	0.059524788029916
 scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac 	50.027562452294
 scalar RSUScenario.node[23].nic.mac1609_4 	throughputMbps 	0.052829105949629
 scalar RSUScenario.node[23].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedFramesLowerMsg 	10003
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBits 	10563168
 scalar RSUScenario.node[23].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[23].nic.mac1609_4 	ReceivedBroadcasts 	10003
 scalar RSUScenario.node[23].nic.mac1609_4 	SentPackets 	401
@@ -634,6 +709,11 @@ scalar RSUScenario.node[6].nic.phy80211p 	busyTime 	0.037074059853194
 scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac 	137.86461895137
 scalar RSUScenario.node[6].nic.mac1609_4 	throughputMbps 	0.14560184183224
 scalar RSUScenario.node[6].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedFramesLowerMsg 	27566
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBits 	29113056
 scalar RSUScenario.node[6].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[6].nic.mac1609_4 	ReceivedBroadcasts 	27566
 scalar RSUScenario.node[6].nic.mac1609_4 	SentPackets 	1772
@@ -669,6 +749,11 @@ scalar RSUScenario.node[24].nic.phy80211p 	busyTime 	0.060497919999993
 scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac 	47.396901864321
 scalar RSUScenario.node[24].nic.mac1609_4 	throughputMbps 	0.050051128368729
 scalar RSUScenario.node[24].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedFramesLowerMsg 	9477
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBits 	10007712
 scalar RSUScenario.node[24].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[24].nic.mac1609_4 	ReceivedBroadcasts 	9477
 scalar RSUScenario.node[24].nic.mac1609_4 	SentPackets 	375
@@ -704,6 +789,11 @@ scalar RSUScenario.node[25].nic.phy80211p 	busyTime 	0.061432643678158
 scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac 	44.516178482033
 scalar RSUScenario.node[25].nic.mac1609_4 	throughputMbps 	0.047009084477033
 scalar RSUScenario.node[25].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedFramesLowerMsg 	8901
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBits 	9399456
 scalar RSUScenario.node[25].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[25].nic.mac1609_4 	ReceivedBroadcasts 	8901
 scalar RSUScenario.node[25].nic.mac1609_4 	SentPackets 	348
@@ -739,6 +829,11 @@ scalar RSUScenario.node[26].nic.phy80211p 	busyTime 	0.062238504672898
 scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac 	41.330378491277
 scalar RSUScenario.node[26].nic.mac1609_4 	throughputMbps 	0.043644879686794
 scalar RSUScenario.node[26].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedFramesLowerMsg 	8264
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBits 	8726784
 scalar RSUScenario.node[26].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[26].nic.mac1609_4 	ReceivedBroadcasts 	8264
 scalar RSUScenario.node[26].nic.mac1609_4 	SentPackets 	321
@@ -774,6 +869,11 @@ scalar RSUScenario.node[27].nic.phy80211p 	busyTime 	0.06308429065744
 scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac 	37.214344909023
 scalar RSUScenario.node[27].nic.mac1609_4 	throughputMbps 	0.039298348223933
 scalar RSUScenario.node[27].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedFramesLowerMsg 	7441
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBits 	7857696
 scalar RSUScenario.node[27].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[27].nic.mac1609_4 	ReceivedBroadcasts 	7441
 scalar RSUScenario.node[27].nic.mac1609_4 	SentPackets 	289
@@ -809,6 +909,11 @@ scalar RSUScenario.node[28].nic.phy80211p 	busyTime 	0.064092903225807
 scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac 	31.847997360334
 scalar RSUScenario.node[28].nic.mac1609_4 	throughputMbps 	0.033631485212516
 scalar RSUScenario.node[28].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedFramesLowerMsg 	6368
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBits 	6724608
 scalar RSUScenario.node[28].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[28].nic.mac1609_4 	ReceivedBroadcasts 	6368
 scalar RSUScenario.node[28].nic.mac1609_4 	SentPackets 	248
@@ -844,6 +949,11 @@ scalar RSUScenario.node[29].nic.phy80211p 	busyTime 	0.065120000000001
 scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac 	25.446389848076
 scalar RSUScenario.node[29].nic.mac1609_4 	throughputMbps 	0.026871387679571
 scalar RSUScenario.node[29].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedFramesLowerMsg 	5088
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBits 	5372928
 scalar RSUScenario.node[29].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[29].nic.mac1609_4 	ReceivedBroadcasts 	5088
 scalar RSUScenario.node[29].nic.mac1609_4 	SentPackets 	196
@@ -879,6 +989,11 @@ scalar RSUScenario.node[30].nic.phy80211p 	busyTime 	0.066080000000001
 scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac 	18.299595211391
 scalar RSUScenario.node[30].nic.mac1609_4 	throughputMbps 	0.01932437254323
 scalar RSUScenario.node[30].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedFramesLowerMsg 	3659
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBits 	3863904
 scalar RSUScenario.node[30].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[30].nic.mac1609_4 	ReceivedBroadcasts 	3659
 scalar RSUScenario.node[30].nic.mac1609_4 	SentPackets 	140
@@ -914,6 +1029,11 @@ scalar RSUScenario.node[31].nic.phy80211p 	busyTime 	0.067200000000001
 scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac 	9.1673020004563
 scalar RSUScenario.node[31].nic.mac1609_4 	throughputMbps 	0.0096806709124815
 scalar RSUScenario.node[31].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedFramesLowerMsg 	1833
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBits 	1935648
 scalar RSUScenario.node[31].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[31].nic.mac1609_4 	ReceivedBroadcasts 	1833
 scalar RSUScenario.node[31].nic.mac1609_4 	SentPackets 	70
@@ -949,6 +1069,11 @@ scalar RSUScenario.node[7].nic.phy80211p 	busyTime 	0.038266134897364
 scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac 	136.85936661289
 scalar RSUScenario.node[7].nic.mac1609_4 	throughputMbps 	0.14454029536282
 scalar RSUScenario.node[7].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedFramesLowerMsg 	27365
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBits 	28900800
 scalar RSUScenario.node[7].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[7].nic.mac1609_4 	ReceivedBroadcasts 	27365
 scalar RSUScenario.node[7].nic.mac1609_4 	SentPackets 	1706
@@ -984,6 +1109,11 @@ scalar RSUScenario.node[8].nic.phy80211p 	busyTime 	0.039383380109826
 scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac 	136.61430516521
 scalar RSUScenario.node[8].nic.mac1609_4 	throughputMbps 	0.14428151047407
 scalar RSUScenario.node[8].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedFramesLowerMsg 	27316
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBits 	28849056
 scalar RSUScenario.node[8].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[8].nic.mac1609_4 	ReceivedBroadcasts 	27316
 scalar RSUScenario.node[8].nic.mac1609_4 	SentPackets 	1640
@@ -1019,6 +1149,11 @@ scalar RSUScenario.node[9].nic.phy80211p 	busyTime 	0.039492180546728
 scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac 	133.64355927906
 scalar RSUScenario.node[9].nic.mac1609_4 	throughputMbps 	0.14114440281831
 scalar RSUScenario.node[9].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedFramesLowerMsg 	26722
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBits 	28221792
 scalar RSUScenario.node[9].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[9].nic.mac1609_4 	ReceivedBroadcasts 	26722
 scalar RSUScenario.node[9].nic.mac1609_4 	SentPackets 	1574
@@ -1054,6 +1189,11 @@ scalar RSUScenario.node[10].nic.phy80211p 	busyTime 	0.041288652952888
 scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac 	130.12267522726
 scalar RSUScenario.node[10].nic.mac1609_4 	throughputMbps 	0.13742634925963
 scalar RSUScenario.node[10].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedFramesLowerMsg 	26018
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBits 	27478368
 scalar RSUScenario.node[10].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[10].nic.mac1609_4 	ReceivedBroadcasts 	26018
 scalar RSUScenario.node[10].nic.mac1609_4 	SentPackets 	1508
@@ -1089,6 +1229,11 @@ scalar RSUScenario.node[11].nic.phy80211p 	busyTime 	0.042109015256589
 scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac 	125.97663415544
 scalar RSUScenario.node[11].nic.mac1609_4 	throughputMbps 	0.1330481298878
 scalar RSUScenario.node[11].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedFramesLowerMsg 	25189
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBits 	26602944
 scalar RSUScenario.node[11].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[11].nic.mac1609_4 	ReceivedBroadcasts 	25189
 scalar RSUScenario.node[11].nic.mac1609_4 	SentPackets 	1443
@@ -1124,6 +1269,11 @@ scalar RSUScenario.node[12].nic.phy80211p 	busyTime 	0.047864235727433
 scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac 	106.4917413
 scalar RSUScenario.node[12].nic.mac1609_4 	throughputMbps 	0.1124653613446
 scalar RSUScenario.node[12].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedFramesLowerMsg 	21293
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBits 	22487424
 scalar RSUScenario.node[12].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[12].nic.mac1609_4 	ReceivedBroadcasts 	21293
 scalar RSUScenario.node[12].nic.mac1609_4 	SentPackets 	1087
@@ -1159,6 +1309,11 @@ scalar RSUScenario.node[13].nic.phy80211p 	busyTime 	0.048353584905653
 scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac 	104.3061925046
 scalar RSUScenario.node[13].nic.mac1609_4 	throughputMbps 	0.11015742181667
 scalar RSUScenario.node[13].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedFramesLowerMsg 	20856
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBits 	22025952
 scalar RSUScenario.node[13].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[13].nic.mac1609_4 	ReceivedBroadcasts 	20856
 scalar RSUScenario.node[13].nic.mac1609_4 	SentPackets 	1061
@@ -1194,6 +1349,11 @@ scalar RSUScenario.node[2].nic.phy80211p 	busyTime 	0.032266790890271
 scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac 	135.77409357298
 scalar RSUScenario.node[2].nic.mac1609_4 	throughputMbps 	0.14340320928307
 scalar RSUScenario.node[2].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedFramesLowerMsg 	27148
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBits 	28673440
 scalar RSUScenario.node[2].nic.mac1609_4 	ReceivedUnicastPackets 	0
 scalar RSUScenario.node[2].nic.mac1609_4 	ReceivedBroadcasts 	27148
 scalar RSUScenario.node[2].nic.mac1609_4 	SentPackets 	1933

@@ -1,0 +1,1427 @@
+version 2
+run SingleCH_Safety_B_100Bytes_Q_5-0-20161107-12:43:08-23596
+attr configname SingleCH_Safety_B_100Bytes_Q_5
+attr datetime 20161107-12:43:08
+attr experiment SingleCH_Safety_B_100Bytes_Q_5
+attr inifile omnetpp.ini
+attr iterationvars $0=1
+attr iterationvars2 "$0=1, $repetition=0"
+attr measurement $0=1
+attr network RSUScenario
+attr processid 23596
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.coreDebug false
+param **.debug true
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.mac1609_4.queueSize ${1,2,5}
+param *.**.nic.mac1609_4.txPower 100mW
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.maxTXPower 100mW
+param *.**.nic.phy80211p.sensitivity -89dBm
+param *.**.nic.phy80211p.thermalNoise -110dBm
+param *.**.nic.phy80211p.usePropagationDelay true
+param *.**.nic.phy80211p.useThermalNoise true
+param *.annotations.draw false
+param *.connectionManager.alpha 2.0
+param *.connectionManager.carrierFrequency "5.890e9 Hz"
+param *.connectionManager.pMax 100mW
+param *.connectionManager.sat -89dBm
+param *.connectionManager.sendDirect true
+param *.manager.autoShutdown true
+param *.manager.host "\"localhost\""
+param *.manager.launchConfig "xmldoc(\"erlangen.launchd.xml\")"
+param *.manager.margin 25
+param *.manager.moduleDisplayString "\"\""
+param *.manager.moduleName "\"node\""
+param *.manager.moduleType "\"vanets.src.CarWithMetrics\""
+param *.manager.numVehicles 5
+param *.manager.port 9999
+param *.manager.updateInterval 0.1s
+param *.metricsApplicaiton[*].appl.sendBeacons false
+param *.metricsApplication.appl.beaconInterval 1s
+param *.metricsApplication.appl.beaconLengthBits 800bit
+param *.metricsApplication.appl.beaconPriority 3
+param *.metricsApplication.appl.dataOnSch false
+param *.metricsApplication.appl.dataPriority 2
+param *.metricsApplication.appl.debug false
+param *.metricsApplication.appl.headerLength "256 bit"
+param *.metricsApplication.appl.maxOffset 0.005s
+param *.metricsApplication.appl.sendBeacons false
+param *.metricsApplication.appl.sendData true
+param *.metricsApplication.applType "\"TraCIDemoRSU11p\""
+param *.metricsApplication.mobility.x 2000
+param *.metricsApplication.mobility.y 2000
+param *.metricsApplication.mobility.z 3
+param *.metricsApplication[*].appl.beaconInterval 0.1s
+param *.metricsApplication[*].appl.beaconPriority 3
+param *.metricsApplication[*].appl.dataOnSch false
+param *.metricsApplication[*].appl.sendData false
+param *.node[*0].veinsmobility.accidentCount 1
+param *.node[*0].veinsmobility.accidentDuration 30s
+param *.node[*0].veinsmobility.accidentStart 10s
+param *.node[*].appl.beaconInterval 1s
+param *.node[*].appl.beaconLengthBits 800bit
+param *.node[*].appl.beaconPriority 3
+param *.node[*].appl.dataOnSch false
+param *.node[*].appl.dataPriority 2
+param *.node[*].appl.debug false
+param *.node[*].appl.headerLength "256 bit"
+param *.node[*].appl.maxOffset 0.005s
+param *.node[*].appl.sendBeacons false
+param *.node[*].appl.sendData true
+param *.node[*].applType "\"TraCIDemo11p\""
+param *.node[*].mobilityType "\"TraCIMobility\""
+param *.node[*].mobilityType.debug true
+param *.node[*].veinsmobility.x 0
+param *.node[*].veinsmobility.y 0
+param *.node[*].veinsmobility.z 1.895
+param *.node[*].veinsmobilityType "\"org.car2x.veins.modules.mobility.traci.TraCIMobility\""
+param *.node[*].veinsmobilityType.debug true
+param *.obstacles.debug false
+param *.obstacles.obstacles "xmldoc(\"config.xml\", \"//AnalogueModel[@type='SimpleObstacleShadowing']/obstacles\")"
+param *.playgroundSizeX 2500m
+param *.playgroundSizeY 2500m
+param *.playgroundSizeZ 50m
+param *.rsu[*].appl.beaconInterval 1s
+param *.rsu[*].appl.beaconLengthBits 800bit
+param *.rsu[*].appl.beaconPriority 3
+param *.rsu[*].appl.dataOnSch false
+param *.rsu[*].appl.dataPriority 2
+param *.rsu[*].appl.debug false
+param *.rsu[*].appl.headerLength "256 bit"
+param *.rsu[*].appl.maxOffset 0.005s
+param *.rsu[*].appl.sendBeacons false
+param *.rsu[*].appl.sendData true
+param *.rsu[*].applType "\"TraCIDemoRSU11p\""
+param *.rsu[0].mobility.x 2000
+param *.rsu[0].mobility.y 2000
+param *.rsu[0].mobility.z 3
+param *.world.use2D false
+param *.world.useTorus false
+
+scalar RSUScenario.node[1].nic.phy80211p 	busyTime 	0.034195050301815
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac 	144.07617912958
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMbps 	0.15217021163099
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedFramesLowerMsg 	28808
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	receivedBits 	30426400
+scalar RSUScenario.node[1].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	ReceivedBroadcasts 	28808
+scalar RSUScenario.node[1].nic.mac1609_4 	SentPackets 	1989
+scalar RSUScenario.node[1].nic.mac1609_4 	SNIRLostPackets 	1536
+scalar RSUScenario.node[1].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	TotalLostPackets 	1536
+scalar RSUScenario.node[1].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	TimesIntoBackoff 	1989
+scalar RSUScenario.node[1].nic.mac1609_4 	SlotsBackoff 	2906
+scalar RSUScenario.node[1].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[1].nic.mac1609_4 	totalBusyTime 	6.938922870386
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac:last 	144.07617912958
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac:count 	28808
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac:sum 	2876661.9839285
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[1].nic.mac1609_4 	throughputMetricMac:mean 	99.856358786743
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[1].veinsmobility 	startTime 	1.2
+scalar RSUScenario.node[1].veinsmobility 	totalTime 	198.8
+scalar RSUScenario.node[1].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[1].veinsmobility 	minSpeed 	1.1870694582883
+scalar RSUScenario.node[1].veinsmobility 	maxSpeed 	1.3888888888889
+scalar RSUScenario.node[1].veinsmobility 	totalDistance 	269.1783073874
+scalar RSUScenario.node[1].veinsmobility 	totalCO2Emission 	226.75086805938
+scalar RSUScenario.node[3].nic.phy80211p 	busyTime 	0.035290317212693
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac 	143.98115528225
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMbps 	0.15206986644821
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedFramesLowerMsg 	28789
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	receivedBits 	30406336
+scalar RSUScenario.node[3].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	ReceivedBroadcasts 	28789
+scalar RSUScenario.node[3].nic.mac1609_4 	SentPackets 	1924
+scalar RSUScenario.node[3].nic.mac1609_4 	SNIRLostPackets 	1503
+scalar RSUScenario.node[3].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	TotalLostPackets 	1503
+scalar RSUScenario.node[3].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	TimesIntoBackoff 	1924
+scalar RSUScenario.node[3].nic.mac1609_4 	SlotsBackoff 	2925
+scalar RSUScenario.node[3].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[3].nic.mac1609_4 	totalBusyTime 	6.913532221529
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac:last 	143.98115528225
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac:count 	28789
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac:sum 	2863902.4045547
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[3].nic.mac1609_4 	throughputMetricMac:mean 	99.479051184643
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[3].veinsmobility 	startTime 	7.7
+scalar RSUScenario.node[3].veinsmobility 	totalTime 	192.3
+scalar RSUScenario.node[3].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[3].veinsmobility 	minSpeed 	0.060264803255918
+scalar RSUScenario.node[3].veinsmobility 	maxSpeed 	1.3888888888889
+scalar RSUScenario.node[3].veinsmobility 	totalDistance 	258.10571097893
+scalar RSUScenario.node[3].veinsmobility 	totalCO2Emission 	219.01734572144
+scalar RSUScenario.node[4].nic.phy80211p 	busyTime 	0.034836755625331
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac 	143.82611635221
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMbps 	0.15190614533808
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedFramesLowerMsg 	28758
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	receivedBits 	30373600
+scalar RSUScenario.node[4].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	ReceivedBroadcasts 	28758
+scalar RSUScenario.node[4].nic.mac1609_4 	SentPackets 	1912
+scalar RSUScenario.node[4].nic.mac1609_4 	SNIRLostPackets 	958
+scalar RSUScenario.node[4].nic.mac1609_4 	RXTXLostPackets 	543
+scalar RSUScenario.node[4].nic.mac1609_4 	TotalLostPackets 	1501
+scalar RSUScenario.node[4].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	TimesIntoBackoff 	1912
+scalar RSUScenario.node[4].nic.mac1609_4 	SlotsBackoff 	2857
+scalar RSUScenario.node[4].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[4].nic.mac1609_4 	totalBusyTime 	6.903660421615
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac:last 	143.82611635221
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac:count 	28758
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac:sum 	2853736.9932968
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[4].nic.mac1609_4 	throughputMetricMac:mean 	99.232804551664
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[4].veinsmobility 	startTime 	8.9
+scalar RSUScenario.node[4].veinsmobility 	totalTime 	191.1
+scalar RSUScenario.node[4].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[4].veinsmobility 	minSpeed 	0.12444055484731
+scalar RSUScenario.node[4].veinsmobility 	maxSpeed 	1.3888888888889
+scalar RSUScenario.node[4].veinsmobility 	totalDistance 	256.1403291013
+scalar RSUScenario.node[4].veinsmobility 	totalCO2Emission 	218.14999510088
+scalar RSUScenario.node[0].nic.phy80211p 	busyTime 	0.0066609704852427
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac 	51.675185436927
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMbps 	0.054594851171914
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedFramesLowerMsg 	5820
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	receivedBits 	6148832
+scalar RSUScenario.node[0].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	ReceivedBroadcasts 	5820
+scalar RSUScenario.node[0].nic.mac1609_4 	SentPackets 	2000
+scalar RSUScenario.node[0].nic.mac1609_4 	SNIRLostPackets 	122
+scalar RSUScenario.node[0].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	TotalLostPackets 	122
+scalar RSUScenario.node[0].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	TimesIntoBackoff 	2293
+scalar RSUScenario.node[0].nic.mac1609_4 	SlotsBackoff 	3505
+scalar RSUScenario.node[0].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[0].nic.mac1609_4 	totalBusyTime 	1.767904
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac:last 	51.675185436927
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac:count 	5820
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac:sum 	291664.30151776
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[0].nic.mac1609_4 	throughputMetricMac:mean 	50.114141154255
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[0].veinsmobility 	startTime 	0.1
+scalar RSUScenario.node[0].veinsmobility 	totalTime 	199.9
+scalar RSUScenario.node[0].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[0].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[0].veinsmobility 	maxSpeed 	27.777486288026
+scalar RSUScenario.node[0].veinsmobility 	totalDistance 	2913.0121638405
+scalar RSUScenario.node[0].veinsmobility 	totalCO2Emission 	679.7895579871
+scalar RSUScenario.node[5].nic.phy80211p 	busyTime 	0.035871834512796
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac 	140.11018275415
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMbps 	0.14798211945845
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedFramesLowerMsg 	28015
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	receivedBits 	29588992
+scalar RSUScenario.node[5].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	ReceivedBroadcasts 	28015
+scalar RSUScenario.node[5].nic.mac1609_4 	SentPackets 	1838
+scalar RSUScenario.node[5].nic.mac1609_4 	SNIRLostPackets 	1399
+scalar RSUScenario.node[5].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	TotalLostPackets 	1399
+scalar RSUScenario.node[5].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	TimesIntoBackoff 	1838
+scalar RSUScenario.node[5].nic.mac1609_4 	SlotsBackoff 	2806
+scalar RSUScenario.node[5].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[5].nic.mac1609_4 	totalBusyTime 	6.720570237723
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac:last 	140.11018275415
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac:count 	28015
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac:sum 	2702313.9372326
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[5].nic.mac1609_4 	throughputMetricMac:mean 	96.459537291902
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[5].veinsmobility 	startTime 	16.3
+scalar RSUScenario.node[5].veinsmobility 	totalTime 	183.7
+scalar RSUScenario.node[5].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[5].veinsmobility 	minSpeed 	0.16826392877773
+scalar RSUScenario.node[5].veinsmobility 	maxSpeed 	16.66794095485
+scalar RSUScenario.node[5].veinsmobility 	totalDistance 	471.94396134957
+scalar RSUScenario.node[5].veinsmobility 	totalCO2Emission 	263.3252695588
+scalar RSUScenario.node[14].nic.phy80211p 	busyTime 	0.048817717601539
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac 	102.19150356035
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMbps 	0.10792431037465
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedFramesLowerMsg 	20433
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	receivedBits 	21579264
+scalar RSUScenario.node[14].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	ReceivedBroadcasts 	20433
+scalar RSUScenario.node[14].nic.mac1609_4 	SentPackets 	1035
+scalar RSUScenario.node[14].nic.mac1609_4 	SNIRLostPackets 	2100
+scalar RSUScenario.node[14].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	TotalLostPackets 	2100
+scalar RSUScenario.node[14].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	TimesIntoBackoff 	1035
+scalar RSUScenario.node[14].nic.mac1609_4 	SlotsBackoff 	1625
+scalar RSUScenario.node[14].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[14].nic.mac1609_4 	totalBusyTime 	5.036385408557
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac:last 	102.19150356035
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac:count 	20433
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac:sum 	1246436.2459722
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[14].nic.mac1609_4 	throughputMetricMac:mean 	61.001137668096
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[14].veinsmobility 	startTime 	96.6
+scalar RSUScenario.node[14].veinsmobility 	totalTime 	103.4
+scalar RSUScenario.node[14].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[14].veinsmobility 	minSpeed 	0.019793716402474
+scalar RSUScenario.node[14].veinsmobility 	maxSpeed 	7.2250263578976
+scalar RSUScenario.node[14].veinsmobility 	totalDistance 	198.91079870184
+scalar RSUScenario.node[14].veinsmobility 	totalCO2Emission 	131.86677589295
+scalar RSUScenario.node[15].nic.phy80211p 	busyTime 	0.04917246031745
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac 	100.30018654963
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMbps 	0.10592707952823
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedFramesLowerMsg 	20055
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	receivedBits 	21180096
+scalar RSUScenario.node[15].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	ReceivedBroadcasts 	20055
+scalar RSUScenario.node[15].nic.mac1609_4 	SentPackets 	1009
+scalar RSUScenario.node[15].nic.mac1609_4 	SNIRLostPackets 	2071
+scalar RSUScenario.node[15].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	TotalLostPackets 	2071
+scalar RSUScenario.node[15].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	TimesIntoBackoff 	1010
+scalar RSUScenario.node[15].nic.mac1609_4 	SlotsBackoff 	1566
+scalar RSUScenario.node[15].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[15].nic.mac1609_4 	totalBusyTime 	4.940868937363
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac:last 	100.30018654963
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac:count 	20055
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac:sum 	1196022.6609214
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[15].nic.mac1609_4 	throughputMetricMac:mean 	59.637130935997
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[15].veinsmobility 	startTime 	99.2
+scalar RSUScenario.node[15].veinsmobility 	totalTime 	100.8
+scalar RSUScenario.node[15].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[15].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[15].veinsmobility 	maxSpeed 	6.379710620473
+scalar RSUScenario.node[15].veinsmobility 	totalDistance 	186.65357097051
+scalar RSUScenario.node[15].veinsmobility 	totalCO2Emission 	129.03176756036
+scalar RSUScenario.node[16].nic.phy80211p 	busyTime 	0.049511771894083
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac 	98.849822326083
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMbps 	0.10439549490816
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedFramesLowerMsg 	19765
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	receivedBits 	20873856
+scalar RSUScenario.node[16].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	ReceivedBroadcasts 	19765
+scalar RSUScenario.node[16].nic.mac1609_4 	SentPackets 	983
+scalar RSUScenario.node[16].nic.mac1609_4 	SNIRLostPackets 	1939
+scalar RSUScenario.node[16].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	TotalLostPackets 	1939
+scalar RSUScenario.node[16].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	TimesIntoBackoff 	984
+scalar RSUScenario.node[16].nic.mac1609_4 	SlotsBackoff 	1548
+scalar RSUScenario.node[16].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[16].nic.mac1609_4 	totalBusyTime 	4.841603740519
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac:last 	98.849822326083
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac:count 	19765
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac:sum 	1156289.9267752
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[16].nic.mac1609_4 	throughputMetricMac:mean 	58.501893588425
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[16].veinsmobility 	startTime 	101.8
+scalar RSUScenario.node[16].veinsmobility 	totalTime 	98.2
+scalar RSUScenario.node[16].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[16].veinsmobility 	minSpeed 	0.033103003657594
+scalar RSUScenario.node[16].veinsmobility 	maxSpeed 	5.3440569693148
+scalar RSUScenario.node[16].veinsmobility 	totalDistance 	174.46987326775
+scalar RSUScenario.node[16].veinsmobility 	totalCO2Emission 	122.8326984094
+scalar RSUScenario.node[17].nic.phy80211p 	busyTime 	0.049895958115171
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac 	97.769551037844
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMbps 	0.10325472842778
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedFramesLowerMsg 	19549
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	receivedBits 	20645760
+scalar RSUScenario.node[17].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	ReceivedBroadcasts 	19549
+scalar RSUScenario.node[17].nic.mac1609_4 	SentPackets 	956
+scalar RSUScenario.node[17].nic.mac1609_4 	SNIRLostPackets 	1722
+scalar RSUScenario.node[17].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	TotalLostPackets 	1722
+scalar RSUScenario.node[17].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	TimesIntoBackoff 	956
+scalar RSUScenario.node[17].nic.mac1609_4 	SlotsBackoff 	1358
+scalar RSUScenario.node[17].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[17].nic.mac1609_4 	totalBusyTime 	4.741618206722
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac:last 	97.769551037844
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac:count 	19549
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac:sum 	1125305.5071459
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[17].nic.mac1609_4 	throughputMetricMac:mean 	57.563328413007
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[17].veinsmobility 	startTime 	104.5
+scalar RSUScenario.node[17].veinsmobility 	totalTime 	95.5
+scalar RSUScenario.node[17].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[17].veinsmobility 	minSpeed 	0.12297047850664
+scalar RSUScenario.node[17].veinsmobility 	maxSpeed 	4.5936604266149
+scalar RSUScenario.node[17].veinsmobility 	totalDistance 	162.35424679905
+scalar RSUScenario.node[17].veinsmobility 	totalCO2Emission 	117.32696128142
+scalar RSUScenario.node[18].nic.phy80211p 	busyTime 	0.050325350593298
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac 	96.274175515268
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMbps 	0.10167561187594
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedFramesLowerMsg 	19250
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	receivedBits 	20330016
+scalar RSUScenario.node[18].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	ReceivedBroadcasts 	19250
+scalar RSUScenario.node[18].nic.mac1609_4 	SentPackets 	928
+scalar RSUScenario.node[18].nic.mac1609_4 	SNIRLostPackets 	1575
+scalar RSUScenario.node[18].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	TotalLostPackets 	1575
+scalar RSUScenario.node[18].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	TimesIntoBackoff 	928
+scalar RSUScenario.node[18].nic.mac1609_4 	SlotsBackoff 	1367
+scalar RSUScenario.node[18].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[18].nic.mac1609_4 	totalBusyTime 	4.636810336488
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac:last 	96.274175515268
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac:count 	19250
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac:sum 	1085743.036548
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[18].nic.mac1609_4 	throughputMetricMac:mean 	56.402235664831
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[18].veinsmobility 	startTime 	107.3
+scalar RSUScenario.node[18].veinsmobility 	totalTime 	92.7
+scalar RSUScenario.node[18].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[18].veinsmobility 	minSpeed 	0.17579685028931
+scalar RSUScenario.node[18].veinsmobility 	maxSpeed 	4.7364269811111
+scalar RSUScenario.node[18].veinsmobility 	totalDistance 	150.31348939581
+scalar RSUScenario.node[18].veinsmobility 	totalCO2Emission 	112.54235188457
+scalar RSUScenario.node[19].nic.phy80211p 	busyTime 	0.050736394176916
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac 	93.903580215248
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMbps 	0.099172263239117
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedFramesLowerMsg 	18776
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	receivedBits 	19829472
+scalar RSUScenario.node[19].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	ReceivedBroadcasts 	18776
+scalar RSUScenario.node[19].nic.mac1609_4 	SentPackets 	894
+scalar RSUScenario.node[19].nic.mac1609_4 	SNIRLostPackets 	1449
+scalar RSUScenario.node[19].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	TotalLostPackets 	1449
+scalar RSUScenario.node[19].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	TimesIntoBackoff 	894
+scalar RSUScenario.node[19].nic.mac1609_4 	SlotsBackoff 	1324
+scalar RSUScenario.node[19].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[19].nic.mac1609_4 	totalBusyTime 	4.495419573464
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac:last 	93.903580215248
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac:count 	18776
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac:sum 	1026195.1051812
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[19].nic.mac1609_4 	throughputMetricMac:mean 	54.654617872881
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[19].veinsmobility 	startTime 	110.7
+scalar RSUScenario.node[19].veinsmobility 	totalTime 	89.3
+scalar RSUScenario.node[19].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[19].veinsmobility 	minSpeed 	0.227273839003
+scalar RSUScenario.node[19].veinsmobility 	maxSpeed 	4.5092901151292
+scalar RSUScenario.node[19].veinsmobility 	totalDistance 	138.25342056927
+scalar RSUScenario.node[19].veinsmobility 	totalCO2Emission 	107.52009821856
+scalar RSUScenario.node[20].nic.phy80211p 	busyTime 	0.050402934911223
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac 	91.132884446031
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMbps 	0.096246408506827
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedFramesLowerMsg 	18222
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	receivedBits 	19244448
+scalar RSUScenario.node[20].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	ReceivedBroadcasts 	18222
+scalar RSUScenario.node[20].nic.mac1609_4 	SentPackets 	846
+scalar RSUScenario.node[20].nic.mac1609_4 	SNIRLostPackets 	790
+scalar RSUScenario.node[20].nic.mac1609_4 	RXTXLostPackets 	373
+scalar RSUScenario.node[20].nic.mac1609_4 	TotalLostPackets 	1163
+scalar RSUScenario.node[20].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	TimesIntoBackoff 	1665
+scalar RSUScenario.node[20].nic.mac1609_4 	SlotsBackoff 	2490
+scalar RSUScenario.node[20].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[20].nic.mac1609_4 	totalBusyTime 	4.298239313773
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac:last 	91.132884446031
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac:count 	18222
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac:sum 	958102.53056586
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[20].nic.mac1609_4 	throughputMetricMac:mean 	52.579438621768
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[20].veinsmobility 	startTime 	115.5
+scalar RSUScenario.node[20].veinsmobility 	totalTime 	84.5
+scalar RSUScenario.node[20].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[20].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[20].veinsmobility 	maxSpeed 	8.9870885595885
+scalar RSUScenario.node[20].veinsmobility 	totalDistance 	126.26559196967
+scalar RSUScenario.node[20].veinsmobility 	totalCO2Emission 	106.64296655296
+scalar RSUScenario.node[21].nic.phy80211p 	busyTime 	0.050640613026795
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac 	85.366436421029
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMbps 	0.090157039392433
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedFramesLowerMsg 	17069
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	receivedBits 	18026880
+scalar RSUScenario.node[21].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	ReceivedBroadcasts 	17069
+scalar RSUScenario.node[21].nic.mac1609_4 	SentPackets 	784
+scalar RSUScenario.node[21].nic.mac1609_4 	SNIRLostPackets 	631
+scalar RSUScenario.node[21].nic.mac1609_4 	RXTXLostPackets 	543
+scalar RSUScenario.node[21].nic.mac1609_4 	TotalLostPackets 	1174
+scalar RSUScenario.node[21].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	TimesIntoBackoff 	921
+scalar RSUScenario.node[21].nic.mac1609_4 	SlotsBackoff 	1343
+scalar RSUScenario.node[21].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[21].nic.mac1609_4 	totalBusyTime 	4.034152372191
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac:last 	85.366436421029
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac:count 	17069
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac:sum 	830612.78465084
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[21].nic.mac1609_4 	throughputMetricMac:mean 	48.662064833958
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[21].veinsmobility 	startTime 	121.7
+scalar RSUScenario.node[21].veinsmobility 	totalTime 	78.3
+scalar RSUScenario.node[21].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[21].veinsmobility 	minSpeed 	6.6741308364516e-14
+scalar RSUScenario.node[21].veinsmobility 	maxSpeed 	7.7424246317612
+scalar RSUScenario.node[21].veinsmobility 	totalDistance 	114.382690357
+scalar RSUScenario.node[21].veinsmobility 	totalCO2Emission 	99.663464402498
+scalar RSUScenario.node[22].nic.phy80211p 	busyTime 	0.058550234741773
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac 	52.513186619261
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMbps 	0.055453925069946
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedFramesLowerMsg 	10500
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	receivedBits 	11088000
+scalar RSUScenario.node[22].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	ReceivedBroadcasts 	10500
+scalar RSUScenario.node[22].nic.mac1609_4 	SentPackets 	426
+scalar RSUScenario.node[22].nic.mac1609_4 	SNIRLostPackets 	635
+scalar RSUScenario.node[22].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	TotalLostPackets 	635
+scalar RSUScenario.node[22].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	TimesIntoBackoff 	426
+scalar RSUScenario.node[22].nic.mac1609_4 	SlotsBackoff 	677
+scalar RSUScenario.node[22].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[22].nic.mac1609_4 	totalBusyTime 	2.471474621439
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac:last 	52.513186619261
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac:count 	10500
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac:sum 	296167.20229523
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[22].nic.mac1609_4 	throughputMetricMac:mean 	28.206400218594
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[22].veinsmobility 	startTime 	157.4
+scalar RSUScenario.node[22].veinsmobility 	totalTime 	42.6
+scalar RSUScenario.node[22].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[22].veinsmobility 	minSpeed 	0.25190915423236
+scalar RSUScenario.node[22].veinsmobility 	maxSpeed 	6.891857006679
+scalar RSUScenario.node[22].veinsmobility 	totalDistance 	102.94683784507
+scalar RSUScenario.node[22].veinsmobility 	totalCO2Emission 	57.568380462353
+scalar RSUScenario.node[23].nic.phy80211p 	busyTime 	0.059524788029916
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac 	50.027562452294
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMbps 	0.052829105949629
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedFramesLowerMsg 	10003
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	receivedBits 	10563168
+scalar RSUScenario.node[23].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	ReceivedBroadcasts 	10003
+scalar RSUScenario.node[23].nic.mac1609_4 	SentPackets 	401
+scalar RSUScenario.node[23].nic.mac1609_4 	SNIRLostPackets 	653
+scalar RSUScenario.node[23].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	TotalLostPackets 	653
+scalar RSUScenario.node[23].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	TimesIntoBackoff 	401
+scalar RSUScenario.node[23].nic.mac1609_4 	SlotsBackoff 	582
+scalar RSUScenario.node[23].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[23].nic.mac1609_4 	totalBusyTime 	2.359166218492
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac:last 	50.027562452294
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac:count 	10003
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac:sum 	267740.7928278
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[23].nic.mac1609_4 	throughputMetricMac:mean 	26.766049467939
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[23].veinsmobility 	startTime 	159.9
+scalar RSUScenario.node[23].veinsmobility 	totalTime 	40.1
+scalar RSUScenario.node[23].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[23].veinsmobility 	minSpeed 	0.25095831119851
+scalar RSUScenario.node[23].veinsmobility 	maxSpeed 	6.1182214773188
+scalar RSUScenario.node[23].veinsmobility 	totalDistance 	91.686161016084
+scalar RSUScenario.node[23].veinsmobility 	totalCO2Emission 	52.590259612066
+scalar RSUScenario.node[6].nic.phy80211p 	busyTime 	0.037074059853194
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac 	137.86461895137
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMbps 	0.14560184183224
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedFramesLowerMsg 	27566
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	receivedBits 	29113056
+scalar RSUScenario.node[6].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	ReceivedBroadcasts 	27566
+scalar RSUScenario.node[6].nic.mac1609_4 	SentPackets 	1772
+scalar RSUScenario.node[6].nic.mac1609_4 	SNIRLostPackets 	1743
+scalar RSUScenario.node[6].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	TotalLostPackets 	1743
+scalar RSUScenario.node[6].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	TimesIntoBackoff 	1772
+scalar RSUScenario.node[6].nic.mac1609_4 	SlotsBackoff 	2629
+scalar RSUScenario.node[6].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[6].nic.mac1609_4 	totalBusyTime 	6.67605596531
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac:last 	137.86461895137
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac:count 	27566
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac:sum 	2575390.6444112
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[6].nic.mac1609_4 	throughputMetricMac:mean 	93.426345658102
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[6].veinsmobility 	startTime 	22.9
+scalar RSUScenario.node[6].veinsmobility 	totalTime 	177.1
+scalar RSUScenario.node[6].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[6].veinsmobility 	minSpeed 	0.16731799477641
+scalar RSUScenario.node[6].veinsmobility 	maxSpeed 	16.669703238432
+scalar RSUScenario.node[6].veinsmobility 	totalDistance 	438.18665364731
+scalar RSUScenario.node[6].veinsmobility 	totalCO2Emission 	254.68993231912
+scalar RSUScenario.node[24].nic.phy80211p 	busyTime 	0.060497919999993
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac 	47.396901864321
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMbps 	0.050051128368729
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedFramesLowerMsg 	9477
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	receivedBits 	10007712
+scalar RSUScenario.node[24].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	ReceivedBroadcasts 	9477
+scalar RSUScenario.node[24].nic.mac1609_4 	SentPackets 	375
+scalar RSUScenario.node[24].nic.mac1609_4 	SNIRLostPackets 	651
+scalar RSUScenario.node[24].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	TotalLostPackets 	651
+scalar RSUScenario.node[24].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	TimesIntoBackoff 	375
+scalar RSUScenario.node[24].nic.mac1609_4 	SlotsBackoff 	552
+scalar RSUScenario.node[24].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[24].nic.mac1609_4 	totalBusyTime 	2.239224033329
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac:last 	47.396901864321
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac:count 	9477
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac:sum 	239297.50873651
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[24].nic.mac1609_4 	throughputMetricMac:mean 	25.250343857392
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[24].veinsmobility 	startTime 	162.5
+scalar RSUScenario.node[24].veinsmobility 	totalTime 	37.5
+scalar RSUScenario.node[24].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[24].veinsmobility 	minSpeed 	0.24789178050891
+scalar RSUScenario.node[24].veinsmobility 	maxSpeed 	5.3850493092654
+scalar RSUScenario.node[24].veinsmobility 	totalDistance 	80.683626398192
+scalar RSUScenario.node[24].veinsmobility 	totalCO2Emission 	48.159866389005
+scalar RSUScenario.node[25].nic.phy80211p 	busyTime 	0.061432643678158
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac 	44.516178482033
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMbps 	0.047009084477033
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedFramesLowerMsg 	8901
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	receivedBits 	9399456
+scalar RSUScenario.node[25].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	ReceivedBroadcasts 	8901
+scalar RSUScenario.node[25].nic.mac1609_4 	SentPackets 	348
+scalar RSUScenario.node[25].nic.mac1609_4 	SNIRLostPackets 	643
+scalar RSUScenario.node[25].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	TotalLostPackets 	643
+scalar RSUScenario.node[25].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	TimesIntoBackoff 	348
+scalar RSUScenario.node[25].nic.mac1609_4 	SlotsBackoff 	518
+scalar RSUScenario.node[25].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[25].nic.mac1609_4 	totalBusyTime 	2.10886254699
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac:last 	44.516178482033
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac:count 	8901
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac:sum 	210191.496583
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[25].nic.mac1609_4 	throughputMetricMac:mean 	23.614368788113
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[25].veinsmobility 	startTime 	165.2
+scalar RSUScenario.node[25].veinsmobility 	totalTime 	34.8
+scalar RSUScenario.node[25].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[25].veinsmobility 	minSpeed 	0.25428370192647
+scalar RSUScenario.node[25].veinsmobility 	maxSpeed 	4.5126665369358
+scalar RSUScenario.node[25].veinsmobility 	totalDistance 	69.92794042637
+scalar RSUScenario.node[25].veinsmobility 	totalCO2Emission 	44.116430423545
+scalar RSUScenario.node[26].nic.phy80211p 	busyTime 	0.062238504672898
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac 	41.330378491277
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMbps 	0.043644879686794
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedFramesLowerMsg 	8264
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	receivedBits 	8726784
+scalar RSUScenario.node[26].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	ReceivedBroadcasts 	8264
+scalar RSUScenario.node[26].nic.mac1609_4 	SentPackets 	321
+scalar RSUScenario.node[26].nic.mac1609_4 	SNIRLostPackets 	655
+scalar RSUScenario.node[26].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	TotalLostPackets 	655
+scalar RSUScenario.node[26].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	TimesIntoBackoff 	321
+scalar RSUScenario.node[26].nic.mac1609_4 	SlotsBackoff 	487
+scalar RSUScenario.node[26].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[26].nic.mac1609_4 	totalBusyTime 	1.968187267676
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac:last 	41.330378491277
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac:count 	8264
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac:sum 	180440.63894626
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[26].nic.mac1609_4 	throughputMetricMac:mean 	21.83454004674
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[26].veinsmobility 	startTime 	167.9
+scalar RSUScenario.node[26].veinsmobility 	totalTime 	32.1
+scalar RSUScenario.node[26].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[26].veinsmobility 	minSpeed 	0.25103004745184
+scalar RSUScenario.node[26].veinsmobility 	maxSpeed 	3.2105737726127
+scalar RSUScenario.node[26].veinsmobility 	totalDistance 	59.414957864362
+scalar RSUScenario.node[26].veinsmobility 	totalCO2Emission 	39.405822842965
+scalar RSUScenario.node[27].nic.phy80211p 	busyTime 	0.06308429065744
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac 	37.214344909023
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMbps 	0.039298348223933
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedFramesLowerMsg 	7441
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	receivedBits 	7857696
+scalar RSUScenario.node[27].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	ReceivedBroadcasts 	7441
+scalar RSUScenario.node[27].nic.mac1609_4 	SentPackets 	289
+scalar RSUScenario.node[27].nic.mac1609_4 	SNIRLostPackets 	698
+scalar RSUScenario.node[27].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	TotalLostPackets 	698
+scalar RSUScenario.node[27].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	TimesIntoBackoff 	289
+scalar RSUScenario.node[27].nic.mac1609_4 	SlotsBackoff 	422
+scalar RSUScenario.node[27].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[27].nic.mac1609_4 	totalBusyTime 	1.788219864082
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac:last 	37.214344909023
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac:count 	7441
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac:sum 	145523.76963093
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[27].nic.mac1609_4 	throughputMetricMac:mean 	19.557017824342
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[27].veinsmobility 	startTime 	171.1
+scalar RSUScenario.node[27].veinsmobility 	totalTime 	28.9
+scalar RSUScenario.node[27].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[27].veinsmobility 	minSpeed 	0.25772394144326
+scalar RSUScenario.node[27].veinsmobility 	maxSpeed 	2.7895945358045
+scalar RSUScenario.node[27].veinsmobility 	totalDistance 	49.121554350342
+scalar RSUScenario.node[27].veinsmobility 	totalCO2Emission 	34.711566742205
+scalar RSUScenario.node[28].nic.phy80211p 	busyTime 	0.064092903225807
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac 	31.847997360334
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMbps 	0.033631485212516
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedFramesLowerMsg 	6368
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	receivedBits 	6724608
+scalar RSUScenario.node[28].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	ReceivedBroadcasts 	6368
+scalar RSUScenario.node[28].nic.mac1609_4 	SentPackets 	248
+scalar RSUScenario.node[28].nic.mac1609_4 	SNIRLostPackets 	728
+scalar RSUScenario.node[28].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	TotalLostPackets 	728
+scalar RSUScenario.node[28].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	TimesIntoBackoff 	248
+scalar RSUScenario.node[28].nic.mac1609_4 	SlotsBackoff 	367
+scalar RSUScenario.node[28].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[28].nic.mac1609_4 	totalBusyTime 	1.554285790045
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac:last 	31.847997360334
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac:count 	6368
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac:sum 	105816.26723574
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[28].nic.mac1609_4 	throughputMetricMac:mean 	16.616876136266
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[28].veinsmobility 	startTime 	175.2
+scalar RSUScenario.node[28].veinsmobility 	totalTime 	24.8
+scalar RSUScenario.node[28].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[28].veinsmobility 	minSpeed 	0.25996793337772
+scalar RSUScenario.node[28].veinsmobility 	maxSpeed 	2.6137894301888
+scalar RSUScenario.node[28].veinsmobility 	totalDistance 	39.05544546602
+scalar RSUScenario.node[28].veinsmobility 	totalCO2Emission 	29.555316000833
+scalar RSUScenario.node[29].nic.phy80211p 	busyTime 	0.065120000000001
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac 	25.446389848076
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMbps 	0.026871387679571
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedFramesLowerMsg 	5088
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	receivedBits 	5372928
+scalar RSUScenario.node[29].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	ReceivedBroadcasts 	5088
+scalar RSUScenario.node[29].nic.mac1609_4 	SentPackets 	196
+scalar RSUScenario.node[29].nic.mac1609_4 	SNIRLostPackets 	610
+scalar RSUScenario.node[29].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	TotalLostPackets 	610
+scalar RSUScenario.node[29].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	TimesIntoBackoff 	196
+scalar RSUScenario.node[29].nic.mac1609_4 	SlotsBackoff 	282
+scalar RSUScenario.node[29].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[29].nic.mac1609_4 	totalBusyTime 	1.246308
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac:last 	25.446389848076
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac:count 	5088
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac:sum 	66961.417958414
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[29].nic.mac1609_4 	throughputMetricMac:mean 	13.160656045286
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[29].veinsmobility 	startTime 	180.4
+scalar RSUScenario.node[29].veinsmobility 	totalTime 	19.6
+scalar RSUScenario.node[29].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[29].veinsmobility 	minSpeed 	0.25642870424245
+scalar RSUScenario.node[29].veinsmobility 	maxSpeed 	2.3938833972591
+scalar RSUScenario.node[29].veinsmobility 	totalDistance 	29.171275547736
+scalar RSUScenario.node[29].veinsmobility 	totalCO2Emission 	23.09674453223
+scalar RSUScenario.node[30].nic.phy80211p 	busyTime 	0.066080000000001
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac 	18.299595211391
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMbps 	0.01932437254323
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedFramesLowerMsg 	3659
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	receivedBits 	3863904
+scalar RSUScenario.node[30].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	ReceivedBroadcasts 	3659
+scalar RSUScenario.node[30].nic.mac1609_4 	SentPackets 	140
+scalar RSUScenario.node[30].nic.mac1609_4 	SNIRLostPackets 	471
+scalar RSUScenario.node[30].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	TotalLostPackets 	471
+scalar RSUScenario.node[30].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	TimesIntoBackoff 	140
+scalar RSUScenario.node[30].nic.mac1609_4 	SlotsBackoff 	208
+scalar RSUScenario.node[30].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[30].nic.mac1609_4 	totalBusyTime 	0.899948
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac:last 	18.299595211391
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac:count 	3659
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac:sum 	34300.974602024
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[30].nic.mac1609_4 	throughputMetricMac:mean 	9.3744122989954
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[30].veinsmobility 	startTime 	186
+scalar RSUScenario.node[30].veinsmobility 	totalTime 	14
+scalar RSUScenario.node[30].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[30].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[30].veinsmobility 	maxSpeed 	1.6028583898075
+scalar RSUScenario.node[30].veinsmobility 	totalDistance 	11.937588157809
+scalar RSUScenario.node[30].veinsmobility 	totalCO2Emission 	15.538668873593
+scalar RSUScenario.node[31].nic.phy80211p 	busyTime 	0.067200000000001
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac 	9.1673020004563
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMbps 	0.0096806709124815
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedFramesLowerMsg 	1833
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	receivedBits 	1935648
+scalar RSUScenario.node[31].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	ReceivedBroadcasts 	1833
+scalar RSUScenario.node[31].nic.mac1609_4 	SentPackets 	70
+scalar RSUScenario.node[31].nic.mac1609_4 	SNIRLostPackets 	267
+scalar RSUScenario.node[31].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	TotalLostPackets 	267
+scalar RSUScenario.node[31].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	TimesIntoBackoff 	70
+scalar RSUScenario.node[31].nic.mac1609_4 	SlotsBackoff 	103
+scalar RSUScenario.node[31].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[31].nic.mac1609_4 	totalBusyTime 	0.456358
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac:last 	9.1673020004563
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac:count 	1833
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac:sum 	8508.0043860718
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[31].nic.mac1609_4 	throughputMetricMac:mean 	4.6415735876005
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[31].veinsmobility 	startTime 	193
+scalar RSUScenario.node[31].veinsmobility 	totalTime 	7
+scalar RSUScenario.node[31].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[31].veinsmobility 	minSpeed 	0.027745690623498
+scalar RSUScenario.node[31].veinsmobility 	maxSpeed 	1.415873390525
+scalar RSUScenario.node[31].veinsmobility 	totalDistance 	4.4109840746886
+scalar RSUScenario.node[31].veinsmobility 	totalCO2Emission 	7.6607642517087
+scalar RSUScenario.node[7].nic.phy80211p 	busyTime 	0.038266134897364
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac 	136.85936661289
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMbps 	0.14454029536282
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedFramesLowerMsg 	27365
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	receivedBits 	28900800
+scalar RSUScenario.node[7].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	ReceivedBroadcasts 	27365
+scalar RSUScenario.node[7].nic.mac1609_4 	SentPackets 	1706
+scalar RSUScenario.node[7].nic.mac1609_4 	SNIRLostPackets 	1759
+scalar RSUScenario.node[7].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	TotalLostPackets 	1759
+scalar RSUScenario.node[7].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	TimesIntoBackoff 	1706
+scalar RSUScenario.node[7].nic.mac1609_4 	SlotsBackoff 	2633
+scalar RSUScenario.node[7].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[7].nic.mac1609_4 	totalBusyTime 	6.613289218208
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac:last 	136.85936661289
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac:count 	27365
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac:sum 	2502680.9387905
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[7].nic.mac1609_4 	throughputMetricMac:mean 	91.455543167932
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[7].veinsmobility 	startTime 	29.5
+scalar RSUScenario.node[7].veinsmobility 	totalTime 	170.5
+scalar RSUScenario.node[7].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[7].veinsmobility 	minSpeed 	0.19956281383271
+scalar RSUScenario.node[7].veinsmobility 	maxSpeed 	16.668820752848
+scalar RSUScenario.node[7].veinsmobility 	totalDistance 	398.66136774935
+scalar RSUScenario.node[7].veinsmobility 	totalCO2Emission 	244.55301003153
+scalar RSUScenario.node[8].nic.phy80211p 	busyTime 	0.039383380109826
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac 	136.61430516521
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMbps 	0.14428151047407
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedFramesLowerMsg 	27316
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	receivedBits 	28849056
+scalar RSUScenario.node[8].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	ReceivedBroadcasts 	27316
+scalar RSUScenario.node[8].nic.mac1609_4 	SentPackets 	1640
+scalar RSUScenario.node[8].nic.mac1609_4 	SNIRLostPackets 	1498
+scalar RSUScenario.node[8].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	TotalLostPackets 	1498
+scalar RSUScenario.node[8].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	TimesIntoBackoff 	1640
+scalar RSUScenario.node[8].nic.mac1609_4 	SlotsBackoff 	2480
+scalar RSUScenario.node[8].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[8].nic.mac1609_4 	totalBusyTime 	6.52072922406
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac:last 	136.61430516521
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac:count 	27316
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac:sum 	2467032.9662014
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[8].nic.mac1609_4 	throughputMetricMac:mean 	90.314576299657
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[8].veinsmobility 	startTime 	36.1
+scalar RSUScenario.node[8].veinsmobility 	totalTime 	163.9
+scalar RSUScenario.node[8].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[8].veinsmobility 	minSpeed 	0.22295159650128
+scalar RSUScenario.node[8].veinsmobility 	maxSpeed 	16.667582662466
+scalar RSUScenario.node[8].veinsmobility 	totalDistance 	358.38345872609
+scalar RSUScenario.node[8].veinsmobility 	totalCO2Emission 	235.15695323674
+scalar RSUScenario.node[9].nic.phy80211p 	busyTime 	0.039492180546728
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac 	133.64355927906
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMbps 	0.14114440281831
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedFramesLowerMsg 	26722
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	receivedBits 	28221792
+scalar RSUScenario.node[9].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	ReceivedBroadcasts 	26722
+scalar RSUScenario.node[9].nic.mac1609_4 	SentPackets 	1574
+scalar RSUScenario.node[9].nic.mac1609_4 	SNIRLostPackets 	1002
+scalar RSUScenario.node[9].nic.mac1609_4 	RXTXLostPackets 	589
+scalar RSUScenario.node[9].nic.mac1609_4 	TotalLostPackets 	1591
+scalar RSUScenario.node[9].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	TimesIntoBackoff 	3148
+scalar RSUScenario.node[9].nic.mac1609_4 	SlotsBackoff 	4722
+scalar RSUScenario.node[9].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[9].nic.mac1609_4 	totalBusyTime 	6.392569305707
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac:last 	133.64355927906
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac:count 	26722
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac:sum 	2335289.6678677
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[9].nic.mac1609_4 	throughputMetricMac:mean 	87.39202409504
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[9].veinsmobility 	startTime 	42.7
+scalar RSUScenario.node[9].veinsmobility 	totalTime 	157.3
+scalar RSUScenario.node[9].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[9].veinsmobility 	minSpeed 	0.23623480113114
+scalar RSUScenario.node[9].veinsmobility 	maxSpeed 	16.668268906425
+scalar RSUScenario.node[9].veinsmobility 	totalDistance 	312.75658784339
+scalar RSUScenario.node[9].veinsmobility 	totalCO2Emission 	224.51244260461
+scalar RSUScenario.node[10].nic.phy80211p 	busyTime 	0.041288652952888
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac 	130.12267522726
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMbps 	0.13742634925963
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedFramesLowerMsg 	26018
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	receivedBits 	27478368
+scalar RSUScenario.node[10].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	ReceivedBroadcasts 	26018
+scalar RSUScenario.node[10].nic.mac1609_4 	SentPackets 	1508
+scalar RSUScenario.node[10].nic.mac1609_4 	SNIRLostPackets 	1757
+scalar RSUScenario.node[10].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	TotalLostPackets 	1757
+scalar RSUScenario.node[10].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	TimesIntoBackoff 	1508
+scalar RSUScenario.node[10].nic.mac1609_4 	SlotsBackoff 	2246
+scalar RSUScenario.node[10].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[10].nic.mac1609_4 	totalBusyTime 	6.252357819035
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac:last 	130.12267522726
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac:count 	26018
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac:sum 	2189188.5770286
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[10].nic.mac1609_4 	throughputMetricMac:mean 	84.141308979499
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[10].veinsmobility 	startTime 	49.3
+scalar RSUScenario.node[10].veinsmobility 	totalTime 	150.7
+scalar RSUScenario.node[10].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[10].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[10].veinsmobility 	maxSpeed 	14.438199792299
+scalar RSUScenario.node[10].veinsmobility 	totalDistance 	271.68643712757
+scalar RSUScenario.node[10].veinsmobility 	totalCO2Emission 	216.53882027895
+scalar RSUScenario.node[11].nic.phy80211p 	busyTime 	0.042109015256589
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac 	125.97663415544
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMbps 	0.1330481298878
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedFramesLowerMsg 	25189
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	receivedBits 	26602944
+scalar RSUScenario.node[11].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	ReceivedBroadcasts 	25189
+scalar RSUScenario.node[11].nic.mac1609_4 	SentPackets 	1443
+scalar RSUScenario.node[11].nic.mac1609_4 	SNIRLostPackets 	1916
+scalar RSUScenario.node[11].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	TotalLostPackets 	1916
+scalar RSUScenario.node[11].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	TimesIntoBackoff 	1443
+scalar RSUScenario.node[11].nic.mac1609_4 	SlotsBackoff 	2222
+scalar RSUScenario.node[11].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[11].nic.mac1609_4 	totalBusyTime 	6.096002352254
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac:last 	125.97663415544
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac:count 	25189
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac:sum 	2027054.0335545
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[11].nic.mac1609_4 	throughputMetricMac:mean 	80.47377956864
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[11].veinsmobility 	startTime 	55.8
+scalar RSUScenario.node[11].veinsmobility 	totalTime 	144.2
+scalar RSUScenario.node[11].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[11].veinsmobility 	minSpeed 	6.6899722953149e-14
+scalar RSUScenario.node[11].veinsmobility 	maxSpeed 	9.8415767689872
+scalar RSUScenario.node[11].veinsmobility 	totalDistance 	242.08240659289
+scalar RSUScenario.node[11].veinsmobility 	totalCO2Emission 	196.50770682218
+scalar RSUScenario.node[12].nic.phy80211p 	busyTime 	0.047864235727433
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac 	106.4917413
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMbps 	0.1124653613446
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedFramesLowerMsg 	21293
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	receivedBits 	22487424
+scalar RSUScenario.node[12].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	ReceivedBroadcasts 	21293
+scalar RSUScenario.node[12].nic.mac1609_4 	SentPackets 	1087
+scalar RSUScenario.node[12].nic.mac1609_4 	SNIRLostPackets 	1911
+scalar RSUScenario.node[12].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	TotalLostPackets 	1911
+scalar RSUScenario.node[12].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	TimesIntoBackoff 	1088
+scalar RSUScenario.node[12].nic.mac1609_4 	SlotsBackoff 	1623
+scalar RSUScenario.node[12].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[12].nic.mac1609_4 	totalBusyTime 	5.182552641554
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac:last 	106.4917413
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac:count 	21293
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac:sum 	1365253.5407052
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[12].nic.mac1609_4 	throughputMetricMac:mean 	64.117481834651
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[12].veinsmobility 	startTime 	91.4
+scalar RSUScenario.node[12].veinsmobility 	totalTime 	108.6
+scalar RSUScenario.node[12].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[12].veinsmobility 	minSpeed 	0.00095865846810517
+scalar RSUScenario.node[12].veinsmobility 	maxSpeed 	8.3697888248176
+scalar RSUScenario.node[12].veinsmobility 	totalDistance 	223.23587583731
+scalar RSUScenario.node[12].veinsmobility 	totalCO2Emission 	143.90614340288
+scalar RSUScenario.node[13].nic.phy80211p 	busyTime 	0.048353584905653
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac 	104.3061925046
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMbps 	0.11015742181667
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedFramesLowerMsg 	20856
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	receivedBits 	22025952
+scalar RSUScenario.node[13].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	ReceivedBroadcasts 	20856
+scalar RSUScenario.node[13].nic.mac1609_4 	SentPackets 	1061
+scalar RSUScenario.node[13].nic.mac1609_4 	SNIRLostPackets 	2024
+scalar RSUScenario.node[13].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	TotalLostPackets 	2024
+scalar RSUScenario.node[13].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	TimesIntoBackoff 	1988
+scalar RSUScenario.node[13].nic.mac1609_4 	SlotsBackoff 	3005
+scalar RSUScenario.node[13].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[13].nic.mac1609_4 	totalBusyTime 	5.112987033464
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac:last 	104.3061925046
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac:count 	20856
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac:sum 	1304197.0021661
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[13].nic.mac1609_4 	throughputMetricMac:mean 	62.533419743291
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[13].veinsmobility 	startTime 	94
+scalar RSUScenario.node[13].veinsmobility 	totalTime 	106
+scalar RSUScenario.node[13].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[13].veinsmobility 	minSpeed 	0
+scalar RSUScenario.node[13].veinsmobility 	maxSpeed 	7.807638420934
+scalar RSUScenario.node[13].veinsmobility 	totalDistance 	211.14199607947
+scalar RSUScenario.node[13].veinsmobility 	totalCO2Emission 	139.17893208231
+scalar RSUScenario.node[2].nic.phy80211p 	busyTime 	0.032266790890271
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac 	135.77409357298
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMbps 	0.14340320928307
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputControlMbps 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedFramesLowerMsg 	27148
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBitsLowerPackets 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBitsLoserWsm 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	packetsNotForMe 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	receivedBits 	28673440
+scalar RSUScenario.node[2].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	ReceivedBroadcasts 	27148
+scalar RSUScenario.node[2].nic.mac1609_4 	SentPackets 	1933
+scalar RSUScenario.node[2].nic.mac1609_4 	SNIRLostPackets 	678
+scalar RSUScenario.node[2].nic.mac1609_4 	RXTXLostPackets 	552
+scalar RSUScenario.node[2].nic.mac1609_4 	TotalLostPackets 	1230
+scalar RSUScenario.node[2].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	TimesIntoBackoff 	1933
+scalar RSUScenario.node[2].nic.mac1609_4 	SlotsBackoff 	2845
+scalar RSUScenario.node[2].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.node[2].nic.mac1609_4 	totalBusyTime 	6.534098746026
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:last 	135.77409357298
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, last"
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:count 	27148
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, count"
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:sum 	2626490.8147019
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, sum"
+scalar RSUScenario.node[2].nic.mac1609_4 	throughputMetricMac:mean 	96.747120034694
+attr source  throughputSignalMac
+attr title  "throughputMetricMac, mean"
+scalar RSUScenario.node[2].veinsmobility 	startTime 	6.8
+scalar RSUScenario.node[2].veinsmobility 	totalTime 	193.2
+scalar RSUScenario.node[2].veinsmobility 	stopTime 	200
+scalar RSUScenario.node[2].veinsmobility 	minSpeed 	0.20291319612941
+scalar RSUScenario.node[2].veinsmobility 	maxSpeed 	18.807166279703
+scalar RSUScenario.node[2].veinsmobility 	totalDistance 	633.41777057751
+scalar RSUScenario.node[2].veinsmobility 	totalCO2Emission 	297.98415068562
+scalar RSUScenario.rsu[0].nic.phy80211p 	busyTime 	0.025465559999996
+scalar RSUScenario.rsu[0].nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.rsu[0].nic.mac1609_4 	ReceivedBroadcasts 	21240
+scalar RSUScenario.rsu[0].nic.mac1609_4 	SentPackets 	1
+scalar RSUScenario.rsu[0].nic.mac1609_4 	SNIRLostPackets 	1493
+scalar RSUScenario.rsu[0].nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.rsu[0].nic.mac1609_4 	TotalLostPackets 	1493
+scalar RSUScenario.rsu[0].nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.rsu[0].nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.rsu[0].nic.mac1609_4 	TimesIntoBackoff 	2
+scalar RSUScenario.rsu[0].nic.mac1609_4 	SlotsBackoff 	10
+scalar RSUScenario.rsu[0].nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.rsu[0].nic.mac1609_4 	totalBusyTime 	4.93270376058
+scalar RSUScenario.metricsApplication.metrics 	packetsDeliveredToMetrics 	201
+scalar RSUScenario.metricsApplication.metrics 	throughputMetric 	1.005
+scalar RSUScenario.metricsApplication.metrics 	throughputMetric:last 	1.005
+attr source  throughputSignal
+attr title  "throughputMetric, last"
+scalar RSUScenario.metricsApplication.metrics 	throughputMetric:count 	201
+attr source  throughputSignal
+attr title  "throughputMetric, count"
+scalar RSUScenario.metricsApplication.metrics 	throughputMetric:sum 	205.87803094812
+attr source  throughputSignal
+attr title  "throughputMetric, sum"
+scalar RSUScenario.metricsApplication.metrics 	throughputMetric:mean 	1.0242688106872
+attr source  throughputSignal
+attr title  "throughputMetric, mean"
+scalar RSUScenario.metricsApplication.nic.phy80211p 	busyTime 	0.025465559999996
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	ReceivedUnicastPackets 	0
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	ReceivedBroadcasts 	21239
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	SentPackets 	1
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	SNIRLostPackets 	1494
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	RXTXLostPackets 	0
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	TotalLostPackets 	1494
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	DroppedPacketsInMac 	0
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	TooLittleTime 	0
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	TimesIntoBackoff 	1
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	SlotsBackoff 	4
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	NumInternalContention 	0
+scalar RSUScenario.metricsApplication.nic.mac1609_4 	totalBusyTime 	4.93270376058
