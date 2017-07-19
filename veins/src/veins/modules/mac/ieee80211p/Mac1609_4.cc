@@ -254,6 +254,7 @@ void Mac1609_4::handleUpperMsg(cMessage* msg) {
 
 	t_access_category ac = mapPriority(thisMsg->getPriority());
 
+	DBG_MAC <<"RECEIVED MESSGE FROM UPPER LAYER"<< std::endl;
 	DBG_MAC << "Received a message from upper layer for channel "
 	        << thisMsg->getChannelNumber() << " Access Category (Priority):  "
 	        << ac << std::endl;
@@ -294,7 +295,7 @@ void Mac1609_4::handleUpperMsg(cMessage* msg) {
 	if (num == 1 && idleChannel == true && chan == activeChannel) {
 
 		simtime_t nextEvent = myEDCA[chan]->startContent(lastIdle,guardActive());
-
+		DBG_MAC << "Next EVENTE HERE :"<< nextEvent << std::endl;
 		if (nextEvent != -1) {
 			if ((!useSCH) || (nextEvent <= nextChannelSwitch->getArrivalTime())) {
 				if (nextMacEvent->isScheduled()) {
@@ -582,7 +583,7 @@ WaveShortMessage* Mac1609_4::EDCA::initiateTransmit(simtime_t lastIdle) {
 		if (iter->second.queue.size() != 0) {
 			if (idleTime >= iter->second.aifsn* SLOTLENGTH_11P + SIFS_11P && iter->second.txOP == true) {
 
-				DBG_MAC << "Queue " << iter->first << " is ready to send!" << std::endl;
+				DBG_MAC << "Queue " << iter->first << "with size: "<< iter->second.queue.size()<< "is ready to send!" << std::endl;
 
 				iter->second.txOP = false;
 				//this queue is ready to send
@@ -638,7 +639,7 @@ simtime_t Mac1609_4::EDCA::startContent(simtime_t idleSince,bool guardActive) {
 			simtime_t possibleNextEvent = DIFS + iter->second.currentBackoff * SLOTLENGTH_11P;
 
 
-			DBG_MAC << "Waiting Time for Queue " << iter->first <<  ":" << possibleNextEvent << "=" << iter->second.aifsn << " * "  << SLOTLENGTH_11P << " + " << SIFS_11P << "+" << iter->second.currentBackoff << "*" << SLOTLENGTH_11P << "; Idle time: " << idleTime << std::endl;
+			std::cout<< "Waiting Time for Queue " << iter->first <<  ":" << possibleNextEvent << "=" << iter->second.aifsn << " * "  << SLOTLENGTH_11P << " + " << SIFS_11P << "+" << iter->second.currentBackoff << "*" << SLOTLENGTH_11P << "; Idle time: " << idleTime << std::endl;
 
 			if (idleTime > possibleNextEvent) {
 				DBG_MAC << "Could have already send if we had it earlier" << std::endl;
@@ -654,6 +655,7 @@ simtime_t Mac1609_4::EDCA::startContent(simtime_t idleSince,bool guardActive) {
 			nextEvent == -1? nextEvent =  possibleNextEvent : nextEvent = std::min(nextEvent,possibleNextEvent);
 		}
 	}
+	std::cout << "Next event time : " << nextEvent << std::endl;
 	return nextEvent;
 }
 

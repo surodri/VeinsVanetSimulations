@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- 
+137 Cars passing highway M1 in Northampton 
+-->
+<routes>
+   <vType id="vtype0" length="5" minGap="2.5" maxSpeed="33.33" color="1,1,0">
+   		<carFollowing-Krauss accel="2.6" decel="4.5" sigma="0.5" />
+   </vType>
+   
+   <route id="route0" edges="4349497 176708319#0 "/>
+   <flow id="flow0" type="vtype0" route="route0" begin="0" period="3" number="195"/>
+</routes>

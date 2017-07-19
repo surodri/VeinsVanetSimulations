@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- debug config -->
+	
+<launch>
+	<basedir path="/Users/susanarodriguez/Documents/Thesis/VeinsVanetSimulations/vanets/src/northampton/" />
+	<copy file="northampton.net.xml" />
+	<copy file="northampton.rou.xml" />
+	<copy file="northampton.poly.xml" />
+	<copy file="LowDenScenNorthampton.sumo.cfg" type="config" />
+</launch>
+

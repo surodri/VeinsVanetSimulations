@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
   <inputs>
-    <inputs name="/vanets/src/results/SingleCH_Safety_B_100Bytes_Q_5-*.vec"/>
     <inputs name="/vanets/src/results/SingleCH_Safety_B_100Bytes_Q_5-*.sca"/>
   </inputs>
-  <datasets/>
+  <datasets>
+    <datasets>
+      <items xsi:type="scave:Add" filterPattern="file(/vanets/src/results/SingleCH_Safety_B_100Bytes_Q_5-0.sca) AND attr:configname(SingleCH_Safety_B_100Bytes_Q_5) AND attr:runnumber(0) AND module(RSUScenario.node[1].nic.mac1609_4) AND name(ReceivedBroadcasts)"/>
+    </datasets>
+  </datasets>
   <chartSheets/>
 </scave:Analysis>

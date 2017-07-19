@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- generated on 2017-01-20 12:56:17.576360 by $Id: randomTrips.py 19495 2015-12-02 12:36:28Z behrisch $
+  options: -n vanets/src/northampton/northampton.net.xml -e 50 <doubleminus>trip-attributes=departLane=176708319#0
+-->
+<trips>
+    <trip id="0" depart="0.00" from="29976294" to="-58880151#2" departLane=176708319#0/>
+    <trip id="1" depart="1.00" from="61398399#0" to="65751894#1" departLane=176708319#0/>
+    <trip id="2" depart="2.00" from="-115104105#13" to="-4341959#4" departLane=176708319#0/>
+    <trip id="3" depart="3.00" from="4342152#0" to="-216923959#2" departLane=176708319#0/>
+    <trip id="4" depart="4.00" from="217766251#1" to="322355743" departLane=176708319#0/>
+    <trip id="5" depart="5.00" from="3365479#1" to="-190090019#1" departLane=176708319#0/>
+    <trip id="6" depart="6.00" from="117092531#3" to="191251354" departLane=176708319#0/>
+    <trip id="7" depart="7.00" from="-4496811#5" to="-61096210#1" departLane=176708319#0/>
+    <trip id="8" depart="8.00" from="115570165#1" to="217473263#0" departLane=176708319#0/>
+    <trip id="9" depart="9.00" from="-56953386" to="-4641945#3" departLane=176708319#0/>
+    <trip id="10" depart="10.00" from="135396312" to="58880148#1" departLane=176708319#0/>
+    <trip id="11" depart="11.00" from="3987954#3" to="-117084928#1" departLane=176708319#0/>
+    <trip id="12" depart="12.00" from="254062389" to="40514409#0" departLane=176708319#0/>
+    <trip id="13" depart="13.00" from="190421079#1" to="45316529#22" departLane=176708319#0/>
+    <trip id="14" depart="14.00" from="-56906764#2" to="61398441#1" departLane=176708319#0/>
+    <trip id="15" depart="15.00" from="61402267#2" to="28492824" departLane=176708319#0/>
+    <trip id="16" depart="16.00" from="-4346575#0" to="189510610#0" departLane=176708319#0/>
+    <trip id="17" depart="17.00" from="115048184#0" to="3367025#1" departLane=176708319#0/>
+    <trip id="18" depart="18.00" from="4449274" to="-35220282" departLane=176708319#0/>
+    <trip id="19" depart="19.00" from="4008039" to="-2474445#27" departLane=176708319#0/>
+    <trip id="20" depart="20.00" from="306148718#1" to="31652286#1" departLane=176708319#0/>
+    <trip id="21" depart="21.00" from="189767869" to="4584624#1" departLane=176708319#0/>
+    <trip id="22" depart="22.00" from="189513867#3" to="-4352197" departLane=176708319#0/>
+    <trip id="23" depart="23.00" from="-4441351#3" to="100024783#3" departLane=176708319#0/>
+    <trip id="24" depart="24.00" from="3369555#3" to="-3293994" departLane=176708319#0/>
+    <trip id="25" depart="25.00" from="115010734#10" to="-4756502#1" departLane=176708319#0/>
+    <trip id="26" depart="26.00" from="176862656" to="3993532#3" departLane=176708319#0/>
+    <trip id="27" depart="27.00" from="-76449760#0" to="4449265#1" departLane=176708319#0/>
+    <trip id="28" depart="28.00" from="74892434#1" to="61560555#4" departLane=176708319#0/>
+    <trip id="29" depart="29.00" from="4606886#0" to="102323381#1" departLane=176708319#0/>
+    <trip id="30" depart="30.00" from="237981494#0" to="-3374096#5" departLane=176708319#0/>
+    <trip id="31" depart="31.00" from="4274699#0" to="-69260938#1" departLane=176708319#0/>
+    <trip id="32" depart="32.00" from="4618604#2" to="-4346575#5" departLane=176708319#0/>
+    <trip id="33" depart="33.00" from="93983707" to="-54478607#0" departLane=176708319#0/>
+    <trip id="34" depart="34.00" from="23148480" to="8132392#2" departLane=176708319#0/>
+    <trip id="35" depart="35.00" from="-90881187#1" to="91257076#0" departLane=176708319#0/>
+    <trip id="36" depart="36.00" from="166265454#0" to="-4235164#1" departLane=176708319#0/>
+    <trip id="37" depart="37.00" from="-59275713" to="156314476" departLane=176708319#0/>
+    <trip id="38" depart="38.00" from="115304204" to="115191954#1" departLane=176708319#0/>
+    <trip id="39" depart="39.00" from="4607412#3" to="3372961#10" departLane=176708319#0/>
+    <trip id="40" depart="40.00" from="-28491970" to="391990202#2" departLane=176708319#0/>
+    <trip id="41" depart="41.00" from="-114990452#1" to="-59243282#1" departLane=176708319#0/>
+    <trip id="42" depart="42.00" from="117092531#2" to="-135672546#0" departLane=176708319#0/>
+    <trip id="43" depart="43.00" from="95015683#0" to="58501676#1" departLane=176708319#0/>
+    <trip id="44" depart="44.00" from="242693594#13" to="4608343" departLane=176708319#0/>
+    <trip id="45" depart="45.00" from="-35741181#0" to="-111601768" departLane=176708319#0/>
+    <trip id="46" depart="46.00" from="89298162#17" to="-4346575#2" departLane=176708319#0/>
+    <trip id="47" depart="47.00" from="-90187991" to="-4352204" departLane=176708319#0/>
+    <trip id="48" depart="48.00" from="-159192088#2" to="-137982791#4" departLane=176708319#0/>
+    <trip id="49" depart="49.00" from="-4341725#1" to="59087040" departLane=176708319#0/>
+</trips>

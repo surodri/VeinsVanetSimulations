@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- 
+194 Cars leaving the Computer Science Building and campus of the University of Erlangen-Nuremberg
+-->
+<routes>
+   <vType id="vtype0" length="5" minGap="2.5" maxSpeed="33.33" color="1,1,0">
+   		<carFollowing-Krauss accel="2.6" decel="4.5" sigma="0.5" />
+   </vType>
+   <route id="route0" edges="4349497 9923556 9923557 13860964 137634236 137634237 145689507"/>
+   <flow id="flow0" type="vtype0" route="route0" begin="0" period="3" number="195"/>
+</routes>
